@@ -1,0 +1,62 @@
+relatif garde sa place reserver
+absolue sort de sa place et laisse a un autre div
+
+var :
+Les variables déclarées avec var ont une portée de fonction, ce qui signifie qu'elles sont visibles et accessibles à l'intérieur de la fonction dans laquelle elles sont déclarées, peu importe où à l'intérieur de la fonction elles sont déclarées. Si elles sont déclarées à l'extérieur de toute fonction, elles ont une portée globale, ce qui signifie qu'elles sont accessibles partout dans le script.
+Les variables déclarées avec var peuvent être réaffectées (c'est-à-dire que vous pouvez changer leur valeur) et elles n'ont pas de bloc de portée (par exemple, dans une boucle for, la variable est accessible en dehors de la boucle).
+Exemple avec var :
+
+javascript
+Copy code
+function example() {
+    if (true) {
+        var x = 10;
+    }
+    console.log(x); // x est accessible ici
+}
+let :
+Les variables déclarées avec let ont une portée de bloc (block scope), ce qui signifie qu'elles sont uniquement visibles et accessibles à l'intérieur du bloc (comme une boucle for, une condition if, etc.) dans lequel elles sont déclarées.
+Les variables déclarées avec let peuvent également être réassignées, mais elles n'ont pas une portée globale (elles sont limitées à la fonction ou au bloc où elles sont déclarées).
+Exemple avec let :
+
+javascript
+Copy code
+function example() {
+    if (true) {
+        let x = 10;
+        console.log(x); // x est accessible ici
+    }
+    console.log(x); // x n'est pas accessible ici
+}
+
+Noeud 
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Noeud HTML</title>
+		<meta charset="utf-8"/>
+		<script>
+			const modifier = () => {
+				let nodes = document.querySelectorAll("div");
+				nodes.forEach(n => {
+					n.style.padding = "20px"
+				})
+				let node = document.querySelector("body > div");
+				let rnd = Math.random();
+			
+
+				if (rnd < 0.5) {
+					node.style.color = "red";
+					node.style.backgroundColor = "blue";
+				}
+				else{
+					node.style.color = "yellow";
+					node.style.backgroundColor = "green";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="texte" onmousemove="modifier()">Lorem ipsum</div>
+	</body>
+</html>

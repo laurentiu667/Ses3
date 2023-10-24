@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css">
+    <script defer src="calculatrice.js"></script>
+    <title>Formulaire</title>
+</head>
+<body>
+    
+
+    <nav>
+        <div>
+            <h1>Form</h1>
+        </div>
+        <div>
+            <ul class="menu-def">
+                <li>Home</li>
+                <li>Account</li>
+                <li>Shop</li>
+                <li>Card</li>
+            </ul>
+            <div class="burger">
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <form method="get" onsubmit="return validation()">
+        <div class="container-form">
+            <div class="text">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="information">
+                <input class="box" type="text" id="name" placeholder="Full Name">
+
+                <input class="box" type="email" id="email" placeholder="Email">
+
+                <input class="box" type="number"  placeholder="Phone Number">
+
+                <textarea class="areatext box" name="" id="" cols="1" rows="1" placeholder="Let us know your wishes"></textarea>
+                <div class="errorContainer"></div>
+                <button class="sendform">SEND NOW</button>
+                <div class="contact-us">
+                    <div>+1 514-245-6421</div>
+                    <div>Instagram</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</body>
+</html>

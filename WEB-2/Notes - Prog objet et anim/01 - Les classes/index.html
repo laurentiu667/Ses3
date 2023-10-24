@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les classes (programmation objet)</title>
+</head>
+<body>
+    <script>
+       
+        // {} = dictionnaire ou objet
+        // dictionnaire
+        // let dict = {
+        //     "no1" : "numero1",
+        //     "no2" : "numero2",
+        // }
+        // console.log(dict["no1"]);
+
+        // JSON [] -> tableau | {} -> objet
+        // objet
+        let user = {
+            "firstname" : "Laurentiu",
+            "lastname" : "Dilion",
+            "toString" : function () {
+                // pour les objet on utilise la fonction de base et non le arrow fonction
+                // si on fait  () => {} le this vas faire reference a tout ce qui a l
+                // this = moi - meme...
+                return this.firstname + " " + this.lastname;
+            } 
+        }
+        console.log(user.firstname);
+        console.log(user.toString());
+
+        class Person { 
+            constructor(firstname, lastname){
+                this.firstname = firstname;
+                this.lastname = lastname;
+                // si on fait  () => {} le this vas faire reference a tout ce qui a l exterieure de node donc firstname et lastname\
+                // si on fait function () {} ca fait reference seulement a node
+                // let node = document.querySelecto('div')
+                // node.onclick = () => {
+                //     this.
+                // }
+            }
+            afficher(){
+                console.log(this.firstname, this.lastname);
+            }
+        }
+
+        let p = new Person("Jane", "Doe");
+        p.afficher();
+    </script>
+</body>
+</html>

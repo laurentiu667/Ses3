@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription AutobusCVM</title>
+    <link rel="stylesheet" href="css/global.css">
+    <script src="js/javascript.js"></script>
+</head>
+<body>
+    <h1>Inscription à AutobusCVM</h1>
+    <div class="msg-ok">
+        Inscription réussie
+    </div>
+    <div class="msg-err">
+        Désolé, ce service n'est pas pour vous!
+    </div>
+    <div class="container">
+        <form action="" method="get" onsubmit="return validate()">
+            <div class="line">
+                <div>
+                    Type d'inscription
+                </div>
+                <div>
+                    <input type="text" name="type" id="typeInscription">
+                </div>
+            </div>
+            <div class="line">
+                <div>
+                    Nombre de passagers
+                </div>
+                <div>
+                    <input type="text" name="nb" id="nbInscription">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn-start">S'inscrire</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

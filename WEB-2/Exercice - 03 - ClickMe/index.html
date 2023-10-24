@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click me!</title>
+    <script src="js/sprites/Alien.js"></script>
+    <script src="js/javascript.js"></script>
+    <link rel="stylesheet" href="css/global.css">
+    <script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+</head>
+<body>
+    <input type="text" disabled id="input-timer" value="10">
+    <input type="text" disabled id="input-score" value="0">
+
+    <img src="img/alien.gif" alt="UFO" id="alien">
+
+    <div class="box_fin">
+        <h1>Fin de la partie</h1>
+        <div class="score">
+            <h2>Voici votre score</h2>
+            <div class="lescore"></div>
+        </div>
+        <button id="restart">Recommencez</button>
+    </div>
+
+    <footer>
+        <div>
+            <h3>Création d'un premier jeu : Click me</h3>
+            <div>
+                Le but de jeu est de cliquer le plus de fois possible sur l'extraterrestre en 10 secondes.
+                <ul>
+                    <li>Le temps restant est affiché en haut à gauche</li>
+                    <li>Le nombre de clics est affiché en haut à droite</li>
+                    <li>À chaque fois que l'extraterrestre est cliqué, il est repositionné dans la page.</li>
+                    <li>À chaque tick, l'extraterrestre monte de 2 pixels.</li>
+                </ul>
+                <div>
+                    Pour repositionner l'extraterrestre, Voici une méthode que vous pourriez ajouter à votre classe <code>Alien</code> et que vous pourriez utiliser pour le déplacer suite à un clic.
+                    <code class="footer-code-block">
+                        move() {
+                            this.element.style.left = 100 + Math.random() * (window.innerWidth - 200) + "px";
+                            this.element.style.top = "400px";
+                        }
+                    </code>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

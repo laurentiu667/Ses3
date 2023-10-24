@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Your Dream Trip</title>
+        <meta charset="utf-8" />
+		<link href="/Notes - RocketSpace/css/global.css" rel="stylesheet" />
+		<script src="/Notes - RocketSpace/js/javascript.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+	</head>
+	<body>
+		<div id="you-circle"></div>
+		<div id="you-arrow"></div>
+		<div id="you-text">Serez-vous le prochain ?</div>
+		
+		<div class="form-section">
+			<h1>Grand concours CVM : Voyagez dans l'espace</h1>
+			<p>Sky is the limit... hé bien plus maintenant. Participez au concours et courez la chance de gagner un voyage pour 2 à bord de la navette spatiale CVM. </p>
+			<p>Remplissez le formulaire suivant et croisez-vos doigts !</p>
+			<!-- 2 attributs obligatoirs -->
+			<!-- get tu vas voir les info dans le url et post c est masquer -->
+			<form action="http://perdu.com" method="get">
+				<div class="question">
+					<h2>Quel est votre nom ?</h2>
+					<div>
+						<!-- name sert a savoir se qu il y a dedans / required sert a obliger l utilisateur-->
+						<input type="text" name="nom" required value = "alexis" placeholder="Renseigner ce champ">
+	
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Pourquoi voulez-vous aller dans l'espace ?</h2>
+					<div>
+						<textarea name="raisons" id="" cols="1" rows="1" style="min-width: 100%; min-height: 70px;" placeholder="Mettez trois raisons">tu connais</textarea>
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Quel est le mot de passe de votre compte banquaire ?</h2>
+					<div>
+						<input type="password" name="email" id="" placeholder="entrer votre email"  >
+					</div>
+				</div>
+
+				<div class="question">
+					<h2>Quel est votre courriel ?</h2>
+					<div>
+						<input type="email" name="password" id="" placeholder="entrer votre email"  >
+
+					</div>
+				</div>
+
+				<div class="question">
+					<h2>Quel est votre date de naissance ?</h2>
+					<div>
+						<input type="date" name="date">
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Aucune question ici...</h2>
+					<div>
+						<input type="hidden" name="cache">
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Quelle est votre planète préférée ?</h2>
+					<div>
+						<select name="select" id="">
+							<option value="1">Mercure</option>
+							<option selected value="2">terre</option>
+							<option value="3">saturn</option>
+							<option value="4">mars</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Que buvez-vous le matin?</h2>
+					<div>
+						<label>
+							<input type="radio" name="boisson" >Café <br>
+						</label>
+
+						<label>
+							<input type="radio" name="boisson" >Banane <br>
+						</label>
+
+						<label>
+							<input type="radio" name="boisson" >Pomme <br>
+						</label>
+
+						<!-- radio peut choisir que 1 comparer au checkbox-->
+						
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Quels sont vos intérêts ?</h2>
+					<div>
+						<label>
+							<input type="checkbox" name="Sport">Foot <br>
+						</label>
+						
+						<label>
+							<input type="checkbox" name="Sport">BBAL <br>
+						</label>
+
+						<label>
+							<input type="checkbox" name="Sport">Jaune <br>
+						</label>
+
+						<label>
+							<input type="checkbox" name="Sport">Math <br>
+						</label>
+						
+					</div>
+				</div>
+				
+				<div class="question">
+					<h2>Pour terminer, appuyez sur le bon bouton</h2>
+					<div>
+						<button type="submit" style="width: 80px; height: 20px; border: none; border-radius: 2px; background-color: black; color: white;">Envoyer</button>
+						<button type="button">Button</button>
+						<button type="reset">reset</button>
+						
+						(input : submit - reset - image - button)
+						(button : submit - button)
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

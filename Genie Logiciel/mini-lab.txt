@@ -1,0 +1,26 @@
+
+<!-- Exercice du cours : DÃ©placer les billes Ã  une nouvelle position --!>
+Faire bouger en choisisant une cible, un point cible, en partant de la taille de notre modÃ¨le.
+Et quand on demande la bille, elle devra se dÃ©placer vers sa cible (un pas, changement pos x,y)
+Donc plusieurs pas succesifs
+Les billes ont besoin d'une vitesse de dÃ©placement en pixels
+Dans la Library du prof : Calculer l'angle et la distance entre 2 points
+(Ã€ un point alÃ©atoire)
+Calc angle, calc distance, find next point -> helper.py : python peut avoir des classes static. Comme la class "helper"
+	from helper import Helper as HP
+	Fonction "dÃ©placer" appelÃ© par le ModÃ¨le qui aura aussi une fonc "jouer_coup" et elle dira
+	Ã  chacune des billes de se dÃ©placer. Elle connaissanet leur cible avec self.cible_x et self.cible_y
+La fonction "se dÃ©placer" :
+	Trouver pos x et y et trouver l'angle entre les 2. Return la pos x.y qui sur laquelle il faudra attÃ©rir
+
+Pour l'animation :
+	self.canevas.delete(ALL)
+	
+Dans le Controleur :
+	Partir un bal. Fonction "boucler_jeu". La boucle dit au modÃ¨le de se mettre Ã  jour. Et dire Ã  la vue d'afficher le modÃ¨le.
+	Et troisiÃ¨me ligne : Dans tkinter, pour ramasser des fonctions Ã  Ã©xecuter dans le futur : 
+		self.vue.root.after(100, self.boucler_jeu()) - Elle se rappelle elle mÃªme
+	Appeler self.boucler_jeu dans 100ms juste avant le mainloop
+		
+La bille -> Fonction trouver_cible : return la pos de la nouvelle cible
+	(quand on est rendu Ã  la destination)

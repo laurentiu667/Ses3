@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Frank Dion - Accueil</title>
+        <link rel="stylesheet" href="css/global.css">
+		<script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+        <script defer src="script.js"></script>
+
+    </head>
+    <body>
+        
+        <div class="container-image-text">
+
+            <div class="image">
+                
+            </div>
+
+            <form action="./film.html" method="get" onsubmit="return validate()">
+                <div class="formulaire">
+                    <div id="nom">
+                        <p>Nom : </p>
+                        <input id="nompinput" type="text">
+                    </div>
+                    <div id="mdp">
+                        <p>Mot de passe : </p>
+                        <input id="mdpinput" type="password">
+                    </div>
+                    <button>Envoyer</button>
+                </div>
+            </form>
+
+        </div>
+        <footer>
+            <div class="container">
+                <h3>Page 1 : Formulaire et validation</h3>
+                <ol>
+                    <li>Intégrer la page afin qu'elle ressemble à <a href="render/page-index.png"> ceci</a>, en réduisant la hauteur de l'image (<code>&lt;img height="500" src...&gt;</code>).</li>
+                    <li>Ajouter une balise <code>form</code> qui englobe les deux champs de la page. L'<i>action</i> du formulaire doit être : film.html.</li>
+                    <li>Quand l'usager soumet (i.e. <i>submit</i>) le formulaire, une validation est enclenchée. Si le nom est "franck" et le mot de passe est "dion", alors le formulaire est valide. </li>
+                    <li>Quand le formulaire n'est pas valide, faire afficher le message suivant dans une boîte d'alerte avec les bons messages (ex : Vous avez ces erreurs : - Usager invalide, - Mot de passe invalide).</li>
+                    <li>Si les informations entrées dans les champs ne sont pas les bonnes, alors le contenu des champs doit être vidé.</li>
+                </ol>
+                <div class="content-source">
+                    Tous le contenu provient du site Web de Franck Dion : <a href="http://www.franckdion.net" target="frank">http://www.franckdion.net</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

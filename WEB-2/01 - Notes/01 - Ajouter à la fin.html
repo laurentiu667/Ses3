@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Ajouter à la fin - DOM</title>
+		<link rel="stylesheet" href="css/global.css" />
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<script>
+			const ajouter = () => {
+				let texte = prompt("Ajouter un stéréotype");
+
+				// Creer un li et ensuite lui donner rouge et ensuite lui donner une classe
+				let node = document.createElement("li");
+				node.style.color = "red";
+				node.classList.add("text-red");
+
+				// Creer le noeud qui contiendra le texte
+				let textNode = document.createTextNode(texte);
+				node.append(textNode);
+
+				// Connecter le li au ul (parent)
+				let parentNode = document.querySelector("#liste"); // ul ou #liste
+				parentNode.append(node);
+
+			}
+		</script>
+		
+		<div id="small-container">
+			<h3>Stéréotype informaticien (DOM)</h3>
+			<ul id="liste">
+				<li>Aimer le badminton</li>
+				<li>Faire du vélo</li>
+				<li>Amateur de cinéma</li>
+			</ul>
+			<div class="small-section">
+				<!--ca permet de ne aller sur aucune page et c est une meilleur methode que #-->
+				[ <a href="javascript:void(0)" onclick="ajouter()">Ajouter</a> ]
+			</div>
+		</div>
+	</body>
+</html>

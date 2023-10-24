@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Noeud HTML</title>
+		<meta charset="utf-8"/>
+		
+	</head>
+	<body>
+		<div id="texte" onmousemove="modifier()">Lorem ipsum</div>
+	</body>
+	<script>
+		const modifier = () => {
+			let nodes = document.querySelectorAll("div");
+			nodes.forEach(n => {
+				n.style.padding = "20px"
+			})
+			let node = document.querySelector("body > div");
+			let rnd = Math.random();
+		
+
+			if (rnd < 0.5) {
+				node.style.color = "red";
+				node.style.backgroundColor = "red";
+			}
+			else{
+				node.style.color = "yellow";
+				node.style.backgroundColor = "green";
+			}
+		}
+		function example() {
+			if (true) {
+				var x = 10;
+			}
+			console.log(x); // x est accessible ici
+		}
+		function example() {
+			if (true) {
+				let x = 10;
+				console.log(x); // x est accessible ici
+			}
+			console.log(x); // x n'est pas accessible ici
+		}
+	</script>
+</html>

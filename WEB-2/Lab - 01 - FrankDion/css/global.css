@@ -1,0 +1,89 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+html {
+    color: #bbbbbb;
+    font-family: Lucida Sans, Lucida Grande, Lucida Sans Unicode, sans-serif;
+}
+
+h4 {
+    margin-bottom:10px;
+}
+
+.container {
+    width:1000px;
+    margin:0 auto;
+}
+
+.content-source {
+    font-size: 0.9em;
+    margin:10px 0;
+    opacity: 0.5;
+}
+
+.video-container {
+    width:960px;
+    margin:100px auto;
+}
+
+.generic {
+    text-align: center;
+    position: relative;
+}
+
+.generic p {
+    margin-bottom:30px;
+    font-size: 2em;
+    padding:30px;
+}
+
+.container-image-text{
+    width: 30%;
+    height: 500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 6fr 2fr;
+    gap: 5px;
+}
+.image{
+    background-image: url(../img/mouettes_index.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: inherit;
+    background-size: 100% 100%;
+}
+.formulaire{
+    border: 1px solid black;
+    height: 100%;
+    padding: 7px 0 7px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+#nom, #mdp{
+    display: flex;
+}
+.formulaire > div p{
+    width: 50%;
+}
+button{
+    width: 20%;
+    margin: 0 auto;
+}
+
+.box-container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.the-box{
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    position: absolute;
+}

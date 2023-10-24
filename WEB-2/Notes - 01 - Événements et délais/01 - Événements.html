@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Les événements</title>
+		<meta charset="utf-8"/>
+		<style>
+			p {
+				border:1px solid #aaa;
+				margin-bottom:20px;
+				width: 200px;
+				padding:20px;
+			}
+		</style>
+		<script>
+			const sourisBouge  = (event) => {
+
+				console.log(event.clientX);
+
+			}
+
+			const sourisAlintieurs = interieur => {
+				console.log(interieur)
+			}
+
+			const sourisOnClick = click => {
+				console.log("tu as cliquer");
+			}
+
+			const possedeFocus = hasFocus => {
+				console.log(hasFocus);
+			}
+			const valeurmodif = (node) => {
+				<!--node affiche tout le input avec les parametre et le .value se que on a tapper dans le input-->
+				console.log(node.value);
+			}
+		</script>
+	</head>
+	<body>
+		<!--Les gens mettent evt en entreprise--> 
+		<p onmousemove="sourisBouge(event)">Quand la souris bouge</p>
+		<p onmouseover="sourisAlintieurs(true)" onmouseout = "sourisAlintieurs(false)" >Quand la souris entre et sort</p>
+		<p onclick="sourisOnClick()">Quand la souris a été cliquée</p>
+		<!--onkeyup="console.log(event.key)"-->
+		<div>
+			<input type="text" name="dummy"  onchange="valeurmodif(this)" onfocus="possedeFocus(true)" onblur="possedeFocus(false)">
+		</div>
+	</body>
+</html>

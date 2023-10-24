@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Accueil | LinkedIn</title>
+	<link href="css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+	<script defer src="code.js"></script>
+</head>
+<body>
+	<div class="headerDiv">
+		<div class="siteCenter">
+			<div class="topMenuDiv">
+				<h1 class="topMenuTitle">
+					Linkedin
+				</h1>
+				<div class="topMenuSubDiv">
+					<ul>
+						<li><a href="" class="topMenuLink">Accueil</a></li>
+						<li><a href="" class="topMenuLink">Linkedin, pour quoi faire ?</a></li>
+						<li><a href="" class="topMenuLink">S'inscrire</a></li>
+						<li><a href="" class="topMenuLink noBorder">S'identifier</a></li>
+						<li class="langOption"><a href="" class="topMenuLink noBorder">Langue</a></li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mainDiv">
+		<div class="siteCenter mainSection">
+			<div class="bodyDiv">
+				<div class="descriptionDiv">
+					<p class="motivationSection">
+						Plus de 40 millions de professionnels dans le monde utilisent LinkedIn pour échanger idées,
+						informations et faire progresser leur carrière
+					</p>
+
+					<div class="descGroupDiv">
+						<div class="desc desc1">Créez votre réseau et restez à l'écoute de votre secteur</div>
+						<div class="desc desc2">Trouvez les professionnels et l'expertise dont vous avez besoin</div>
+						<div class="desc desc3">Créez vous-même votre image professionnelle sur le Web</div>
+					</div>
+				</div>
+
+				<div class="loginDiv">
+					<form action="linkedin.html" method="get" onsubmit="return validate()">
+						<div class="loginHeaderDiv">Inscrivez-vous sur le réseau LinkedIn</div>
+						<div class="loginFormDiv">
+							
+								<div class="formLabel"><label for="firstName">Prénom :</label></div>
+								<div class="formInput"><input type="text" name="firstName" id="firstName" /></div>
+								<div class="formSeparator"></div>
+
+								<div class="formLabel"><label for="lastName">Nom :</label></div>
+								<div class="formInput"><input type="text" name="lastName" id="lastName" /></div>
+								<div class="formSeparator"></div>
+							
+
+							<div class="formLabel">Date de naiss. :</div>
+							<div class="formInput">
+								<select name="dateD" class="birthDateJ">
+									<option value="1">1</option>
+									<script>
+										for (let i = 2; i <= 31; i++) {
+											// on a plus acces a document.write lorsque la page est charger 
+											document.write("<option>" + i + "</options>")
+										}
+									</script>
+								</select>
+								<select name="dateM" class="birthDateM">
+									<option value="1">1</option>
+									<script>
+										for (let i = 2; i <= 12; i++) {
+											// on a plus acces a document.write lorsque la page est charger 
+											document.write("<option>" + i + "</options>")
+										}
+									</script>
+								</select>
+								<select name="dateY" class="birthDateA">
+									<option value="1900">1900</option>
+									<script>
+										for (let i = 1901; i <= 2200; i++) {
+											// on a plus acces a document.write lorsque la page est charger 
+											document.write("<option>" + i + "</options>")
+										}
+									</script>
+								</select>
+							</div>
+							<div class="formSeparator"></div>
+
+							<div class="formLabel"><label for="email">Courriel :</label></div>
+							<div class="formInput"><input type="email" name="email" id="email" /></div>
+							<div class="formSeparator"></div>
+
+							<div class="formLabel"><label for="password">Mot de passe :</label></div>
+							<div class="formInput"><input type="password" name="password" id="password" /></div>
+							<div class="clear"></div>
+
+							<div class="formLabel">&nbsp;</div>
+							<div class="formInput">
+								<div class="passDesc">Min. de 6 caractères</div>
+								<input type="image" src="images/btn-inscrire.jpg" value="S'inscrire" />
+
+								<p class="alreadyRegistered">
+									Déjà inscrit ? <a href="">Identifiez-vous</a>
+								</p>
+							</div>
+
+							<div class="formSeparator"></div>
+						</div>
+					</form>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+
+			<div class="searchDiv">
+				<div class="searchByName">
+					<span class="searchUser">Rechercher une personne</span> : <input type="text" value="Prénom" class="searchInput" /> &nbsp; <input type="text" value="Nom" class="searchInput" />
+				</div>
+				<div class="searchOkBtn">
+					<input type="image" src="images/btn-ok.jpg" />
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="conditionDiv">
+				* En cliquant sur le bouton S'inscrire, vous confirmez avoir lu, compris et accepté les <a href="">Conditions générales d'utilisation</a> et la <a href="">Politique de confidentialité</a> de LinkedIn.
+			</div>
+
+		</div>
+	</div>
+
+	<div class="footerDiv">
+		<div class="siteCenter">
+			<p class="society">
+				Société
+			</p>
+			<div>
+				<ul>
+					<li><a href="" class="footerLink boldLink">Service clients</a></li>
+					<li><a href="" class="footerLink">À propos de LinkedIn</a></li>
+					<li><a href="" class="footerLink">Tutoriel (en anglais)</a></li>
+					<li><a href="" class="footerLink">Blog (en anglais)</a></li>
+					<li><a href="" class="footerLink">Publicité (en anglais)</a></li>
+					<li><a href="" class="footerLink noBorder">Presse (en anglais)</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<footer>
+		<div>
+			<h3>Validation d'un formulaire en JavaScript</h3>
+			<ol>
+				<li>
+					Le champ date de naissance doit être composé de 3 <code>select</code>. Le jour doit aller de 1 à 31, le mois de 1 à 12 et l'année 1900 à 2200 (utilisez <code>document.write</code>)
+				</li>
+				<li>
+					Vous devez faire en sorte que le formulaire est validé/envoyé uniquement lorsque les champs sont valides
+					<ol>
+						<li>
+							Le champ nom et prénom doit accepté les lettres de "a" à "z" uniquement (oubliez les apostrophes, accents, etc). Il ne doit pas y avoir plus de 20 lettres par champ.
+						</li>
+						<li>
+							Le mot de passe doit contenir au moins 6 caractères
+						</li>
+					</ol>
+				</li>
+				<li>
+					Lorsque le formulaire n'est pas valide, alors une boîte d'alerte avec les erreurs doit être affichée à l'écran.
+				</li>
+			</ol>
+		</div>
+	</footer>
+</body>
+</html>

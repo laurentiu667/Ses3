@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="L01-Bonjour:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/L01_Bonjour_jar</output-path>
+    <root id="archive" name="L01-Bonjour.jar">
+      <element id="module-output" name="L01-Bonjour" />
+    </root>
+  </artifact>
+</component>

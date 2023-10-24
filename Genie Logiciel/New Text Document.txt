@@ -1,0 +1,45 @@
+etre capable d ecrire un scenario d utilisation
+
+en info il existe bcp de choix d estetique
+
+UML = L'UML fournit un ensemble de notations graphiques qui permettent aux développeurs, concepteurs et autres parties prenantes de communiquer plus efficacement en utilisant des diagrammes pour décrire différents aspects d'un système. Ces diagrammes peuvent inclure des représentations de classes, d'objets, de cas d'utilisation, de séquences, d'activités, de composants, de déploiements, et plus encore.
+
+diagrammes de sequences = Un diagramme de séquence est l'un des types de diagrammes UML (Unified Modeling Language) utilisé pour représenter la séquence d'interactions entre différents objets ou composants d'un système logiciel. Il montre comment ces objets interagissent et communiquent entre eux au fil du temps pour accomplir un scénario spécifique.
+
+Palo Alto Research Center = il s'agit d'un centre de recherche de renommée mondiale situé à Palo Alto, en Californie, aux États-Unis. Fondé par Xerox Corporation en 1970, PARC est connu pour ses contributions majeures dans les domaines de la recherche en informatique, de l'ingénierie, de l'innovation et de la technologie.
+
+PARC a joué un rôle important dans le développement de nombreuses technologies qui ont façonné le monde moderne, notamment le développement du protocole Ethernet, de l'interface graphique utilisateur (GUI), de la technologie laser d'impression, et bien plus encore.
+
+Si vous avez des questions spécifiques sur le Palo Alto Research Center ou sur un autre sujet, n'hésitez pas à les poser.
+
+
+
+
+
+Quelles sont les deux regles pour la planning globale: ordonner par ordre dimpo pour le client, fair eles choses necessaire les choses les plus importantes pour le client, faut satisfaire le client
+
+Time boxing : date limite, livrer a temps
+
+namespace = espace reserver en memoir pour des noms
+
+Mcintosh l'un des premiers ordinateurs
+
+fenete = element de bureau - elle permet de voir une section qui a ete rendu publique dans le programme.
+
+The machine that change the world
+
+2 eme forme d importation = import
+
+L autre forme est de : from tkinter import *
+
+widget text = full traitement de texte, changer le texte couleur etc -> T = Text(root, bg, fg, bd, height, width, font, ..)
+
+canva = w = Canvas ( master, option=value, ... )
+
+
+
+tag un tuples indeterminer chaine de texte relier de l info a l objet qu on dessine, etiquette qu on associe a des objets qu on peut rechercher grace a cette etiquette
+ 
+pillow 
+
+Dans la machine faut pas codder faut faire en sorte de donner les details algorythmes

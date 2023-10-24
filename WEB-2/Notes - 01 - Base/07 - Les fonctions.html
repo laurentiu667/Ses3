@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Les fonctions</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<script>
+			function afficher(texte) {
+				console.log("J'affiche : " + texte);
+			}	
+
+
+			afficher("salut");
+
+			// afficher = 23;
+			// afficher("sda");
+
+			const afficher2 =  (texte) => {
+				console.log(texte);
+			}
+
+			// s il n y a pas de parametre
+			// const afficher4 = () => {...}
+
+			const afficher3 = txt => {
+				console.log(txt);
+			}
+
+			afficher2("wesh");
+			
+			afficher3("laurentiu")
+
+			const addition = (premiere, deuxieme) => {
+				return premiere + deuxieme;
+			}
+
+			const addition2 = (premiere, deuxieme) => premiere + deuxieme;
+
+			console.log(addition(1,2))
+
+			console.log(addition2(2, 4))
+
+
+		</script>
+	</body>
+</html>

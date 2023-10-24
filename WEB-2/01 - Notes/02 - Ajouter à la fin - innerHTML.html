@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Ajouter à la fin - innerHTML</title>
+		<link rel="stylesheet" href="css/global.css" />
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<script>
+			const ajouter = () => {
+				let texte = prompt("Ajouter un stéréotype");
+				// AUTRE VERSION AVEC innerHTML
+
+				// Mauvaise pratique quand tu as bcp de chose a faire, pour une ou deux chose ok 
+				let parentNode = document.querySelector("ul");
+
+				// on enleve tout les li et ensuite on ajoute tout donc on perd bcp de performance
+				// dangereux le innerhtml car on peut ajoute du code comaprer a innerText
+				parentNode.innerHTML += "<li style='color:red'>" + texte + "</li>";
+				console.log(parentNode.innerHTML);
+			}
+		</script>
+		
+		<div id="small-container">
+			<h3>Stéréotype informaticien (innerHTML)</h3>
+			<ul id="liste">
+				<li>Aimer le badminton</li>
+				<li>Faire du vélo</li>
+				<li>Amateur de cinéma</li>
+			</ul>
+			<div class="small-section">
+				[ <a href="javascript:void(0)" onclick="ajouter()">Ajouter</a> ]
+			</div>
+		</div>
+	</body>
+</html>

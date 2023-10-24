@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Montserrat, sans-serif;
+    height: 100vh;
+    font-size: 17px;
+  }
+:root{
+    --color-1: #ee7344; /* Footer Twitter link */
+    --color-2: #74959a; /* Social login area background color */
+    --color-3: #ffc85c; /* Social login buttons */
+    --color-4: #ea5455; /* Login with email button */
+}
+.wrapperj{
+    max-width: 960px;
+    min-width: 220px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-1);
+  }
+

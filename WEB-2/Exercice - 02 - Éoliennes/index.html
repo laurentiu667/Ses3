@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quel vent aujourd'hui!</title>
+    <link rel="stylesheet" href="css/global.css">
+    <script src="js/sprites/Blades.js"></script>
+    <script src="js/javascript.js"></script>
+    <script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+</head>
+<body>
+    <div class="base" id="base-1"></div>
+    <div class="base" id="base-2"></div>
+    <div class="base" id="base-3"></div>
+
+    <div class="blades" id="blades-1"></div>
+    <div class="blades" id="blades-2"></div>
+    <div class="blades" id="blades-3"></div>
+
+    <button class="btn" id="btn-less">-</button>
+    <button class="btn" id="btn-more">+</button>
+    <footer>
+        <div>
+            <h3>Parc d'éoliennes</h3>
+            <div>
+                Il s'agit d'animer les pales des 3 éoliennes.
+            </div>
+            <ol>
+                <li>
+					Suivant la mise en place du code de base (spriteList, tick, classe Blades), définir une valeur aléatoire pour la rotation des pales (dans le constructeur de Blades):<br><br>
+					Exemple permettant de faire une rotation de 40 degrés sur un élément/noeud HTML.
+                    <code class="footer-code-block">
+                        let element = ...
+                        element.style.transform = "rotate(40deg)";
+                    </code>
+					<br>
+                    Mais comme il faudra utiliser une variable, vous aurez à faire une concaténation, par exemple :
+                    <code class="footer-code-block">
+                        let angle = 23;
+                        element.style.transform = "rotate(" + angle + "deg)";
+                    </code>
+
+                    (Notez que la variable `angle` dans l'exemple devrait être une variable de classe)
+				</li>
+                <li>Créer une variable globale <code>windSpeed</code> dans le fichier `javascript.js` (initialisée à 1). Faites en sorte que lorsque le bouton "+" est cliqué, la variable est incrémentée. Si le bouton "-" est cliqué, elle est décrémentée.</li>
+				<li>Dans le tick des <code>Blades</code>, la variable <code>angle</code> (et le div) doit être influencé par la variable <code>windSpeed</code>.</li>
+            </ol>
+        </div>
+    </footer>
+</body>
+</html>

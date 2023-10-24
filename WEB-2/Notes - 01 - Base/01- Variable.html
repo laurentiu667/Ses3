@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Les variables</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+
+
+
+
+
+		<script>
+			// var sort des guillemets et let ne sort pas la variable reste priver dans les {}
+			if (1 ==1 ){
+				let variable = "Marty";
+			} 
+			const LANG = "fr";
+
+			if (LANG == "en"){
+				alert(1);
+			}
+			else{
+				alert("Votre Langue :" + LANG);
+			}
+
+			let tmp = 9;
+			// si tmp et plus grand le choix sera tmp, mais si temps est plus petit ca prendra la veuleure a droite
+			alert(tmp ?? 3)
+
+		</script>
+	</body>
+</html>

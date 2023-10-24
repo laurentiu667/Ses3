@@ -1,0 +1,66 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+html, body {
+    background-color: lightskyblue;
+    background-image: url('../img/bus.webp');
+    background-repeat: no-repeat;
+    background-position:bottom left;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    margin:50px;
+    text-align: center;
+}
+
+button {
+    font-size: 20px;
+    margin-top: 10px;
+    padding:10px;
+    border-radius: 0;
+}
+
+.msg-ok, .msg-err {
+    text-align: center;
+    padding:10px;
+    background-color: #bbb;
+    border:2px solid green;
+    color:green;
+    width: 300px;
+    margin:20px auto;
+}
+
+.msg-err {
+    border:2px solid red;
+    color:red;
+}
+
+.btn-container {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.container {
+    background-color: whitesmoke;
+    width: 500px;
+    margin:40px auto;
+    padding:20px;
+    border:3px solid #333;
+    border-radius: 3px;
+}
+
+.line {
+    display: flex;
+    padding: 10px 0;
+}
+
+.line > :first-child {
+    width: 45%;
+    text-align: right;
+    padding-right: 10px;
+}
