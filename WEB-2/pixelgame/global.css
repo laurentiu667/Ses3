@@ -938,6 +938,7 @@ body{
     width: 200px;
     height: 200px;
     background-color: red;
+    z-index: 1;
 }
 .b1{
     background-image: linear-gradient(to left bottom, #0051d1, #008dfd, #00b7d9, #00d883, #a8eb12);
