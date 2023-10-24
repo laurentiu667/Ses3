@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import ttk
 class Carre():
     def __init__(self):
         self.largeur = 25
@@ -38,34 +38,50 @@ class Vue():
         self.modele = modele
         self.root = Tk()
         self.creer_page_jeu()
+        self.creer_page_menu()
+        
 
     def afficher_demarrage(self):
         self.cadre_jeu.pack()
-
+        
+        
     def creer_page_jeu(self):
-        self.cadre_jeu = Frame(self.root, borderwidth=40, bg="black")
-        self.cadre_jeu.pack()
+        win= Tk()
 
-        self.canvas = Canvas(self.cadre_jeu, width=450, height=450, bg="white")
-        self.canvas.pack()
+        #Set the geometry of Tkinter frame
+        win.geometry("750x250")
 
-        self.canvas.bind("<B1-Motion>", self.deplacer_carre)
-        self.afficher_carre_rouge()
-        self.afficher_pions()
-        self.root.mainloop()
+        def display_text():
+            global entry
+            string= entry.get()
+            label.configure(text=string)
 
-    def creer_interface_utilisateur(self):
-        cadre_interface = Frame(self.root, bg="white")
-        cadre_interface.pack(side=RIGHT)
+        #Initialize a Label to display the User Input
+        label=Label(win, text="", font=("Courier 22 bold"))
+        label.pack()
 
-        label_username = Label(cadre_interface, text="Username:")
-        label_username.pack()
+        #Create an Entry widget to accept User Input
+        entry= Entry(win, width= 40)
+        entry.focus_set()
+        entry.pack()
 
-        self.username_entry = Entry(cadre_interface)
-        self.username_entry.pack()
+        #Create a Button to validate Entry Widget
+        ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=20)
 
-        bouton_valider = Button(cadre_interface, text="Valider", command=self.afficher_nom_joueur)
-        bouton_valider.pack()
+        win.mainloop()
+       
+    #def creer_page_jeu(self):
+        #self.cadre_jeu = Frame(self.root, borderwidth=40, bg="black")
+        #self.cadre_jeu.pack()
+
+        #self.canvas = Canvas(self.cadre_jeu, width=450, height=450, bg="white")
+        #self.canvas.pack()
+
+        #self.canvas.bind("<B1-Motion>", self.deplacer_carre)
+        #self.afficher_carre_rouge()
+        #self.afficher_pions()
+        #self.root.mainloop()
+        
 
     def afficher_carre_rouge(self):
         x = (self.canvas.winfo_reqwidth() - self.modele.carre.largeur) / 2
