@@ -33,12 +33,28 @@ public class DeuxiemeContract {
     }
 
     @Test
+    public void testChiffrer2() {
+        ChiffrementChaine chiffreur = new ChiffrementChaine();
+        chiffreur.setChaineAChiffrer("Lapin");
+        String chaineChiffree = chiffreur.chiffrer(chiffreur.getChaineAChiffrer());
+        assertEquals("Erqmrxu", chaineChiffree);
+    }
+
+    @Test
     public void testDeChiffrer() {
         ChiffrementChaine chiffreur = new ChiffrementChaine();
         String chaineDechiffree;
-        chiffreur.setChaineADechiffrer("Erqmrxu");
-        chiffreur.setCleChiffrement(3);
+
         chaineDechiffree = chiffreur.dechiffrer(chiffreur.getChaineADechiffrer(), chiffreur.getCleChiffrement());
+        assertEquals("Bonjour", chaineDechiffree);
+    }
+
+    @Test
+    public void testDeChiffrer2() {
+        ChiffrementChaine chiffreur = new ChiffrementChaine();
+        String chaineDechiffree;
+
+        chaineDechiffree = chiffreur.dechiffrer(chiffreur.getCleChiffrement(), chiffreur.getChaineADechiffrer());
         assertEquals("Bonjour", chaineDechiffree);
     }
 

@@ -84,7 +84,7 @@ public class PremierContract {
 
     @Test
     public void testValidationTelephoneValideCrochets2() {
-        assertTrue(Validation.validerTelephone("[456]689-3245"));
+        assertTrue(Validation.validerTelephone("[456] 689-3245"));
     }
 
     @Test

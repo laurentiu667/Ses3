@@ -39,7 +39,7 @@ public class ChiffrementChaine {
         this.chaineAChiffrer = "";
     }
 
-    public String chiffrer(String chaineAchiffrer, int cleChiffrement) {
+    public static String chiffrer(String chaineAchiffrer, int cleChiffrement) {
         if (cleChiffrement < -10 || cleChiffrement > 100) {
             return "";
         }
@@ -58,7 +58,12 @@ public class ChiffrementChaine {
         }
         return chaineChiffree.toString();
     }
-    public String dechiffrer(String chaineADechiffrer, int cleChiffrement) {
+    public static String chiffrer(String chaineAChiffrer){
+        int cle = 10;
+        return chiffrer(chaineAChiffrer, cle);
+    }
+
+    public static String dechiffrer(String chaineADechiffrer, int cleChiffrement) {
         StringBuilder chaineDechiffrer = new StringBuilder();
         if (cleChiffrement >= -10 && cleChiffrement <= 100) {
             for (char caractere : chaineADechiffrer.toCharArray()) {
@@ -74,6 +79,9 @@ public class ChiffrementChaine {
         } else {
             return "";
         }
+    }
+    public static String dechiffrer(int cleChiffrement ,String chaineADechiffrer){
+        return dechiffrer(chaineADechiffrer, cleChiffrement);
     }
 
 }
