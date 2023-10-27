@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Fruit Ninja</title>
+		<link rel="stylesheet" href="css/global.css">
+		<script src="js/javascript.js"></script>
+		<script src="js/Fruit.js"></script>
+		<script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Fruit Ninja</h1>
+
+			<div class="info">
+				Score : <span id="score">0</span>
+				Life : <span id="life">3</span>
+			</div>
+			<div id="game"></div>
+			<div id="game-over">
+				Game over ... (click to restart)
+			</div>
+		</div>
+		<footer>
+			<div>
+				<h3>Fruit Ninja! (<a href="images/exemple.png">exemple</a>)</h3>
+				<div>
+					Fonctionnement du jeu
+					<ul>
+						<li>Le fichier CSS et HTML sont déjà fournis!</li>
+						<li>Des fruits montent et redescendrent dans la page du jeu, ou encore passe de gauche à droite (ce qui est plus simple). </li>
+						<li>Il faut cliquer/couper les fruits, avant que ceux-ci ne soient plus visible dans l'écran</li>
+						<li>Pour chaque fruit « coupé », le pointage/score augmente de 1</li>
+						<li>Après 3 fruits qui n’ont pas été coupés, le jeu se termine</li>
+						<li>Lorsqu’un fruit est coupé, ses classes CSS changent (avant : "fruit fruit4", après : "fruit fruit4-cut"). Ce changement de classe permet de changer l'image.</li>
+						<li>Optionnel : Lorsque l’usager clique sur un fruit et qu’il le coupe, une image « slash » de l’épée apparait pour quelques tick (voir image sword-slash.png)</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,11 +1,11 @@
 package tables_resto;
 
-import javax.swing.text.TableView;
+import java.util.regex.Pattern;
 
 public class Restaurant{
 
     private final int NB_TABLE = 75;
-    Table[] tableRestaurant = new Table[NB_TABLE]; // Utilisez la constante pour la taille du tableau
+    Table[] tableRestaurant = new Table[NB_TABLE];
 
     public Restaurant() {
         for (int i = 0; i < NB_TABLE; i++) {
@@ -23,23 +23,31 @@ public class Restaurant{
 
     public int nbTableOccupees(){
         int nombreOccupees = 0;
-        for (int i = 1; i <= tableRestaurant.length; i++){
-            if (tableRestaurant[i].isOccupe() == true) {
+        for (Table table : tableRestaurant){
+            if (table.isOccupe())
                 nombreOccupees++;
-            }
         }
         return nombreOccupees;
     }
-    public int assignerTableDispo(int nombrePersonne){
-        int tableDispo = NB_TABLE - nbTableOccupees();
-        if (tableDispo > 0){
-            for (Table table: tableRestaurant){
-                if (table.isOccupe() ==  false && nombrePersonne <= 2){
-
+    public Table assignerTableDispo(int nombrePersonne, boolean banquettePreferee) {
+        for (Table table : tableRestaurant) {
+            if (!table.isOccupe() && table.getNbPlaces() >= nombrePersonne) {
+                if (banquettePreferee) {
+                    if (table.isBanquette()) {
+                        table.setOccupe(true);
+                        return table;
+                    }
+                } else {
+                    table.setOccupe(true);
+                    return table;
                 }
             }
         }
+        return null; // Aucune table disponible pour le groupe.
+    }
 
+    public boolean verifierSiTableOccupe(Table table){
+        return table.isOccupe();
     }
 
 }

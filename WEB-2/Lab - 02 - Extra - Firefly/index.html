@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Firefly!</title>
+		<script src="https://notes-de-cours.com/dev/toggle-lab-info.js"></script>
+    </head>
+    <body>
+        <!-- Complétez ici -->
+
+
+        <footer>
+            <div>
+                <h3>Jeu Firefly!</h3>
+                <div>But du jeu : Empêcher un vaisseau de traverser l'écran (<a href="images/firefly-splash.jpg">accueil</a>, <a href="images/jeu.png">jeu</a>, <a href="images/game-over.jpg">game-over</a>)</div>
+                <div>Fonctionnement du jeu:</div>
+                <ul>
+                    <li>Le déplacement du vaisseau Firefly se fait en appuyant sur les touches ‘a’ ou ‘d’ du clavier</li>
+                    <li>Plus le temps avance, plus il y a de vaisseaux ennemis qui arrivent. Par exemple, au départ il y a un vaisseau à chaque 2000ms qui tombe. À chaque nouveau vaisseau, l’intervalle est diminué de 10ms.</li>
+                    <li>En appuyant sur « espace », Le vaisseau créé un  missile qui se déplace vers le haut. Si le missile touche un vaisseau ennemi, alors celui-ci réduit sa vitesse (vélocité). Ce vaisseau peut même aller jusqu`à reculer et disparaitre de l’écran. Vous devrez retirer ces vaisseaux disparus du tableau de vaisseaux.</li>
+                    <li>Lorsqu'un le vaisseau ennemi traverse l’écran, le jeu prend fin et la page de « Game Over » est affichée.</li>
+                    <li>
+                        Le jeu possède 3 types de sprites :
+                        <ul>
+                            <li>Les étoiles (petits carrés blancs qui se déplacent, avec une petite variance de grosseur)</li>
+                            <li>Les vaisseaux ennemis (2 types de vaisseau possible)</li>
+                            <li>Le vaisseau Firefly. Il possède une vélocité de déplacement. Il y a également une rotation du vaisseau en fonction de sa vélocité.</li>
+                            <li>Le jeu est programmé en utilisant les positions absolues sur un container qui est relatif.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

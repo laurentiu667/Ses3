@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import codes_secrets.ChiffrementChaine;
-public class DeuxiemeContract {
+public class TestContractDeux {
 
     @BeforeAll
     public static void setup() {
@@ -33,29 +33,29 @@ public class DeuxiemeContract {
     }
 
     @Test
-    public void testChiffrer2() {
+    public void testChiffrerSansCleChiffrer() {
         ChiffrementChaine chiffreur = new ChiffrementChaine();
         chiffreur.setChaineAChiffrer("Lapin");
         String chaineChiffree = chiffreur.chiffrer(chiffreur.getChaineAChiffrer());
-        assertEquals("Erqmrxu", chaineChiffree);
+        assertEquals("Vkzsx", chaineChiffree);
     }
 
     @Test
     public void testDeChiffrer() {
         ChiffrementChaine chiffreur = new ChiffrementChaine();
-        String chaineDechiffree;
-
-        chaineDechiffree = chiffreur.dechiffrer(chiffreur.getChaineADechiffrer(), chiffreur.getCleChiffrement());
+        chiffreur.setChaineADechiffrer("Erqmrxu");
+        chiffreur.setCleChiffrement(3);
+        String chaineDechiffree = chiffreur.dechiffrer(chiffreur.getChaineADechiffrer(), chiffreur.getCleChiffrement());
         assertEquals("Bonjour", chaineDechiffree);
     }
 
     @Test
-    public void testDeChiffrer2() {
+    public void testDeChiffrerParametreInverser() {
         ChiffrementChaine chiffreur = new ChiffrementChaine();
-        String chaineDechiffree;
-
-        chaineDechiffree = chiffreur.dechiffrer(chiffreur.getCleChiffrement(), chiffreur.getChaineADechiffrer());
-        assertEquals("Bonjour", chaineDechiffree);
+        chiffreur.setCleChiffrement(10);
+        chiffreur.setChaineADechiffrer("Vkzsx");
+        String chaineDechiffree = chiffreur.dechiffrer(chiffreur.getCleChiffrement(), chiffreur.getChaineADechiffrer());
+        assertEquals("Lapin", chaineDechiffree);
     }
 
 

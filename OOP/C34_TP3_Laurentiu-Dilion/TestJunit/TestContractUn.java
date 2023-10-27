@@ -2,7 +2,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import validations_speciales.Validation;
 
-public class PremierContract {
+public class TestContractUn {
 
     @BeforeAll
     public static void setup() {
@@ -13,6 +13,7 @@ public class PremierContract {
 
     @AfterAll
     public static void finTests() {
+
         System.out.println("=================");
         System.out.println("= FIN DES TESTS =");
         System.out.println("=================");
@@ -27,7 +28,14 @@ public class PremierContract {
     public void testValidationCodeClientValide() {
         assertTrue(Validation.validerCodeClient("ABC12345678"));
     }
-
+    @Test
+    public void testValidationCodeClientValideAsterix() {
+        assertTrue(Validation.validerCodeClient("ABC12345678*"));
+    }
+    @Test
+    public void testValidationCodeClientValideHashTag() {
+        assertTrue(Validation.validerCodeClient("XYZ98765432#"));
+    }
     @Test
     public void testValidationCodeClientInvalide() {
         assertFalse(Validation.validerCodeClient("XYZ98765432# "));
@@ -35,6 +43,14 @@ public class PremierContract {
     @Test
     public void testValidationCodeClientInvalide2() {
         assertFalse(Validation.validerCodeClient("XY98765432# ")); // Sans le Z - 2 caractère au début
+    }
+    @Test
+    public void testValidationCodeClientInvalide3() {
+        assertFalse(Validation.validerCodeClient("XY9 8765432# ")); // Sans le Z - 2 caractère au début
+    }
+    @Test
+    public void testValidationCodeClientInvalide4() {
+        assertFalse(Validation.validerCodeClient("XY9Z8765432# ")); // Sans le Z - 2 caractère au début
     }
 
     @Test
@@ -95,5 +111,15 @@ public class PremierContract {
     @Test
     public void testValidationTelephoneInvalideCaracteres() {
         assertFalse(Validation.validerTelephone("(12A) 456-7890")); // Caractères non numériques
+    }
+
+    @Test
+    public void testValidationTelephoneInvalideParanthese() {
+        assertFalse(Validation.validerTelephone("(123 567-8901")); // sans fermer le ()
+    }
+
+    @Test
+    public void testValidationTelephoneInvalidechiffre() {
+        assertFalse(Validation.validerTelephone("1245 456-7890")); // 4 Caractères début
     }
 }
