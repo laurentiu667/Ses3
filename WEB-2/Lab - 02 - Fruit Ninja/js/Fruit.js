@@ -5,42 +5,50 @@ class Fruit {
         this.speed = 1;
         this.velocity = 1;
         this.gravity = 0.009;
-
         let game = document.getElementById('game').parentNode;
         this.gameWidth = game.offsetWidth;
         this.gameHeight = game.offsetHeight;
-
         this.randomX = Math.floor(Math.random() * (this.gameWidth - 100));
-        this.randomY = Math.floor(Math.random() * (300) - 500);
+        this.randomY = -200;
         this.fruit.style.left = this.randomX + "px";
         this.fruit.style.bottom = this.randomY + "px"; 
+        this.speed = 10;
+        this.speedX = 1;
+        this.velocityY = 0.5; // Acceleration (0.5 par tick)
+
+        
     }
 
     tick() {
         let alive = true;
-        this.randomY += this.velocity;
-        this.velocity += this.gravity;
     
-        if (this.randomY >= this.gameHeight / 3) {
-            this.velocity *= -0.6;
-        }
-       
-        this.fruit.style.bottom = this.randomY + "px";
+        this.speed += this.velocityY
+        this.randomY += this.speed;
 
-        this.fruit.addEventListener("mouseover", () => {
-         
-            this.fruit.style.backgroundImage = "url('images/sword-slash.png')";
     
+        if (this.randomY > 220){
+            this.speed = -this.speed/1.5;
+            this.randomY = 220;
+        }
+        
+    
+        this.fruit.style.bottom = this.randomY + "px";
+        this.fruit.style.left = this.randomX + "px";
+    
+        this.fruit.addEventListener("mouseover", () => {
             setTimeout(() => {
-                this.fruit.style.backgroundImage = "none"; 
-                this.fruit.remove();
-            }, 100);
+                this.fruit.classList.add("sword-slash");
+            }, 0);
+
+            setTimeout(() => {
+                
+                this.fruit.classList.add(this.id + "-cut");
+                
+            }, 200);
         });
         
-        return alive;
-
-    }
-
     
+        return alive;
+    }
     
 }

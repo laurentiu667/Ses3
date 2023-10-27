@@ -6,27 +6,22 @@ let gameOver = false;
 let spriteList = [];
 
 const fruct = ["../images/coconut.png", "../images/lemon.png", "../images/mango.png", "../images/orange.png", "../images/pineapple.png", "../images/watermelon.png"];
-const cut_fruct = ["../images/coconut-cut.png", "../images/lemon-cut.png", "../images/mango-cut.png", "../images/orange-cut.png", "../images/pineapple-cut.png", "../images/watermelon-cut.png"];
-const sword_slash = "../images/sword-slash.png";
+
 
 window.addEventListener("load", () => {
+
     let game = document.querySelector("#game");
-    let fruitIndex = 1;
+    // Index du fruit
+    var index = Math.floor(Math.random() * fruct.length) + 1;
+    var imageFruit = fruct[index]
+    console.log(imageFruit);
 
-    delaiDesFruits = () => {
-        if (fruitIndex <= FRUIT_COUNT) {
-            let fruit = document.createElement("div");
-            fruit.classList.add("fruit", "fruit_" + fruitIndex);
-            game.appendChild(fruit); 
-            spriteList.push(new Fruit("fruit_" + fruitIndex));
-            fruitIndex++;
-
-            setTimeout(delaiDesFruits, 100); 
-        }
-    }
-
-    delaiDesFruits(); 
-    tick();
+    let fruit = document.createElement("div");
+    fruit.classList.add("fruit", "fruit_" + index );
+    game.appendChild(fruit); 
+    spriteList.push(new Fruit("fruit_" + index ));
+    
+    tick()
 });
 
 const tick = () => {
