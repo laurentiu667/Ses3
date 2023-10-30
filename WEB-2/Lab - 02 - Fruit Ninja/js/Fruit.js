@@ -2,53 +2,65 @@ class Fruit {
     constructor(id) {
         this.id = id;
         this.fruit = document.querySelector("." + this.id);
-        this.speed = 1;
-        this.velocity = 1;
-        this.gravity = 0.009;
         let game = document.getElementById('game').parentNode;
         this.gameWidth = game.offsetWidth;
         this.gameHeight = game.offsetHeight;
-        this.randomX = Math.floor(Math.random() * (this.gameWidth - 100));
-        this.randomY = -200;
-        this.fruit.style.left = this.randomX + "px";
-        this.fruit.style.bottom = this.randomY + "px"; 
-        this.speed = 10;
-        this.speedX = 1;
-        this.velocityY = 0.5; // Acceleration (0.5 par tick)
+  
+        this.velocityY = 0.09;
+		this.speedY = -9;
 
-        
+		this.speedX = Math.random() * 5 - 2.5;
+
+		this.x = Math.random() * 700 + 100;
+		this.y = 500;
+
+        this.xSword;
+        this.ySword;
+
+        this.fruit.addEventListener("mousemove", (event) => {
+            this.sliceFruit(event);
+        });
+    }
+
+    sliceFruit(event) {
+        this.fruit.classList.add(this.id + "-cut");
+        this.xSword = event.clientX; 
+        this.ySword = event.clientY;
+        spriteList.push(new Sword(this.xSword, this.ySword))
     }
 
     tick() {
-        let alive = true;
-    
-        this.speed += this.velocityY
-        this.randomY += this.speed;
+        this.speedY += this.velocityY;
+        this.x += this.speedX;
+        this.y += this.speedY;
 
-    
-        if (this.randomY > 220){
-            this.speed = -this.speed/1.5;
-            this.randomY = 220;
+        if (this.y >= this.gameHeight) {
+            this.resetFruit(); // Réinitialiser le fruit si le fruit est tombé en bas
         }
-        
-    
-        this.fruit.style.bottom = this.randomY + "px";
-        this.fruit.style.left = this.randomX + "px";
-    
-        this.fruit.addEventListener("mouseover", () => {
-            setTimeout(() => {
-                this.fruit.classList.add("sword-slash");
-            }, 0);
 
-            setTimeout(() => {
-                
-                this.fruit.classList.add(this.id + "-cut");
-                
-            }, 200);
-        });
-        
-    
-        return alive;
+        this.fruit.style.top = this.y + "px";
+        this.fruit.style.left = this.x + "px";
+
+        return this.alive;
     }
-    
+
+    resetFruit() {
+        this.alive = false; // Marquer le fruit actuel comme éteint
+        this.fruit.remove(); // Supprimer l'élément du fruit actuel
+
+        // Créer un nouveau fruit
+        let newFruit = document.createElement("div");
+        newFruit.classList.add("fruit", this.id);
+        game.appendChild(newFruit);
+
+        this.id = "fruit_" + Math.floor(Math.random() * 1000); // Générer un nouvel ID unique
+        this.fruit = newFruit;
+
+        this.speedY = -9;
+        this.speedX = Math.random() * 5 - 2.5;
+        this.x = Math.random() * 700 + 100;
+        this.y = 0; // Placer le nouveau fruit en haut de l'écran
+
+        this.alive = true; // Marquer le nouveau fruit comme actif
+    }
 }
