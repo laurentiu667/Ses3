@@ -17,15 +17,15 @@ class Fruit {
         this.xSword;
         this.ySword;
 
-        this.fruit.addEventListener("mousemove", (event) => {
-            this.sliceFruit(event);
+        this.fruit.addEventListener("mousemove", (banane) => {
+            this.sliceFruit(banane);
         });
     }
 
-    sliceFruit(event) {
+    sliceFruit(banane) {
         this.fruit.classList.add(this.id + "-cut");
-        this.xSword = event.clientX; 
-        this.ySword = event.clientY;
+        this.xSword = banane.clientX; 
+        this.ySword = banane.clientY;
         spriteList.push(new Sword(this.xSword, this.ySword))
     }
 
