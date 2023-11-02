@@ -1,0 +1,134 @@
+
+A) RANGEMENT DES CONSTANTES GLOBALES
+====================================
+
+0) Comme une variable globale, une constante globale est une constante définie à l'extérieur des fonctions. Une telle constante est créée au démarrage du programme, avant l'exécution de la fonction main(), et détruite à la fin du programme.
+
+1) Une constante globale et simplement une variable globale qui ne peut être modifiée durant l'exécution du programme.
+
+2) La constante globale peut être publique, privée à un module et privée à une seule fonction d'un module, comme la variable globale.
+
+3) Hormis le mot clé "const", les concepts de définition et de déclaration sont équivalents à ceux d'une variable globale.
+
+4) À l'inverse des variables globales, les constantes globales sont implicitement (par défaut) privées à leur module, et donc invisibles aux autres modules.
+
+
+B) DÉCLARATION D'UNE CONSTANTE GLOBALE
+======================================
+
+5) La déclaration (l'annonce) d'une constante globale se fait toujours avec le mot clé "extern" et il n'est pas permis d'initialiser la constante, car cette action est réservée pour la définition.
+
+	exemples de déclarations :
+	
+		extern const int MAX;
+
+		extern const double TAUX;
+		
+
+C) DÉFINITION D'UNE CONSTANTE GLOBALE : VARIATIONS SYNTAXIQUES
+==============================================================
+
+6) Par défaut, une définition de constante globale est privée à son module.
+
+7) Lors de la définition, il est recommandé d'avoir une instruction d'initialisation, mais à la différence d'une définition de constante locale qui la requiert, si aucune instruction d'initialisation n'est donnée, la constante globale sera implicitement initialisée à zéro ou l'équivalent. 
+
+	exemples de définitions implicitement privées au module :
+	
+		const int MAX = 100;
+	
+		const double TAUX = 0.15;
+
+
+8) Il est possible d'assouplir cette restriction de manière à rendre publique la définition de la constante globale en ajoutant le mot clé "extern" devant.
+
+	exemples de définitions publiques :
+	
+		extern const int MAX = 100;
+	
+		extern const double TAUX = 0.15;
+
+		
+9) Il est aussi possible de restreindre la portée d'une définition de constante globale à une seule fonction. La définition de cette constante globale doit alors être faite à l'intérieur de la fonction en question avec le mot clé "static".
+	
+	exemples de définitions privées à la fonction :
+	
+		void f(...)
+		{
+			static const int MAX = 100;  // instruction exécutée lors du démarrage du programme et ignorée par la suite, même l'initialisation.
+		
+			...
+		}
+	
+		void doSomething(...)
+		{
+			static const GrosType maConstante = { ... } ;
+		
+			...	
+		}
+	
+	
+D) LA DÉFINITION D'UNE CONSTANTE GLOBALE EST IMPLICITEMENT STATIC
+=================================================================
+
+10) Nous avons vu que lorsque l'on écrit une définition de constante globale, elle est, par défaut, implicitement privée à son module.
+
+11) Il est possible de spécifier explicitement ce caractère avec le mot clé "static" pour peut-être une raison de lisibilité.
+
+	exemples :
+	
+		const int MAX = 100;			// définition implicitement privée (ou static)
+		
+		static const int MAX = 100;		// définition explicitement privée (ou static)
+		
+		extern const int MAX = 100;		// définition explicitement publique (ou extern)
+		
+		extern const int MAX;			// déclaration
+		
+
+E) PUBLIER UNE CONSTANTE GLOBALE AUX AUTRES MODULES
+===================================================
+
+12) Comme la variable publique d'un module, la constante publique d'un module sera publiée par l'entremise d'une déclaration dans son fichier d'en-tête. Si un autre module a besoin d'accéder à cette constante, il devra inclure ce fichier d'en-tête.
+
+
+F) CAS PARTICULIER AVEC LE TABLEAU ET LA CONSTANTE GLOBALE
+==========================================================
+
+13) La dimension d'une variable de type tableau doit être une constante en C++. Cette constante doit absolument être connue, à la compilation, au moment de la définition du tableau. Le compilateur ne peut se satisfaire d'une déclaration d'une constante car celle-ci ne contient pas de valeur.
+
+	exemple erroné :
+		
+		extern const int SIZE;		// La constante publique SIZE étant définie dans un autre module
+		
+		// ...
+			
+		int tableau [SIZE]; 		// La valeur de SIZE ici est inconnue à la compilation, car elle est spécifiée dans un autre module ==> Erreur de compilation
+
+
+14) Un autre cas similaire implique la définition d'un type "struct" dans lequel il y a un tableau. 
+
+	exemple erroné :
+
+		extern const int SIZE;		// La constante publique SIZE étant définie dans un autre module
+
+		// ...
+		
+		struct Type
+		{
+			// ....
+			
+			int tableau [SIZE];		// Erreur de compilation ici
+		};
+
+15) La seule façon d'obéir à cette restriction des tableaux est de s'assurer que la définition de la dimension soit connue. De plus, si cette structure est dans un fichier d'en-tête, alors la définition de la dimension le sera aussi.
+
+	exemple qui compile :
+
+		const int SIZE = 10;  // définition implicitement static (obligatoirement static)
+
+		struct Type
+		{
+			// ....
+			
+			int tableau [SIZE];
+		};

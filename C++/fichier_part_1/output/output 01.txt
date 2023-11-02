@@ -1,0 +1,11 @@
+
+Détails de la facture
+---------------------
+
+Montant :  100.00 $
+
+    tps :    5.00 $
+
+    tvq :    9.98 $
+
+Total   :  114.97 $

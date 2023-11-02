@@ -1,0 +1,9 @@
+
+MULTI FICHIERS (deuxième partie)
+================================
+
+Ce deuxième bloc de cours traite en particulier du rangement des définitions des variables et constantes globales et de leur déclaration respective.
+
+Le projet 4 présente les concepts liés au variables globales avec un exemple très simple.
+
+Le projet 5 fait la même chose avec les constantes globales qui est très similaire aux variables globales. Attention au cas particulier des tableaux.

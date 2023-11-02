@@ -1,0 +1,65 @@
+
+A) LE FICHIER H
+===============
+
+0) La première utilité du fichier d'en-tête H est de contenir les déclarations des fonctions publiques du CPP que l'on veut exposer aux autres fichiers CPP par l'emploi de la directive #include, laquelle est simplement une commande de copie du contenu du fichier H.
+
+1) Il est courant qu'une déclaration de fonction publique, et en particulier ses paramètres d'entrés ou de sortie, ait une dépendance à un type propriétaire du programme.
+
+ex:
+
+	struct Info					// type propriétaire
+	{
+		...
+	};
+
+
+	void afficher(Info i);
+
+2) Si une dépendance existe, nous savons qu'il est crucial, pour la vérification, que le type soit connu à l'avance (en amont dans le texte). La question qui se pose alors est: à quel endroit doit-on donner la définition de ce type ?
+
+La réponse générale est de le mettre en amont: soit dans le CPP, soit dans le H du CPP, soit dans un H plus global au programme.
+
+Il est important de ne jamais dupliquer soi-même la définition d'un type, comme le code en général.
+
+
+B) OÙ METTRE LES TYPES PROPRIÉTAIRES (RÈGLES GÉNÉRALES)
+=======================================================
+
+1) Si le type est utile seulement à l'intérieur d'une fonction
+	--> le définir dans la fonction
+	
+2) Si le type est utile pour les paramètres d'une fonction
+
+	si c'est une fonction privée	--> le définir en amont dans le CPP
+	si c'est une fonction publique	--> le définir dans le H du CPP en amont de la déclaration de la fonction
+	
+3) Si le type est utile dans plusieurs module (H et CPP) 
+	--> le définir une fois dans le H d'un module et inclure (#include) ce H aux endroits où c'est nécessaire
+	--> remarque: il est possible aussi de définir ce type dans un H global qui n'a pas de CPP
+	
+* Évidemment, d'autres possibilités de rangement existent avec la programmation orientée objet
+
+
+C) PRÉCOMPILATION ET LA DIRECTIVE #PRAGMA ONCE
+==============================================
+
+3) Lors de la précompilation d'un fichier CPP, toutes les commandes #include doivent être remplacées par le contenu du fichier d'en-tête.
+
+4) Toutes les librairies standards contiennent la commande #pragma once à la première ligne du fichier.
+
+ex:
+
+	(dans VS, bouton de droite sur #include pour ouvrir le fichier)
+
+	#include <iostream>
+	#include <string>
+
+5) Vos fichiers H doivent aussi avoir cette commande en première ligne.
+
+6) Cette commande (#pragma once) indique au compilateur de ne pas ajouter deux fois le contenu du même fichier H dans un CPP. Si le contraire arrivait cela pourrait provoquer des erreurs de compilation. Par exemple, la même définition d'un type dupliquée dans un CPP.
+
+ex: dans le fichier menu.cpp
+
+	#include <string>  // le contenu du fichier string (donc la définition du type string) est copié ici
+	#include <string>  // le contenu ne sera pas copié une deuxième fois ici car la commande #pragma once dans le fichier <string> l'empêchera

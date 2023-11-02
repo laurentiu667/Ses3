@@ -1,0 +1,205 @@
+
+A) PROCESSUS DE COMPILATION
+===========================
+
+0) Le processus de compilation se fait en 2 étapes majeures et la deuxième étape ne peut avoir lieu tant qu'il subsiste des erreurs à la première étape.
+
+ÉTAPE 1) Précompilation, Vérification, Génération du code (obj)
+
+ÉTAPE 2) Vérification et Edition des liens (entre les fichiers obj), Assemblage final du programme.exe
+
+
+B) PROCESSUS DE COMPILATION - ÉTAPE 1 - Visual Studio
+=====================================================
+
+1) À cette étape, le compilateur traite un à un chaque cpp du programme dans un ordre quelconque. La première fois, le compilateur doit visiter chaque fichier cpp, lui appliquer son traitement et produire, s'il n'y a pas d'erreur, un fichier de code obj associé.
+
+2) S'il y a des erreurs dans un cpp, le compilateur les affichera.
+
+
+	Exemple (fenêtre de sortie de VS) :
+
+
+		1>------ Début de la génération : Projet : Travaux, Configuration : Debug x64 ------
+		1>main.cpp
+		1>sondage.cpp	
+		1>statistic_01.cpp
+		1>statistic_02.cpp
+		1>statistic_03.cpp
+		1>e:\code\statistic_03.cpp(13): error C2065: 'reponses' : identificateur non déclaré
+		1>statistic_04.cpp
+		1>statistic_05.cpp
+		1>statistic_06.cpp
+		1>statistic_07.cpp
+		1>statistic_08.cpp
+		1>e:\code\statistic_08.cpp(9): error C2065: 'nbPersonne' : identificateur non déclaré
+		1>statistic_09.cpp
+		1>statistic_10.cpp
+		1>Génération de code en cours...
+		1>Génération du projet "Travaux.vcxproj" terminée -- ÉCHEC.
+		========== Génération : 0 a réussi, 1 a échoué, 0 mis à jour, 0 a été ignoré ==========
+
+
+	Dans cet exemple, on peut voir qu'il y a des erreurs dans le fichier statistique_03.cpp, à la ligne (13) et dans le fichier statistique_08.cpp, à la ligne (9).
+
+
+3) Après avoir corrigé les erreurs, on resoumet le programme à la compilation.
+
+
+	Exemple (fenêtre de sortie de VS) :
+
+
+		1>------ Début de la génération : Projet : Travaux, Configuration : Debug x64 ------
+		1>statistic_03.cpp
+		1>statistic_08.cpp
+		1>Génération de code en cours...
+		1>Travaux.vcxproj -> C:\Users\Alain\source\repos\Travaux\x64\Debug\Travaux.exe
+		========== Génération : 1 a réussi, 0 a échoué, 0 mis à jour, 0 a été ignoré ==========
+
+
+	Dans cet exemple, on peut voir que le processus de compilation revisite seulement les fichiers qui ont subis des changements.
+	
+	Le processus de compilation est heureusement incrémental.
+
+
+4) Une des difficultés à cette étape, pour le programmeur, est de résoudre des erreurs qui proviennent d'un fichier d'en-tête, celui-ci ayant été copié dans le cpp durant la précompilation.
+
+5) Un fois l'étape 1 traversée sans erreur, le compilateur peut s'attaquer à l'étape 2 du traitement. Se souvenir ici que le code du programme est réparti dans plein de fichiers obj.
+
+
+C) PROCESSUS DE COMPILATION - ÉTAPE 2 - Visual Studio
+=====================================================
+
+5) À cette étape, le compilateur cherche à retrouver la définition de toutes les références (les appels) aux fonctions. Autrement dit, il s'assure que la définition existe pour chaque appel fonctionnel, et que cette définition est unique. C'est la vérification des liens.
+
+6) Le même traitement est appliquée aux variables et aux constantes dans les expressions pour s'assurer que la définition existe et qu'elle est unique.
+
+7) Évidemment des erreurs peuvent se produire à cette étape, et devront être résolues pour obtenir l'exécutable du programme.
+
+8) Deux types d'erreurs peuvent se produire:
+
+	1) L'absence d'une définition dans le programme
+	2) La présence de définitions identiques multiples dans le programme
+
+
+9) Soit un programme où il n'y a plus d'erreur à l'étape 1, mais durant l'étape 2, l'absence d'une définition de fonction a été détectée.
+
+	Exemple (fenêtre de sortie de VS) :
+	
+		1>------ Début de la régénération globale : Projet : Travaux, Configuration : Debug x64 ------
+		1>main.cpp
+		1>sondage.cpp
+		1>statistic_01.cpp
+		1>statistic_02.cpp
+		1>statistic_03.cpp
+		1>statistic_04.cpp
+		1>statistic_05.cpp
+		1>statistic_06.cpp
+		1>statistic_07.cpp
+		1>statistic_08.cpp
+		1>statistic_09.cpp
+		1>statistic_10.cpp
+		1>Génération de code en cours...
+		1>main.obj : error LNK2019: symbole externe non résolu "int __cdecl stat2(bool * const)" (?stat2@@YAHQEA_N@Z) référencé dans la fonction main
+		1>statistic_05.obj : error LNK2001: symbole externe non résolu "int BIDON" (?BIDON@@3HA)
+		1>C:\Users\Alain\source\repos\Travaux\x64\Debug\Travaux.exe : fatal error LNK1120: 2 externes non résolus
+		1>Génération du projet "Travaux.vcxproj" terminée -- ÉCHEC.
+		========== Régénération globale : 0 a réussi, 1 a échoué, 0 a été ignoré ==========
+
+	Dans cet exemple, on peut voir d'une part, qu'il n'y a pas d'erreur à l'étape 1, et qu'à l'étape 2, le compilateur a trouvé 2 erreurs de lien (LNKxxxx)
+	
+	
+	Faisons un peu le ménage pour voir plus clair sur les erreurs dans la dernière partie du message:
+	
+		Génération de code en cours...
+		
+		(1)  [ main.obj ]			[ error LNK2019 ]  [ symbole externe non résolu ]  [ int stat2(bool * const) ]  [ référencé dans la fonction main ]
+		
+		(2)  [ statistic_05.obj ] 	[ error LNK2001 ]  [ symbole externe non résolu ]  [ int BIDON ]
+				
+		[ fatal error ]  [ 2 externes non résolus ]
+		
+	
+		Erreur (1)
+
+			a) Où						: [ main.obj ]							- Donc dans main.cpp (après la précompilation)
+			b) Où précisément			: [ référencé dans la fonction main ]	
+
+			c) Numéro de l'erreur		: [ error LNK2019 ]						- Pour plus d'informations, cliquez sur l'erreur puis F1
+			
+			d) Absence de définition	: [ symbole externe non résolu ]
+			e) La définition manquante	: [ int stat2(bool * const) ]			- c'est-à-dire la fonction stat2 avec précisément cette signature -- ou l'équivalent tableau: [ int stat2 (bool r2 []) ]
+			
+			Causes : Soit stat2 n'existe pas, soit le prototype et la définition de stat2 diffèrent, soit stat2 est privée (static) dans un autre module.
+
+
+		Erreur (2)
+
+			a) Où						: [ statistic_05.obj ]					- Donc dans statistic_05.cpp (après la précompilation)
+			b) Où précisément			: ???	
+
+			c) Numéro de l'erreur		: [ error LNK2001 ]						- Pour plus d'informations, cliquez sur l'erreur puis F1
+			
+			d) Absence de définition	: [ symbole externe non résolu ]
+			e) La définition manquante	: [ int BIDON ]							- c'est-à-dire la variable BIDON de type int
+
+			Causes : Soit BIDON n'existe pas, soit la déclaration et la définition de BIDON diffèrent, soit BIDON est privée dans un autre module.
+
+
+10) Soit un programme où il existe des définitions identiques multiples.
+
+	Exemple (fenêtre de sortie de VS) :
+
+		1>------ Début de la régénération globale : Projet : Travaux, Configuration : Debug x64 ------
+		1>main.cpp
+		1>sondage.cpp
+		1>statistic_01.cpp
+		1>statistic_02.cpp
+		1>statistic_03.cpp
+		1>statistic_04.cpp
+		1>statistic_05.cpp
+		1>statistic_06.cpp
+		1>statistic_07.cpp
+		1>statistic_08.cpp
+		1>statistic_09.cpp
+		1>statistic_10.cpp
+		1>Génération de code en cours...
+		1>statistic_04.obj : error LNK2005: "int __cdecl stat2(bool * const)" (?stat2@@YAHQEA_N@Z) déjà défini(e) dans statistic_02.obj
+		1>C:\Users\Alain\source\repos\Travaux\x64\Debug\Travaux.exe : fatal error LNK1169: un ou plusieurs symboles définis à différentes reprises ont été rencontrés
+		1>Génération du projet "Travaux.vcxproj" terminée -- ÉCHEC.
+		========== Régénération globale : 0 a réussi, 1 a échoué, 0 a été ignoré ==========
+
+	Faisons un peu le ménage pour voir plus clair:
+	
+		Génération de code en cours...
+		
+		(1)  [ statistic_04.obj ]	[ error LNK2005 ]	[ int stat2(bool * const) ]  [ déjà défini(e) dans statistic_02.obj ]
+						
+		[ fatal error LNK1169 ]  [ un ou plusieurs symboles définis à différentes reprises ont été rencontrés ]
+		
+	
+		Erreur (1)
+
+			a) Où						: [ statistic_04.obj ]				- Donc dans statistic_04.cpp (après la précompilation)
+
+			b) Numéro de l'erreur		: [ error LNK2005 ]					- Pour plus d'informations, cliquez sur l'erreur puis F1
+			
+			c) Définitions multiples	: [ déjà défini(e) dans ]
+			
+			d) La définition dupliquée	: [ int stat2(bool * const) ]		- c'est-à-dire la fonction stat2 avec précisément cette signature -- ou l'équivalent tableau: [ int stat2 (bool r2 []) ]
+			
+			e) Lieu de duplication		: [ dans statistic_02.obj ]			- c'est-à-dire que la définition de stat2 (avec la même signature) existe dans statistic_04.cpp et statistic_02.cpp
+			
+			Causes : La fonction publique stat2 existe 2 fois, le compilateur ne sait pas laquelle il faut choisir lors d'un appel.
+	
+	
+11) Le mème problème de définitions multiples peut survenir pour les variables et les constantes.
+
+
+12) Une compréhension insuffisante du processus de compilation, et en particulier, la précompilation, peut rendre difficile la résolution d'erreurs dans les deux étapes majeures du processus de génération du programme.
+
+
+D) OUTILS DE DÉBOGAGE - Visual Studio
+=====================================
+
+13) Toutes les fonctionnalités de débogage sont les mêmes dans un programme multi fichiers, la seule différence est que le flux du contrôle se déplace automatiquement dans les fichiers cpp où se trouvent les fonctions.

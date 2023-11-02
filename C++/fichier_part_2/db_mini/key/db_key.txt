@@ -1,0 +1,24 @@
+titre = Time
+artiste = Pink Floyd
+album = The Dark Side of the Moon
+durée = 6.53
+genre = Rock
+année = 1973
+fin
+
+titre = Dazed and Confused
+artiste = Led Zeppelin
+album = Led Zeppelin
+durée = 6.28
+année = 1969
+genre = Rock
+fin
+
+
+titre = Money
+artiste = Pink Floyd
+album = The Dark Side of the Moon
+genre = Rock
+année = 1973
+durée = 6.22
+fin

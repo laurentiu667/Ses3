@@ -1,0 +1,60 @@
+
+PROCESSUS DE COMPILATION C++
+
+
+// 1) Étape de précompilation, de vérification et de génération du code machine pour chaque fichier nom.cpp
+
+	POUR CHAQUE FICHIER NOM.CPP FAIRE
+
+		// A) Étape de précompilation -- transformation du fichier nom.cpp en un fichier nom.cpp+
+		
+			LIRE nom.cpp
+			
+			EXÉCUTER les commandes de précompilation (#pragma, #include, #define, etc...)
+			
+			ÉCRIRE le fichier transformé nom.cpp+
+		
+			// ex: chaque commande #include <fichier> est remplacé par le contenu du fichier
+			
+			
+		// B) Étape de vérification -- vérification du fichier nom.cpp+
+		
+			LIRE nom.cpp+			
+			
+			EXÉCUTER les vérifications lexicales, syntaxiques et sémantiques
+		
+			ÉCRIRE au besoin, un rapport des erreurs rencontrées
+
+
+		// C) Étape de génération du code machine -- génération du fichier nom.obj
+					
+			SI aucune erreur à l'étape de vérification ALORS
+			
+				TRADUIRE le fichier nom.cpp+ en code machine
+						
+				ÉCRIRE le code machine dans le fichier nom.obj
+								
+				RÉPERTORIER, dans un catalogue, les définitions rencontrées (constantes, variables, fonctions) utiles pour l'étape 2) suivante
+					
+		
+		
+// 2) Étape de l'édition des liens et d'assemblage de l'exécutable
+
+	SI tous les fichiers name.obj ont été générés à l'étape 1) ALORS
+	
+		// A) Étape de vérification et d'édition des liens
+		
+		POUR CHAQUE FICHIER NOM.OBJ FAIRE
+
+			LIER à l'aide du catalogue, chaque référence à une constante, à une variable ou à une fonction, dans une expression, à une et une seule définition quelque part
+			
+			// l'absence ou l'existence multiple de définitions concordantes est une erreur de lien
+
+			ÉCRIRE au besoin, un rapport des erreurs rencontrées
+
+
+		// B) Étape d'assemblage de l'exécutable
+		
+		SI aucune erreur à l'étape de l'édition des liens ALORS
+
+			ÉCRIRE le fichier projet.exe

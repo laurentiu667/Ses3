@@ -1,0 +1,29 @@
+
+A) RANGEMENT DES FICHIERS DANS WINDOWS
+======================================
+
+0) Règle générale, tous les fichiers (.cpp et .h) de votre programme devraient être placés sous le même dossier de Windows.
+
+1) Si le dossier principal de votre programme possède des sous-dossiers de rangement de fichiers, règle générale, il serait mieux de ne pas séparer un cpp de son fichier d'en-tête .h
+
+
+B) PROJET VISUAL STUDIO
+=======================
+
+2) Dans un projet de VS, il y a un dossier "Fichiers sources" dans lequel vous devez mettre tous vos cpp de votre programme. Ne pas mettre les fichiers d'en-tête (.h) dans ce dossier.
+
+3) La fonction main() doit absolument exister quelque part dans un cpp (par exemple dans main.cpp)
+
+4) Règle générale, vous devriez toujours utiliser la commande #include sans spécifier le chemin où se trouve le fichier d'en-tête car par défaut VS le cherchera dans le même dossier que le cpp. Cette façon de faire permet plus facilement de déplacer le dossier du programme sans être obliger de tout rééditer les chemins.
+
+
+ex: dans le fichier menu.cpp
+
+	#include "menu.h"  // VS cherchera le fichier menu.h dans le même dossier que menu.cpp
+
+	et non
+
+	#include "E:/mon_dossier/menu.h  // chemin absolu: si le E: n'existe plus, plus rien compile
+
+
+5) Les chemins relatifs peuvent être utilisés si le dossier Windows de votre programme possède des sous-dossiers de rangement

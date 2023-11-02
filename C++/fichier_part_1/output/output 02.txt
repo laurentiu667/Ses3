@@ -1,0 +1,20 @@
+
+jour        max         ciel        
+----        ---         ----        
+dimanche    29          ensoleillé  
+lundi       24          nuageux     
+mardi       28          nuageux     
+mercredi    28          ensoleillé  
+jeudi       29          orageux     
+vendredi    27          pluvieux    
+samedi      26          nuageux     
+
+jour        max         ciel        
+----        ---         ----        
+dimanche    27          ensoleillé  
+lundi       25          nuageux     
+mardi       29          pluvieux    
+mercredi    27          pluvieux    
+jeudi       25          orageux     
+vendredi    25          ensoleillé  
+samedi      27          ensoleillé  

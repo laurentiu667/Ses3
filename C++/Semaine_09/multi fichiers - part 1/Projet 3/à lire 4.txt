@@ -1,0 +1,91 @@
+
+A) OÙ METTRE LES TYPES, SUITE
+=============================
+
+1) Règle générale, un type propriétaire du programme devrait être défini le plus proche possible du code qui l'utilise, c'est-à-dire, dans son module : soit dans le cpp ou soit dans le fichier d'en-tête (.h) de ce cpp.
+
+2) Il est possible de définir un type propriétaire dans un module qui ne possède qu'un fichier d'en-tête mais pas de fichier cpp associé. Un tel type peut ensuite être partagé aux autres modules par la directive #include.
+
+
+Par exemple, on pourrait avoir 3 modules comme suit:
+
+a) module moteur ( un fichier d'en-tête moteur.h seulement ) avec le type Moteur
+
+dans le fichier "moteur.h":
+
+	#pragma once
+
+	struct Moteur
+	{
+		...
+	};
+
+
+b) module voiture ( voiture.h et voiture.cpp ) avec le type Voiture
+
+dans le fichier "voiture.h":
+
+	#pragma once
+
+	#include "moteur.h"
+
+	struct Voiture
+	{
+		Moteur m;
+		
+		...
+	};
+
+
+c) module bateau ( bateau.h et bateau.cpp ) avec le type Bateau
+
+dans le fichier "bateau.h":
+
+	#pragma once
+
+	#include "moteur.h"
+
+	struct Bateau
+	{
+		Moteur m;
+		
+		...
+	};
+
+
+Le type Moteur est un type utilisé par d'autres types plus englobants comme Voiture et Bateau.
+
+3) Remarqué qu'il est usuel d'avoir une directive #include même dans un fichier d'en-tête. Si une dépendance existe, alors il faut inclure le code nécessaire (types, prototypes, etc) pour le processus de compilation.
+
+
+
+C) PRÉCOMPILATION ET LA DIRECTIVE #PRAGMA ONCE, SUITE
+=====================================================
+
+4) Le fait de mettre la directive "#pragma once" comme première ligne de tous les fichiers d'en-tête nous permet de ne plus se soucier qu'il y ait des erreurs de compilation dû à de multiple directive #include du même fichier d'en-tête dans un cpp.
+
+5) Il est très fréquent que cela arrive sans le faire volontairement.
+
+Reprenons l'exemple ci-haut des trois modules avec un module de plus main.cpp
+
+Supposons que la fonction main() ait besoin de créer des variables de type Voiture et Bateau. Dès lors, il faut ajouter les fichiers d'en-tête du module bateau et du module voiture.
+
+dans le fichier "main.cp":
+
+	#include "bateau.h"
+	#include "voiture.h"
+
+
+	void main()
+	{
+		Bateau b;
+		Voiture v;
+
+		...
+	}
+
+6) En ajoutant #include "bateau.h" dans main.cpp, le contenu de ce fichier sera copié ici. Mais avant, le fichier bateau.h fera aussi l'objet d'un traitement car celui-ci a un #include "moteur.h" qui doit être aussi copié. Donc au final, les Types Moteur et Bateau seront copiés dans main.cpp
+
+7) Par la suite, l'autre include (#include "voiture.h") va lui aussi copié le contenu du fichier "voiture.h", et ce dernier aussi à un #include "moteur.h", lequel va être ignoré dû au #pragma once dans "moteur.h", car déjà ajouté par l'include précédant.
+
+

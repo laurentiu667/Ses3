@@ -1,0 +1,123 @@
+
+A) RANGEMENT DES VARIABLES GLOBALES
+===================================
+
+0) Une variable globale (versus locale) est une variable définie à l'extérieur des fonctions. Une telle variable est créée au démarrage du programme, avant l'exécution de la fonction main(), et détruite à la fin du programme.
+
+1) Comme les fonctions, il est possible de définir des variables globales dans n'importe lequel des cpp d'un programme, tout en respectant une logique d'organisation. Règle générale, une variable globale contient une information utile pour un sous-ensemble des fonctions du programme.
+
+2) Une variable globale définie dans un cpp, peut être utilisée par une quelconque fonction du programme. Nous qualifierons cette variable d'être publique.
+
+3) Il est possible de restreindre l'utilisation d'une variable globale aux fonctions de son propre cpp (module). Nous dirons alors que cette variable est privée à son module.
+
+4) Il est même possible de restreindre davantage l'utilisation d'une variable globale à une seule fonction du module. Nous dirons alors que cette variable est privée à la fonction f().
+
+
+B) DÉCLARATION ET DÉFINITION D'UNE VARIABLE GLOBALE
+===================================================
+
+5) Comme les fonctions, les concepts de définition et de déclaration s'appliquent aussi aux variables. Une déclaration de variable est une annonce, comme la déclaration d'une fonction, qui a pour but de renseigner le compilateur qu'une variable nommé N de type T existe (est définie) quelque part dans un cpp.
+
+6) Règle générale, et comme les déclarations de fonctions, les déclarations des variables globales iront dans les fichiers d'en-tête de leur module respectif.
+
+7) Avec une telle déclaration et la définition du type T, le compilateur est en mesure de vérifier l'exactitude d'une expression impliquant cette variable. Cette vérification est faite lors de la première étape du processus de compilation.
+(voir document: processus de compilation étape 1)
+
+8) Comme les fonctions, il est indispensable que la définition ait été donnée quelque part dans un cpp. La deuxième étape du processus de compilation s'en assurera.
+(voir document: processus de compilation étape 2)
+
+
+C) DÉCLARATION D'UNE VARIABLE GLOBALE
+=====================================
+
+9) À la différence des fonctions, pour lesquelles il est syntaxiquement très facile de distinguer la définition de la déclaration, la syntaxe pour le faire avec les variables globales est un peu plus difficile à retenir.
+
+10) La déclaration (l'annonce) d'une variable globale se fait toujours avec le mot clé "extern" et il n'est pas permis d'initialiser la variable, car cette action est réservée pour la définition.
+
+	exemples de déclarations :
+	
+		extern double maVariable;
+		
+		extern Info i;
+		
+		extern double notes [5];
+		
+
+11) Pour qu'une déclaration d'une variable globale soit vérifiable, son type doit être connu au moment de la déclaration.
+
+12) Comme pour la déclaration d'une fonction, la déclaration d'une variable globale permet d'étendre la portée d'une variable à partir du lieu de sa déclaration.
+
+13) Important: notez que le mot clé "extern" est aussi utilisé en c++ pour indiquer le caractère public d'un élément du langage comme les variables globales ou les constantes globales. Voir à la suite.
+
+
+D) DÉFINITION D'UNE VARIABLE GLOBALE : VARIATIONS SYNTAXIQUES
+=============================================================
+
+14) Lors de la définition, il est possible d'avoir une instruction d'initialisation en option. À la différence d'une définition de variable locale, si aucune instruction d'initialisation n'est donnée, la variable sera implicitement initialisée à zéro ou l'équivalent.
+
+	exemples de définitions :
+	
+		double maVariable = 10;
+		
+		Info i = {};
+		
+		double notes [5];
+
+15) Il est possible de restreindre la portée d'une définition de variable globale à son propre cpp en utilisant le mot clé "static". Ce mot clé indique le caractère privé d'un élément du langage. Cette définition devient alors privée au cpp dans lequel elle est définie.
+
+	exemples de définitions privées au module:
+
+		static double maVariable;
+		
+		static Info i = {};
+		
+		static double notes [5] = {};
+		
+16) Il est aussi possible de restreindre davantage la portée d'une définition de variable globale à une seule fonction. La définition de cette variable globale doit alors être faite à l'intérieur de la fonction en question avec le mot clé "static".
+	
+	exemples de définitions privées à une fonction :
+	
+		void f(...)
+		{
+			static int compteur = 10;  // instruction exécutée lors du démarrage du programme et ignorée par la suite, même l'initialisation.
+		
+			...
+			
+			compteur++; // ex: permet de compter quelque chose dans f() d'un appel à l'autre
+		}
+	
+	Ici, la variable compteur est créée et initialisés à 10 avant le départ de main(). Lorsque f() est appelé, cette instruction est ignorée.
+	
+	Ce dernier usage est peu fréquent, mais on peut imaginer un cas où une fonction aurait un traitement très gourmand en ressource mémoire et au lieu de réserver à chaque appel cette espace mémoire, elle le ferait une fois au démarrage du programme.
+	
+		void doSomethingBigInMemory(...)
+		{
+			static GrosType pourMesCalculs;
+		
+			...
+			
+		}
+	
+	
+E) LA DÉFINITION D'UNE VARIABLE GLOBALE EST IMPLICITEMENT EXTERN
+================================================================
+
+17) Nous avons vu que lorsque l'on écrit une définition de variable globale, elle est, par défaut, implicitement publique.
+
+18) Il est possible de spécifier explicitement ce caractère avec le mot clé "extern", mais il faudra absolument fournir une valeur d'initialisation sinon le compilateur assumera que c'est une déclaration.
+
+	exemples :
+	
+		double maVariable;				// définition implicitement publique
+		
+		double maVariable = 10;			// définition implicitement publique
+		
+		extern double maVariable = 10;	// définition explicitement publique
+		
+		extern double maVariable;		// déclaration
+
+	
+F) PUBLIER UNE VARIABLE GLOBALE AUX AUTRES MODULES
+==================================================
+
+19) Comme la fonction publique d'un module, la variable globale publique d'un module sera publiée par l'entremise d'une déclaration de cette variable dans son fichier d'en-tête. Si un autre module a besoin d'accéder à cette variable, il devra inclure ce fichier d'en-tête.

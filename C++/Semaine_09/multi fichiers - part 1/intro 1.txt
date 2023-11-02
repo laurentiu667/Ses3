@@ -1,0 +1,9 @@
+
+MULTI FICHIERS (première partie)
+================================
+
+Le code d'un programme peut être réparti dans plusieurs fichiers de manière à le rendre plus organisé. Ce premier bloc de cours vous présente sous forme d'exemples et de lectures, la manière de le faire.
+
+Ce bloc de cours traite en particulier du rangement des définitions de fonction et de leur déclaration respective (ou prototype). Le rangement des définitions de type est aussi abordé.
+
+Une description du processus de compilation du langage c++ est présentée au fil des lectures. Une description plus formelle, sous la forme d'un diagramme d'action, résume les étapes du processus de compilation.

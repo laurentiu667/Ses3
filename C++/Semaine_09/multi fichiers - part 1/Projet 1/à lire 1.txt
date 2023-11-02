@@ -1,0 +1,152 @@
+
+A) RANGEMENT DU CODE D'UN PROGRAMME
+===================================
+
+0) Le code d'un programme peut être réparti dans plusieurs fichiers cpp permettant ainsi de le subdiviser logiquement en différents secteurs, modules, composantes, catégories, etc, tout ceci pour simplifier sa lecture, son développement, son entretien et sa réutilisation possible dans un autre programme ( ex: cvm 21.h et cvm 21.cpp )
+
+1) Il n'y a pas de limite au nombre de fichiers cpp pourvu qu'il y ait une logique de rangement qui rend plus clair l'organisation du programme.
+
+2) La taille d'un fichier cpp n'est pas très importante, mais plus le fichier est volumineux, plus il est probable qu'il pourrait être à son tour subdivisé en sous-modules.
+
+3) Règle générale, le programme contient un fichier cpp pour la fonction principale ( ex: main.cpp ) et d'autres fichiers cpp pour ranger les autres fonctions du programme.
+
+4) Par défaut, une fonction dans un fichier cpp est visible (dite publique) aux autres fonctions du programme, c'est-à-dire qu'elle peut être appelée par une autre fonction ailleurs dans le programme. Il est possible de renverser cette propriété de visibilité universelle pour une fonction en précédant sa définition du mot clé "static". Dès lors, cette fonction ne sera plus visible ailleurs dans le programme (dite privée) sauf pour les fonctions partageant avec elle le même cpp. On dit alors qu'elle est privée dans son fichier cpp.
+
+Ce concept de visibilité (publique versus privée) est important pour distinguer les fonctions à usage local (utile dans un seul cpp) des fonctions globales au programme.
+
+
+B) L'UNITÉ DE RANGEMENT CONSTITUÉE DE 2 FICHIERS: LE FICHIER .CPP ET SON FICHIER D'EN-TÊTE ASSOCIÉ .H
+=====================================================================================================
+
+5) Règle générale, lorsqu'on décide de ranger (regrouper) du code (ex: des fonctions) on le fait à l'aide de 2 fichiers liés. Un fichier cpp et un autre fichier texte (écrit en c++) dit d'en-tête qui porte le même nom que le cpp mais avec l'extension .h (h pour header).
+
+	ex: menu.cpp et menu.h
+
+Le seul fichier cpp qui n'a pas toujours un fichier d'en-tête associé est celui qui contient la fonction main() (ex: main.cpp)
+
+6) Lorsqu'on décide de ranger des fonctions dans un même fichier cpp, il est important de nommer ce fichier avec un nom qui évoque ou résume la catégorie logique du regroupement.
+
+7) Même si ces deux fichiers peuvent contenir sans restriction du code c++ en général, il est important de bien comprendre le bon usage de cet outil.
+
+8) La règle générale, est de mettre les définitions (constantes, variables, types, fonctions, etc) dans le fichier CPP et de mettre les déclarations (constantes, variables, types, fonctions, etc) de ces définitions dans le fichier H.
+
+9) Mais, il est très fréquent d'outre passer cette règle générale, et c'est là toute la difficulté de faire un bon usage de cet outil de rangement.
+
+Il est courant de designer ces deux fichiers comme étant un MODULE du programme. D'autres designations existent.
+
+
+C) LE FICHIER CPP
+=================
+
+10) Dans le fichier cpp se retrouveront les différents éléments du code telles les définitions des fonctions. Il est bien sûr possible d'avoir des définitions de types, de constantes et de variables globales.
+
+11) En ce qui concerne la section des #include, il sera important d'inclure en premier les librairies standards dont le code du fichier cpp a absolument besoin. Remarquez que les fichiers d'en-tête des librairies standards n'ont pas toujours l'extension .h (ex: iostream)
+
+Suivront ensuite les autres #include propres au projet.
+
+ex: dans le fichier menu.cpp
+
+	#include <iostream>			// inclure d'abord les fichiers d'en-tête des librairies standards absolument essentielles au cpp
+	#include ...				// autres include standards
+
+	#include "cvm 21.h"			// inclure ensuite les fichiers d'en-tête du projet absolument essentiels au cpp
+	#include ...				// autres include du projet
+
+	#include "menu.h"			// inclure ensuite son propre fichier d'en-tête
+
+
+	...							// et les définitions des différents éléments du code: types, const, variables, fonctions
+	
+
+D) LE FICHIER H
+===============
+
+12) Une clause importante doit être ajoutée à la première ligne du fichier d'en-tête, que j'expliquerai plus tard:
+
+#pragma once
+
+
+13) Dans le fichier d'en-tête se retrouveront, entre autres, les déclarations des fonctions du cpp. Seulement les déclarations des fonctions publiques. D'autres éléments du code peuvent aussi être ajoutés dans le fichier d'en-tête. Attention, se tromper dans l'écriture des déclarations est une erreur fréquente.
+
+
+E) PROCESSUS DE COMPILATION
+===========================
+
+14) Le processus de compilation se fait en 2 étapes majeures:
+
+ÉTAPE 1) Pour chaque fichier cpp (ex: menu.cpp) -> précompilation, vérification, génération de code --> menu.obj
+
+ÉTAPE 2) Vérification des liens entre les fichiers obj, et assemblage du fichier exe final
+
+15) À l'étape 1, le compilateur traite chaque cpp, un à la fois, dont l'ordre n'a pas d'importance. Ceci implique que le compilateur doit pouvoir faire la vérification du cpp (analyse lexicale, syntaxique et sémantique) sans connaissance des autres cpp.
+ 
+16) À l'étape 1, le compilateur applique d'abord un prétraitement (précompilation) au cpp avant de le vérifier et c'est une étape qui est programmable avec des commandes qui débute toujours avec le symbole #
+
+ex:
+
+	#pragma once
+
+	#include <...>
+
+	#include "..."
+
+	etc,
+
+
+17) Cette étape de précompilation d'un cpp peut être vu comme une étape de traitement de texte, programmable avec des commandes #, dont le résultat sera le texte modifié du cpp en un nouveau cpp+
+
+C'est une étape transparente, qui produit donc un texte modifié du cpp original.
+
+
+18) C'est à cette étape que les fichiers d'en-tête sont utiles et ajouté au cpp par la commande #include
+
+18) Une fois l'étape de précompilation appliqué à un cpp, toutes les commandes # ont été exécuté et disparu du cpp+
+
+20) L'étape de vérification du cpp+ peut alors commencer.
+
+ 
+F) PRÉCOMPILATION ET LA DIRECTIVE #INCLUDE
+==========================================
+
+21) La directive #include est bêtement une commande qui indique au précompilateur (des fois on dit au préprocesseur) de copier le contenu du fichier d'en-tête dans le cpp, à l'endroit où se trouve la commande #include, d'où l'importance de l'ordre dans lequel on spécifie les includes.
+
+ex: dans le fichier menu.cpp
+
+	#include <iostream>			// copie le contenu du fichier "iostream" ici
+
+	#include "cvm 21.h"			// copie le contenu du fichier "cvm 21.h" ici
+
+	#include "menu.h"			// copie le contenu du fichier menu.h" ici
+
+
+22) Une fois l'étape de précompilation appliqué à un cpp, les fichiers d'en-tête ont tous été copiés, et ne sont plus utiles pour la suite du traitement de ce cpp. L'étape de vérification peut alors commencer.
+
+
+G) RETOUR SUR LES FICHIERS D'EN-TÊTE
+====================================
+
+23) Pour qu'un appel à une fonction f() puisse être vérifiée par le compilateur, quel que soit l'endroit (cpp) où se trouve la définition de f(), seule la déclaration de cette fonction est nécessaire. C'est pour cette raison qu'on écrit les déclarations dans les fichiers d'en-tête et qu'on les fait copiés par la commande #include.
+
+24) Sachant que les fichiers d'en-tête sont des fichiers destinés à être copiés dans les cpp, il est important de les soigner car s'il y a une erreur dans le code d'un fichier d'en-tête et que celui-ci est inclus dans plusieurs cpp, ceci provoquera beaucoup d'erreurs de compilation!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
