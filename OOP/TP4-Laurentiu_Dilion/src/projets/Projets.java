@@ -62,12 +62,12 @@ public class Projets {
         System.out.println("Temps alloué : " + (minutesAllouees / 60) + " heures");
         System.out.println("Temps dépensé : " + (minutesDepensees / 60) + " heures");
         if (minutesAllouees < minutesDepensees){
-            System.out.println("\n ATTENTION : Vous avez dépensé beaucoup trop de temps sur le projet, vous allez être rétrogradé\n");
+            System.out.println("\n ATTENTION : Vous avez dépensé beaucoup trop de temps sur le projet\n");
         }
 
         for (Taches tache : listeDesTaches) {
             if (!tache.getNom().isEmpty()) {
-                System.out.println("Tâche : " + tache.getNom());
+                System.out.println("\nTâche : " + tache.getNom());
                 long tempsDepenseTache = tache.getTempsDepense();
                 System.out.println("Temps dépensé sur la tâche : " + (tempsDepenseTache / 60) + " heures " + (tempsDepenseTache % 60) + " minutes");
 

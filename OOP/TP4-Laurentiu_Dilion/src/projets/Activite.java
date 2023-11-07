@@ -23,8 +23,6 @@ public class Activite {
         return duration.toMinutes();
     }
 
-
-
     public void afficherInfoActivite(){
         System.out.println("Nom : " + nom + " | Description : " + description + " | Début : " + heureDebut + " | Fin : " + heureFin);
     }

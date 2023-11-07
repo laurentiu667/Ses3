@@ -37,14 +37,12 @@ public class Taches {
                     break;
                 }
             }
-            tempsDepense = 0; // Réinitialisation
+            tempsDepense = 0;
             for (Activite act : listeDesActivites) {
                 tempsDepense += act.calculerMinutesActivite();
             }
         }
     }
-
-
 
     public String getNom() {
         return nom;
