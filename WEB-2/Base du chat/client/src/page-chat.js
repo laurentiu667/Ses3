@@ -19,3 +19,4 @@ const newMessage = (fromUser, message, isPrivate) => {
 const memberListUpdate = members => {
     console.log(members);
 }
+
