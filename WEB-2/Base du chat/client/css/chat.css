@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+body {
+    width: 100vw;
+    min-width: 200px;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-position: bottom; 
+    background-image: url(../../background/Background.png);
+}
+
+.container{
+    width: 800px;
+    gap: 5px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);
+    padding: 1em;
+}
+#chat-container{
+    overflow-y: scroll;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+
+}
+.msg{
+  
+    color: black;
+}
+.message-submit{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    gap: 5px;   
+}
+textarea{
+    width: 80%;
+    height: 50px;
+    border: none;
+    background-color: rgb(172, 172, 172);
+    outline: none;
+    font-size: 20px;
+    resize: none;
+    padding: 5px;
+    overflow: hidden;
+
+}
+.Submit{
+    width: 20%;
+    height: 50px;
+    border: none;
+    background-color: rgb(0, 255, 136);
+    cursor: pointer;
+    font-size: 20px;
+}
+.Submit:hover{
+    background-color: rgb(146, 255, 204);
+}
+#sign-out-btn{
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+#sign-out-btn:hover{
+    background-color: rgb(245, 65, 65);
+}
+.knight {
+    position: absolute;
+
+}
+.container-help{
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: white;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.548);
+    padding: 10px;
+    gap: 40px;
+}
+.howToplay-Button{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+}
+.container-key{
+    opacity: 0;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+.howToplay-Button:active{
+    background-color: black;
+    color: white;
+}
+.container-info{
+    display: flex;
+    gap: 10px;
+    text-align: start;
+}
+svg{
+    width: 50px;
+}
+@media screen and (max-width: 600px){
+    .container-help{
+       display: none;
+        
+    }
+}

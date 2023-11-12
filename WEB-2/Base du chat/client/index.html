@@ -12,64 +12,21 @@
     <body>        
         
         <form action="" method="post" autocomplete="off">
+            
             <div class="sign-in-input-group">
+                <div class="title-game">The forest of Death</div>
                 <div id="api-message"></div>
-                <h1 class="titre">Identification</h1>
-                <div class="error-div-info">Veuillez completer les inputs</div>
-                <input class="input-user-pass" type="text" name="username" placeholder="Nom d'usager" required>
-                <input class="input-user-pass" type="password" name="password" placeholder="Mot de passe" required>
+                <div class="error-div-info">Identification</div>
+                <input class="input-user-pass-info" type="text" name="username" placeholder="Nom d'usager" required>
+                <input class="input-user-pass-info" type="password" name="password" placeholder="Mot de passe" required>
                 <button class="button-general">Connexion</button>
+                <a class="register" href="register.html">S'enregistrer</a>
             </div>
+        
         </form>
-        <a href="register.html">S'enregistrer</a>
 
-        <div class="container-help">
-            <button class="howToplay-Button">How to play ?</button>
-            <div class="container-key">
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                    </div>
-                    <div>Appuyez sur fleche de droite pour avancer</div>
-                </div>
 
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>    
-                    </div>
-                    <div>Appuyez sur fleche de gauche pour reculer</div>
-                </div>
-
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(270)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>    
-                    </div>
-                    <div>Appuyez sur fleche de haut pour sauter</div>
-                </div>
-
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(90)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>    
-                    </div>
-                    <div>Appuyez sur fleche de bas pour s'accroupir</div>
-                </div>
-
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z"></path><path fill="#ffffff" d="M8.917 10.117A2.903 2.903 0 0 1 8.7 8.97c0-1.302 1.147-2.232 2.387-2.232c1.055 0 1.706.682 2.108 1.519l4.806 12.898l4.807-12.898c.402-.837 1.053-1.519 2.107-1.519c1.24 0 2.387.93 2.387 2.232c0 .434-.06.744-.217 1.147l-6.789 17.271c-.404.992-.931 1.798-2.295 1.798c-1.364 0-1.891-.806-2.295-1.798L8.917 10.117z"></path></g></svg>    
-                    </div>
-                    <div>Appuyez sur la touche c pour ATTAQUER</div>
-                </div>
-
-                <div class="container-info">
-                    <div>
-                        <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M36 32a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v28z"></path><path fill="#FFF" d="M19.723 6.552c2.264 0 6.666.744 6.666 3.473c0 1.116-.775 2.077-1.922 2.077c-1.272 0-2.139-1.085-4.744-1.085c-3.844 0-5.829 3.256-5.829 7.038c0 3.689 2.015 6.852 5.829 6.852c2.605 0 3.658-1.302 4.93-1.302c1.396 0 2.047 1.395 2.047 2.107c0 2.977-4.682 3.659-6.976 3.659c-6.294 0-10.666-4.992-10.666-11.41c-.001-6.448 4.34-11.409 10.665-11.409z"></path></g></svg>    
-                    </div>
-                    <div>Appuyez sur la touche v pour glisser</div>
-                </div>
-                
-            </div>
-        </div>
+       
 
     </body>
 </html>

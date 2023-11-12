@@ -1,5 +1,6 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import { leftArrowOn, rightArrowOn, cKeyOn, vKeyon, downArrowOn } from '../page-index';
+import { leftArrowOn, rightArrowOn, cKeyOn, vKeyon, downArrowOn } from '../page-chat.js';
+
 
 export default class Knight {
     constructor() {
@@ -85,7 +86,7 @@ export default class Knight {
         this.currentImage = this.idleImage; 
 
         this.x = 80;
-        this.y = 940;
+        this.y = 967;
     }
 
     tick() {
