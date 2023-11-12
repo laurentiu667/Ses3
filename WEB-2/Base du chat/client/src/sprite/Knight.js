@@ -1,16 +1,20 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import { leftArrowOn, rightArrowOn, cKeyOn } from '../page-index';
+import { leftArrowOn, rightArrowOn, cKeyOn, vKeyon, downArrowOn } from '../page-index';
 
 export default class Knight {
     constructor() {
         let colCount = 10;
-		let colCountAttack = 6;
+		let colCountSlide = 4;
+		let colCountCrouch = 3;
         let rowCount = 2;
         let refreshDelay = 80;
-		let refreshDelayAttack = 100;
+		let refreshDelaySlide = 500;
+		let refreshDelayCrouch = 100;
         let loopColumns = true;
         let scale = 4.0;
-		this.speedX = 4;
+		this.speedX = 5;
+
+		this.sideOfCharacterLeft = false;
 
         this.node = document.createElement("div");
         document.body.append(this.node);
@@ -36,6 +40,15 @@ export default class Knight {
             scale,
             this.node
         );
+		this.crouchALLImage = new TiledImage(
+            "../knight/_CrouchAll.png",
+            colCountCrouch,
+            rowCount,
+            refreshDelayCrouch,
+            loopColumns,
+            scale,
+            this.node
+        );
 		this.attackImage = new TiledImage(
             "../knight/_AttackComboNoMovement.png",
             colCount,
@@ -45,14 +58,29 @@ export default class Knight {
             scale,
             this.node
         );
+		this.slideALLImage = new TiledImage(
+            "../knight/_SlideAll.png",
+            colCountSlide,
+            rowCount,
+            refreshDelaySlide,
+            loopColumns,
+            scale,
+            this.node
+        );
 		this.idleImage.changeRow(1);
 		this.idleImage.changeMinMaxInterval(0, 10);
 
 		this.runImage.changeRow(1);
 		this.runImage.changeMinMaxInterval(0, 10);
+		
+		this.crouchALLImage.changeRow(1);
+		this.crouchALLImage.changeMinMaxInterval(0, 3);
 
 		this.attackImage.changeRow(1);
 		this.attackImage.changeMinMaxInterval(0, 10);
+
+		this.slideALLImage.changeRow(1);
+		this.slideALLImage.changeMinMaxInterval(0, 4);
 
         this.currentImage = this.idleImage; 
 
@@ -66,16 +94,41 @@ export default class Knight {
             this.currentImage = this.runImage;
             this.node.style.transform = 'scaleX(1)';
             this.x += this.speedX;
+			this.sideOfCharacterLeft = false;
 
-        } else if (leftArrowOn) {
+        } 
+		else if (leftArrowOn) {
             this.currentImage = this.runImage;
             this.node.style.transform = 'scaleX(-1)';
             this.x -= this.speedX;
-
-        } else if (cKeyOn) {
+			this.sideOfCharacterLeft = true;
+        } 
+		else if (cKeyOn) {
             this.currentImage = this.attackImage;
 
-        }else {
+        } 
+		else if (vKeyon) {
+			this.currentImage = this.slideALLImage;
+			if (this.sideOfCharacterLeft) {
+				setTimeout(() => {
+					for (let i = 0; i < 10; i++) {
+						this.x -= i;
+					}
+				}, 100);
+				this.node.style.transform = 'scaleX(-1)';
+			} else{
+				setTimeout(() => {
+					for (let i = 0; i < 10; i++) {
+						this.x += i;
+					}
+				}, 100);
+				this.node.style.transform = 'scaleX(1)';
+				this.sideOfCharacterLeft = false;
+			}
+		} else if (downArrowOn){
+			this.currentImage = this.crouchALLImage;
+		}
+		else {
             this.currentImage = this.idleImage; 
         }
 

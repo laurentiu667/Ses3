@@ -10,7 +10,7 @@
 
 body {
     width: 100vw;
-    min-width: 500px;
+    min-width: 200px;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -34,7 +34,9 @@ a{
     align-items: center;
     justify-content: center;
     gap: 20px;
-  
+    background-color: rgba(12, 56, 12, 0.425);
+    border-radius: 3px;
+    margin-top: 50px;
     height: 500px;
     width: 100%; 
     max-width: 500px; 
@@ -65,6 +67,10 @@ input:focus {
     font-size: 1.5em; 
     cursor: pointer;
 }
+.button-general:hover{
+    background-color: rgba(5, 31, 5, 0.425);
+    color: white;
+}
 .error-div-info{
     height: 50px;
     background-color: rgb(129, 255, 129);
@@ -76,10 +82,53 @@ input:focus {
 
 
 .knight {
-   
     position: absolute;
 
+}
 
- 
-
+.container-help{
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: white;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.548);
+    padding: 10px;
+    gap: 40px;
+}
+.howToplay-Button{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+}
+.container-key{
+    opacity: 0;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+.howToplay-Button:active{
+    background-color: black;
+    color: white;
+}
+.container-info{
+    display: flex;
+    gap: 10px;
+    text-align: start;
+}
+svg{
+    width: 50px;
+}
+@media screen and (max-width: 480px){
+    .container-help{
+       display: none;
+        
+    }
 }
