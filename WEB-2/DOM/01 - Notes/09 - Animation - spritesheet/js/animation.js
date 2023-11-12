@@ -1,7 +1,9 @@
+
 let spriteList = [];
 
 let leftArrowOn = false;
 let rightArrowOn = false;
+
 
 window.addEventListener("load", () => {
 	spriteList.push(new Skeleton());

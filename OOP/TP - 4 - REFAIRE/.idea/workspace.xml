@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="691addeb-dc72-410e-ae71-4b2f5698c1e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../C34_TP3_Laurentiu-Dilion.7z" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../C34_TP3_Laurentiu-Dilion.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4 - Laurentiu_Dilion/C34_TP4_Travail_Pratique_4-A23.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP4-Laurentiu_Dilion.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Genie Logiciel/TP2-Red-Square/.idea/TP2-Red-Square.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Genie Logiciel/TP2-Red-Square/.idea/TP2-Red-Square.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Genie Logiciel/TP2-Red-Square/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Genie Logiciel/TP2-Red-Square/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Genie Logiciel/pythonProject1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Genie Logiciel/pythonProject1/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Genie Logiciel/pythonProject1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Genie Logiciel/pythonProject1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2XtVfTnfIERLDhSDfkBLPAIZVjZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,7 +33,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ouaiouaihashish/Desktop/Ses3/OOP/TP - 4 - REFAIRE"
+    "last_opened_file_path": "/home/horlogefondu/Desktop/Ses3/OOP/TP - 4 - REFAIRE",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

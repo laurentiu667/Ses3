@@ -1,3 +1,5 @@
+
+
 let spriteList = [];
 let pause = false;
 let togglePause = () =>{

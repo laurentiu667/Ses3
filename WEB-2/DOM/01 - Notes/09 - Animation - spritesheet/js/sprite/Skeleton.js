@@ -1,45 +1,48 @@
+
 class Skeleton {
-	constructor() {
-		let colCount = 9;
-		let rowCount = 4;
-		let refreshDelay = 100;
-		let loopColumns = true; // ou row
-		let scale = 1.0;
+    constructor() {
+        let colCount = 9;
+        let rowCount = 4;
+        let refreshDelay = 100;
+        let loopColumns = true;
+        let scale = 1.0;
 
-		let node = document.createElement("div")
-		document.querySelector("#game").append(this.node);
-		this.tiledImage = new this.tiledImage(
-			"skeleton-walk.png",
-			colCount,
-			rowCount,
-			refreshDelay,
-			loopColumns,
-			scale,
-			this.node
-		);
+        this.node = document.createElement("div");
+        document.querySelector("#game").append(this.node);
 
-		this.tiledImage.changeRow(1);
-		this.tiledImage.changeMinMaxInterval(0, 8);
+        this.tiledImage = new TiledImage(
+            "images/skeleton-walk.png",
+            colCount,
+            rowCount,
+            refreshDelay,
+            loopColumns,
+            scale,
+            this.node
+        );
 
-		this.tiledImage.addImage("images/item-hood-walk.png");
-		this.tiledImage.addImage("images/item-shield-walk.png");
+        this.tiledImage.changeRow(1);
+        this.tiledImage.changeMinMaxInterval(0, 8);
 
-		this.x = 300;
-		this.y = 300;
-	}
+        this.tiledImage.addImage("images/item-hood-walk.png");
+        this.tiledImage.addImage("images/item-shield-walk.png");
 
-	tick () {
+        this.x = 300;
+        this.y = 300;
+    }
 
-		if(rightArrowOn){
-			this.tiledImage.changeRow(3);
-			this.x++;
-		}
-		if(leftArrowOn){
-			this.tiledImage.changeRow(1);
-			this.x--;
-		}
-		this.tiledImage.tick(this.x, this.y)
-		
-		return true;
-	}
+    tick() {
+        if (rightArrowOn) {
+            this.tiledImage.changeRow(3);
+            this.x++;
+        }
+        if (leftArrowOn) {
+            this.tiledImage.changeRow(1);
+            this.x--;
+        }
+        this.tiledImage.tick(this.x, this.y);
+
+        // Add any other logic related to the animation or behavior of the Skeleton
+
+        return true; // Return true or false based on some condition indicating whether the sprite is still active
+    }
 }
