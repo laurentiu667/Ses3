@@ -11,7 +11,7 @@ public class Maison {
 
 
     /**
-     * Constructeur : "initialise les variables d'un objet"
+     * Constructeur : "initialise les objets"
      */
 
     public Maison(int nbrePieces, double superficieTerrain, String noAdresse, String nomRue,  double prixVente)
@@ -42,8 +42,7 @@ public class Maison {
 
     public double getSuperficie ()
     {
-        return superficieTerrain;
-    }
+        return superficieTerrain;    }
 
 
     public  void setSuperficie (double superficieTerrain)
@@ -89,5 +88,5 @@ public class Maison {
             return false;
     }
 
-
 }
+

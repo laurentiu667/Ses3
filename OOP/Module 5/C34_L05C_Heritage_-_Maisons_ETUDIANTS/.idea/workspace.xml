@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ae621561-d3b8-4193-9006-2fc270b1a33a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Chalet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/MaisonMobile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/test/testprogram.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../C34_L05E_Interfaces_ETUDIANTS/ProjetInterface/src/projetinterface/Automobile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../C34_L05E_Interfaces_ETUDIANTS/ProjetInterface/src/projetinterface/Motoneige.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Maison.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Maison.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2Y857VPa8erUbuzcjb3woAGazk0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/ouaiouaihashish/Desktop/Ses3/OOP/Module 5/C34_L05C_Heritage_-_Maisons_ETUDIANTS"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae621561-d3b8-4193-9006-2fc270b1a33a" name="Changes" comment="" />
+      <created>1699894198618</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699894198618</updated>
+    </task>
+    <servers />
+  </component>
+</project>
