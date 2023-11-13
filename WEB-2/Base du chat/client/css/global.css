@@ -100,8 +100,13 @@ input:focus {
 }
 
 
-.knight {
+.knight,
+.ennemy {
     position: absolute;
-
 }
 
+.life{
+    width: 100px;
+    background-color: white;
+    height: 30px;
+}

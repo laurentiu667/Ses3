@@ -1,14 +1,21 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
 import Knight from './sprite/Knight.js';
+import Ennemy from './sprite/Ennemy.js';
 
 export let leftArrowOn = false;
 export let rightArrowOn = false;
-export let cKeyOn = false
-export let vKeyon = false
-export let downArrowOn = false
+export let cKeyOn = false;
+export let vKeyon = false;
+export let qKeyon = false;
+export let eKeyon = false;
+export let downArrowOn = false;
+export let upArrowOn = false;
+
 let clicked = false;
 let spriteList = [];
 
+export let aKeyOn = false;
+export let dKeyOn = false;
 
 let howToplay_Button = document.querySelector(".howToplay-Button")
 let show_help = document.querySelector(".container-key")
@@ -22,6 +29,7 @@ window.addEventListener("load", () => {
     chatMessageLoop();
 
     spriteList.push(new Knight());
+    spriteList.push(new Ennemy());
     tick();
 
     howToplay_Button.addEventListener("click", () => {
@@ -35,6 +43,7 @@ window.addEventListener("load", () => {
             show_help.style.height = "0";
         }
     });
+    
     
 })
 
@@ -63,6 +72,14 @@ document.addEventListener("keydown", e => {
         cKeyOn = true;
     } else if (e.key === "v" || e.key === "V") {
         vKeyon = true;
+    } else if (e.key === "a" || e.key === "A") {
+        aKeyOn = true;
+    } else if (e.key === "d" || e.key === "D") {
+        dKeyOn = true;
+    } else if (e.key === "q" || e.key === "Q") {
+        qKeyon = true;
+    } else if (e.key === "e" || e.key === "E") {
+        eKeyon = true;
     }
 });
 
@@ -77,6 +94,14 @@ document.addEventListener("keyup", e => {
         cKeyOn = false;
     } else if (e.key === "v" || e.key === "V") {
         vKeyon = false;
+    } else if (e.key === "a" || e.key === "A") {
+        aKeyOn = false;
+    } else if (e.key === "d" || e.key === "D") {
+        dKeyOn = false;
+    } else if (e.key === "q" || e.key === "Q") {
+        qKeyon = false;
+    } else if (e.key === "e" || e.key === "E") {
+        eKeyon = false;
     }
 });
 

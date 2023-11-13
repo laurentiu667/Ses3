@@ -7,15 +7,20 @@ export default class Knight {
         let colCount = 10;
 		let colCountSlide = 4;
 		let colCountCrouch = 3;
+        let colCountJump = 3;
         let rowCount = 2;
+        let rowCountJUmp = 2;
         let refreshDelay = 80;
-		let refreshDelaySlide = 500;
+		let refreshDelaySlide = 200;
 		let refreshDelayCrouch = 100;
         let loopColumns = true;
         let scale = 4.0;
 		this.speedX = 5;
-
+        this.speedY = 5;
+        this.health = 100;
 		this.sideOfCharacterLeft = false;
+
+        
 
         this.node = document.createElement("div");
         document.body.append(this.node);
@@ -68,6 +73,15 @@ export default class Knight {
             scale,
             this.node
         );
+        this.jumpImage = new TiledImage(
+            "../knight/_Jump.png",
+            colCountJump,
+            rowCountJUmp,
+            refreshDelaySlide,
+            loopColumns,
+            scale,
+            this.node
+        );
 		this.idleImage.changeRow(1);
 		this.idleImage.changeMinMaxInterval(0, 10);
 
@@ -82,12 +96,14 @@ export default class Knight {
 
 		this.slideALLImage.changeRow(1);
 		this.slideALLImage.changeMinMaxInterval(0, 4);
+        this.jumpImage.changeRow(1);
+        this.jumpImage.changeMinMaxInterval(0, 3);
 
         this.currentImage = this.idleImage; 
 
-        this.x = 80;
+        this.x = 100;
         this.y = 967;
-    }
+    }   
 
     tick() {
       
@@ -112,17 +128,17 @@ export default class Knight {
 			this.currentImage = this.slideALLImage;
 			if (this.sideOfCharacterLeft) {
 				setTimeout(() => {
-					for (let i = 0; i < 10; i++) {
+					for (let i = 0; i < 5; i++) {
 						this.x -= i;
 					}
-				}, 100);
+				}, 1 );
 				this.node.style.transform = 'scaleX(-1)';
 			} else{
 				setTimeout(() => {
-					for (let i = 0; i < 10; i++) {
+					for (let i = 0; i < 5; i++) {
 						this.x += i;
 					}
-				}, 100);
+				}, 1 );
 				this.node.style.transform = 'scaleX(1)';
 				this.sideOfCharacterLeft = false;
 			}
