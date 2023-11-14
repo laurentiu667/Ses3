@@ -1,6 +1,7 @@
 import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
 import Knight from './sprite/Knight.js';
 import Ennemy from './sprite/Ennemy.js';
+import Bat from './sprite/Bat.js';
 
 export let leftArrowOn = false;
 export let rightArrowOn = false;
@@ -11,6 +12,7 @@ export let eKeyon = false;
 export let downArrowOn = false;
 export let upArrowOn = false;
 
+
 let clicked = false;
 let spriteList = [];
 
@@ -18,6 +20,7 @@ export let aKeyOn = false;
 export let dKeyOn = false;
 
 let howToplay_Button = document.querySelector(".howToplay-Button")
+let startGame_display = document.querySelector(".star-the-game")
 let show_help = document.querySelector(".container-key")
 
 window.addEventListener("load", () => {
@@ -28,12 +31,21 @@ window.addEventListener("load", () => {
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
 
-    spriteList.push(new Knight());
-    spriteList.push(new Ennemy());
+    startGame_display.addEventListener("click", startGameHandler);
+
+    function startGameHandler() {
+        spriteList.push(new Knight());
+        spriteList.push(new Ennemy());
+        for (let i = 0; i < 10; i++) {
+            spriteList.push(new Bat());
+        }
+        startGame_display.removeEventListener("click", startGameHandler);
+    }
+        
     tick();
 
     howToplay_Button.addEventListener("click", () => {
-        clicked = !clicked; // Toggle the value of 'clicked' variable
+        clicked = !clicked; 
     
         if (clicked) {
             show_help.style.opacity = "1";
@@ -43,8 +55,7 @@ window.addEventListener("load", () => {
             show_help.style.height = "0";
         }
     });
-    
-    
+
 })
 
 

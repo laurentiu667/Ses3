@@ -1,8 +1,11 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import { aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat';
-
+import { aKeyOn, dKeyOn, qKeyon, eKeyon, startGame } from '../page-chat';
 export default class Ennemy {
     constructor() {
+        if (window.innerWidth < 600) {
+            
+            return;
+        }
         let colCount = 2.1;
         let rowCount = 4;
         let colCountAttack = 8;
@@ -75,6 +78,10 @@ export default class Ennemy {
     }
 
     tick() {
+        
+        if (window.innerWidth < 600) {
+            return false;
+        }
 
         if (aKeyOn) {
             this.currentImage = this.runImage;

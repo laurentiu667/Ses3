@@ -1,9 +1,15 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import { leftArrowOn, rightArrowOn, cKeyOn, vKeyon, downArrowOn } from '../page-chat.js';
+import { leftArrowOn, rightArrowOn, cKeyOn, vKeyon, downArrowOn, startGame } from '../page-chat.js';
 
 
 export default class Knight {
     constructor() {
+        
+        if (window.innerWidth < 600) {
+           
+            return;
+        }
+
         let colCount = 10;
 		let colCountSlide = 4;
 		let colCountCrouch = 3;
@@ -19,8 +25,6 @@ export default class Knight {
         this.speedY = 5;
         this.health = 100;
 		this.sideOfCharacterLeft = false;
-
-        
 
         this.node = document.createElement("div");
         document.body.append(this.node);
@@ -106,6 +110,10 @@ export default class Knight {
     }   
 
     tick() {
+        if (startGame || window.innerWidth < 600) {
+
+            return false;
+        }
       
         if (rightArrowOn) {
             this.currentImage = this.runImage;
