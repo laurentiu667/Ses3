@@ -1,7 +1,7 @@
 package items;
 
 // Tous les items du jeu héritent de cette classe
-public class Item {
+public abstract class Item {
     // Champs
     private String nom;
 
