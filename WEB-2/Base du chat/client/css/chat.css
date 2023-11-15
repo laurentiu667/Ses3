@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+:root {
+    --background-color: rgb(0, 0, 0);
+    --chat-background-color: rgb(255, 255, 255);
+    --textarea-background-color:  rgb(172, 172, 172);
+    --button-background-color: rgb(0, 255, 136);
+    --button-hover-color: rgb(146, 255, 204);
+    --sign-out-button-color: red;
+    --sign-out-button-hover-color: rgb(245, 65, 65);
+    --help-background-color: rgba(0, 0, 0, 0.548);
+    --star-the-game-color: rgb(197, 174, 40);
+    --membre-connecte-color: rgb(122, 255, 122);
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,11 +22,10 @@
 
 body {
     width: 100vw;
-    min-width: 200px;
+    min-width: 350px;
     height: 100vh;
     overflow: hidden;
     display: flex;
-    margin-top: 30px;
     justify-content: center;
     background-repeat: repeat-x;
     background-size: cover;
@@ -21,36 +33,70 @@ body {
     background-image: url(../../background/Background.png);
 }
 
-.container{
+.container {
     width: 800px;
     gap: 5px;
-    height: 500px;
+    max-height: 100%;
+    height: 560px;
     display: flex;
+    margin-top: 40px;
     flex-direction: column;
-    background-color: rgb(0, 0, 0);
-    padding: 1em;
+    background-color: var(--background-color);
+    border-radius: 2px;
+    padding: 5px;
 }
-#chat-container{
-    overflow-y: scroll;
+
+
+.container > *,
+div,
+button,
+textarea {
+    border-radius: 2px;
+}
+
+#chat-container {
+    overflow-y: hidden;
     width: 100%;
     height: 400px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--chat-background-color);
     display: flex;
     flex-direction: column;
-
 }
-.msg{
-  
+.chat-titre{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    width: 100%;
+    height: 30px;
+    color: var(--background-color);
+    background-color: var(--textarea-background-color);
+    border-bottom: 1px solid var(--background-color);
+}
+.chat-titre h1{
+    font-size: 20px;
+}
+.fermer_chat{
+    border: none;
+    background-color: var(--textarea-background-color);
+    cursor: pointer;
+    border-radius: 0 0 0 0;
+}
+.fermer_chat:hover{
+    background-color: white;
+}
+.msg {
     color: black;
 }
-.message-submit{
+
+.message-submit {
     display: flex;
     align-items: center;
     width: 100%;
     height: 50px;
     gap: 5px;   
 }
-textarea{
+
+textarea {
     width: 80%;
     height: 50px;
     border: none;
@@ -60,37 +106,41 @@ textarea{
     resize: none;
     padding: 5px;
     overflow: hidden;
-
 }
-.Submit{
+
+.Submit {
     width: 20%;
     height: 50px;
     border: none;
-    background-color: rgb(0, 255, 136);
+    background-color: var(--button-background-color);
     cursor: pointer;
     font-size: 20px;
 }
-.Submit:hover{
-    background-color: rgb(146, 255, 204);
+
+.Submit:hover {
+    background-color: var(--button-hover-color);
 }
-#sign-out-btn{
+
+#sign-out-btn {
     width: 100%;
     height: 50px;
-    background-color: red;
+    background-color: var(--sign-out-button-color);
     display: grid;
     place-items: center;
     text-decoration: none;
     color: white;
     font-size: 20px;
 }
-#sign-out-btn:hover{
-    background-color: rgb(245, 65, 65);
+
+#sign-out-btn:hover {
+    background-color: var(--sign-out-button-hover-color);
 }
+
 .knight {
     position: absolute;
-
 }
-.container-help{
+
+.container-help {
     width: 300px;
     height: 70px;
     position: absolute;
@@ -99,11 +149,12 @@ textarea{
     color: white;
     display: grid;
     place-items: center;
-    background-color: rgba(0, 0, 0, 0.548);
+    background-color: var(--help-background-color);
     padding: 10px;
     gap: 40px;
 }
-.howToplay-Button{
+
+.howToplay-Button {
     width: 100%;
     height: 50px;
     font-size: 25px;
@@ -114,40 +165,108 @@ textarea{
     background-color: white;
     color: black;
 }
-.container-key{
+
+.container-key {
     opacity: 0;
     transition: opacity 0.5s ease, height 0.5s ease;
 }
-.howToplay-Button:active{
+
+.howToplay-Button:active {
     background-color: black;
     color: white;
 }
-.container-info{
+
+.container-info {
     display: flex;
     gap: 10px;
     text-align: start;
 }
-svg{
+
+svg {
     width: 50px;
 }
-.star-the-game{
+
+.star-the-game {
     color: white;
     width: 100%;
-    height: 100px;
+    height: 50px;
     display: grid;
     place-items: center;
-    background-color: rgb(197, 174, 40);
+    background-color: var(--star-the-game-color);
     font-size: 20px;
     font-weight: bold;
 }
 
+.chat-members {
+    display: flex;
+    gap: 5px;
+}
 
-@media screen and (max-width: 1100px){
-    .container-help{
-       display: none;
-        
+.members {
+    background-color: rgb(255, 255, 255);
+    width: 25%;
+}
+
+.chat-members {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.membre_get_connect {
+    color: white;
+    text-align: start;
+}
+
+.titre-membre {
+    display: grid;
+    place-items: center;
+    color: var(--background-color);
+    height: 30px;
+    border-radius: 0 0 0 0;
+    border-bottom: 1px solid black;
+    background-color: var(--textarea-background-color);
+}
+
+.membre-deconnecte {
+    color: red;
+}
+
+.membre-connecte {
+    color: var(--membre-connecte-color);
+}
+
+#membres_totaux {
+    font-size: 20px
+}
+
+.ouvrir-chat{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+@media screen and (max-width: 769px) {
+    #membres_totaux {
+        font-size: 10px
     }
-    .star-the-game{
+    .titre-membre{
+        font-size: 15px;
+    }
+    .Submit{
+        font-size: 15px;
+    }
+    #chat-container{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .container-help {
+        display: none;
+    }
+
+    .star-the-game {
         display: none;
     }
 }

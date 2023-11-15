@@ -17,6 +17,7 @@ export let sKeyon = false;
 let clicked = false;
 let spriteList = [];
 let membre_totaux = [];
+let membresConnectes = [];  // Ajout de la liste des membres connectés
 
 let howToplay_Button = document.querySelector(".howToplay-Button");
 let startGame_display = document.querySelector(".star-the-game");
@@ -29,7 +30,7 @@ window.addEventListener("load", () => {
     document.querySelector("#sign-out-btn").onclick = signout;
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
-
+   
     startGame_display.addEventListener("click", startGameHandler);
 
     function startGameHandler() {
@@ -144,7 +145,6 @@ const loadMembresTotaux = () => {
     }
 };
 
-
 const saveMembresTotaux = () => {
     localStorage.setItem('membres_totaux', JSON.stringify(membre_totaux));
 };
@@ -152,31 +152,22 @@ const saveMembresTotaux = () => {
 const memberListUpdate = (members) => {
     console.log("Membre en ligne " + members);
 
-  
     loadMembresTotaux();
 
+    membresConnectes = members;  // Mettre à jour la liste des membres connectés
+
     for (let i = 0; i < members.length; i++) {
-       
         if (!membre_totaux.includes(members[i])) {
-            
             membre_totaux.push(members[i]);
         }
     }
 
-    
     saveMembresTotaux();
 
     console.log("Membre identifier:", membre_totaux);
-    return membre_totaux
-};
 
-// Fonction pour vérifier si un utilisateur est connecté
-const isUserConnected = (username) => {
-    // Charger les membres totaux depuis le localStorage
-    loadMembresTotaux();
-
-    // Vérifier si l'utilisateur recherché est dans la liste
-    return membre_totaux.includes(username);
+    // Appeler checkLocalUsers avec la liste des membres connectés
+    checkLocalUsers(members);
 };
 
 // Fonction pour vérifier et faire quelque chose pour chaque utilisateur stocké localement
@@ -199,6 +190,40 @@ const checkLocalUsers = (connectedMembers) => {
             // Faire quelque chose ici avec l'utilisateur non connecté
         }
     }
+    updateMembresTotauxHTML();
+};
+
+const updateMembresTotauxHTML = () => {
+    // Sélectionner l'élément HTML avec la classe "membres_totaux"
+    let parentNode = document.querySelector("#membres_totaux");
+
+    // Effacer le contenu actuel de l'élément
+    parentNode.innerHTML = "";
+
+    // Boucle pour chaque membre
+    for (let i = 0; i < membre_totaux.length; i++) {
+        // Créer un élément div pour chaque membre
+        let memberElement = document.createElement("div");
+
+        // Vérifier si le membre est connecté
+        const isOnline = membresConnectes.includes(membre_totaux[i]);
+
+        // Ajouter une classe pour indiquer la connectivité
+        if (isOnline) {
+            memberElement.classList.add("membre-connecte");
+        }
+        else{
+            memberElement.classList.add("membre-deconnecte");
+        }
+
+        memberElement.textContent = membre_totaux[i];
+
+        // Ajouter l'élément à l'élément parent
+        parentNode.appendChild(memberElement);
+    }
+
+    // Faire défiler vers le bas
+    parentNode.scrollTop = parentNode.scrollHeight;
 };
 
 // Exemple d'utilisation
