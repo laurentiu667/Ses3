@@ -1,4 +1,4 @@
-import TiledImage from '@ftheriault/animatedsprite';
+/*import TiledImage from '@ftheriault/animatedsprite';
 import { startGame } from '../page-chat';
 export default class Bat {
     constructor() {
@@ -8,8 +8,8 @@ export default class Bat {
             return;
         }
 
-        let colCount = 6;
-        let rowCount = 3.1;
+        let colCount = 8;
+        let rowCount = 1;
         let refreshDelay = 50;
         let loopColumns = true;
         let scale = 3.5;
@@ -25,7 +25,7 @@ export default class Bat {
 		this.currentImage = this.idleImage;
    
         this.idleImage = new TiledImage(
-            "../bat/idle.png",
+            "../bat/Attack1.png",
             colCount,
             rowCount,
             refreshDelay,
@@ -34,8 +34,8 @@ export default class Bat {
             this.node
         );
         
-		this.idleImage.changeRow(1);
-        this.idleImage.changeMinMaxInterval(0, 6);
+		this.idleImage.changeRow(0);
+        this.idleImage.changeMinMaxInterval(0, 8);
         this.currentImage = this.idleImage; 
 
         this.node.style.transform = 'scaleX(-1)';
@@ -82,3 +82,4 @@ export default class Bat {
         return true;
     }
 }
+*/
