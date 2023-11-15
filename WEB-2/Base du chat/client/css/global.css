@@ -12,6 +12,14 @@
     list-style: none;
 }
 
+:root{
+    --button-color: #7289da;
+    --input-area-color: #202225;
+    --background-container: #2f3136;
+    --text-color: #36393f;
+    --text-color2: #72767d;
+}
+
 body {
     width: 100vw;
     min-width: 200px;
@@ -34,12 +42,12 @@ a{
 .title-game{
     color: white;
     font-size: 60px;
-    font-family: myFont, "Poppins   ";
+    font-family: myFont, "Poppins";
     width: 100%;
     text-align: center;
 }
 .register{
-    background-color: red;
+    background-color: rgb(245, 65, 65);
     width: 100%;
     height: 50px;
     font-size: 20px;
@@ -53,7 +61,7 @@ a{
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: rgba(0, 0, 0, 0.781);
+    background-color: var(--background-container);
     border-radius: 3px;
     margin-top: 50px;
     
@@ -71,6 +79,8 @@ a{
     font-size: 20px;
     width: 100%; 
     max-width: 400px; 
+    background-color: var(--input-area-color);
+    color: var(--text-color);
     border: none;
     padding: 10px;
 }
@@ -85,6 +95,7 @@ input:focus {
     height: 50px;
     border: none;
     font-size: 20px;
+    background-color: var(--button-color);
     cursor: pointer;
 }
 .button-general:hover{
@@ -93,7 +104,7 @@ input:focus {
 }
 .error-div-info{
     height: 50px;
-    background-color: rgb(129, 255, 129);
+    background-color: var(--button-color);
     width: 100%;
     display: grid;
     place-items: center;

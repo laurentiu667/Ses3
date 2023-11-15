@@ -96,7 +96,7 @@ export default class SecondWizard {
         this.node.style.transform = 'scaleX(-1)';
        
         this.x = 1000;
-        this.y = 725;
+        this.y = 690;
 
     }
 
