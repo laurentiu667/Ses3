@@ -20,8 +20,10 @@ let membre_totaux = [];
 let membresConnectes = [];  // Ajout de la liste des membres connectés
 
 let howToplay_Button = document.querySelector(".howToplay-Button");
+let howToplay_Button2 = document.querySelector(".howToplay-Button2");
 let startGame_display = document.querySelector(".star-the-game");
 let show_help = document.querySelector(".container-key");
+let show_help2 = document.querySelector(".container-key2");
 
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -44,13 +46,24 @@ window.addEventListener("load", () => {
 
     howToplay_Button.addEventListener("click", () => {
         clicked = !clicked;
-
+        console.log(3423);
         if (clicked) {
             show_help.style.opacity = "1";
             show_help.style.height = "100%";
         } else {
             show_help.style.opacity = "0";
             show_help.style.height = "0";
+        }
+    });
+    howToplay_Button2.addEventListener("click", () => {
+        clicked = !clicked;
+        console.log(3423);
+        if (clicked) {
+            show_help2.style.opacity = "1";
+            show_help2.style.height = "100%";
+        } else {
+            show_help2.style.opacity = "0";
+            show_help2.style.height = "0";
         }
     });
 });
@@ -154,7 +167,7 @@ const memberListUpdate = (members) => {
 
     loadMembresTotaux();
 
-    membresConnectes = members;  // Mettre à jour la liste des membres connectés
+    membresConnectes = members; 
 
     for (let i = 0; i < members.length; i++) {
         if (!membre_totaux.includes(members[i])) {
@@ -166,49 +179,33 @@ const memberListUpdate = (members) => {
 
     console.log("Membre identifier:", membre_totaux);
 
-    // Appeler checkLocalUsers avec la liste des membres connectés
-    checkLocalUsers(members);
+    
+    checkLocalUsers();
 };
 
-// Fonction pour vérifier et faire quelque chose pour chaque utilisateur stocké localement
-const checkLocalUsers = (connectedMembers) => {
-    // Charger les membres totaux depuis le localStorage
+const checkLocalUsers = () => {
+   
     loadMembresTotaux();
 
-    // Boucle pour chaque utilisateur stocké localement
-    for (let i = 0; i < membre_totaux.length; i++) {
-        const currentMember = membre_totaux[i];
-
-        // Vérifier si l'utilisateur stocké localement est actuellement connecté
-        const isOnline = connectedMembers.includes(currentMember);
-
-        if (isOnline) {
-            console.log(currentMember + " est actuellement connecté !");
-            // Faire quelque chose ici avec l'utilisateur connecté
-        } else {
-            console.log(currentMember + " n'est pas actuellement connecté.");
-            // Faire quelque chose ici avec l'utilisateur non connecté
-        }
-    }
     updateMembresTotauxHTML();
 };
 
 const updateMembresTotauxHTML = () => {
-    // Sélectionner l'élément HTML avec la classe "membres_totaux"
+    
     let parentNode = document.querySelector("#membres_totaux");
 
-    // Effacer le contenu actuel de l'élément
+    
     parentNode.innerHTML = "";
 
-    // Boucle pour chaque membre
+   
     for (let i = 0; i < membre_totaux.length; i++) {
-        // Créer un élément div pour chaque membre
+        
         let memberElement = document.createElement("div");
 
-        // Vérifier si le membre est connecté
+        
         const isOnline = membresConnectes.includes(membre_totaux[i]);
 
-        // Ajouter une classe pour indiquer la connectivité
+        
         if (isOnline) {
             memberElement.classList.add("membre-connecte");
         }
@@ -218,13 +215,11 @@ const updateMembresTotauxHTML = () => {
 
         memberElement.textContent = membre_totaux[i];
 
-        // Ajouter l'élément à l'élément parent
         parentNode.appendChild(memberElement);
     }
 
-    // Faire défiler vers le bas
-    parentNode.scrollTop = parentNode.scrollHeight;
+ 
 };
 
-// Exemple d'utilisation
-checkLocalUsers(membre_totaux);
+
+checkLocalUsers();

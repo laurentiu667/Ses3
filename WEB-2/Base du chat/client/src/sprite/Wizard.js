@@ -17,7 +17,7 @@ export default class Wizard {
         let loopColumns = true;
         let scale = 3.0;
         this.death = false;
-		this.speedX = 5;
+		this.speedX = 8;
         this.speedY = 5;
         this.health = 100;
 		this.sideOfCharacterLeft = false;

@@ -13,7 +13,7 @@ export default class SecondWizard {
         let loopColumns = true;
         let scale = 4;
 
-		this.speedX = 5;
+		this.speedX = 8;
         this.health = 100;
 
 		this.sideOfCharacterLeft = false;
@@ -95,7 +95,7 @@ export default class SecondWizard {
 
         this.node.style.transform = 'scaleX(-1)';
        
-        this.x = 1000;
+        this.x = 1800;
         this.y = 690;
 
     }
