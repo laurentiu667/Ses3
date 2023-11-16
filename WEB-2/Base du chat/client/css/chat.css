@@ -234,8 +234,6 @@ svg {
 .members {
     width: 25%;
     padding: 5px;
-    overflow-y: scroll;
-    overflow-x: hidden;
     
 }
 
@@ -272,6 +270,8 @@ svg {
 #membres_totaux {
     font-size: 20px;
     padding: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .ouvrir-chat{

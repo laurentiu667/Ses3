@@ -98,7 +98,7 @@ export default class Wizard {
       
      
 
-        this.x = 150;
+        this.x = window.innerWidth - window.innerWidth + 150;
         this.y = 785;
     }   
 
