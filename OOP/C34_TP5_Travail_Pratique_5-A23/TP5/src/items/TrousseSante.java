@@ -23,11 +23,12 @@ public class TrousseSante extends Item {
     // retourne les PV fournis par la trousse et réduit son nombre d'utilisation de 1
 
     public int utiliser(){
-        if (this.nbreUtilisationsRestantes  0){
-            this.nombrePV--;
+        if (this.nbreUtilisationsRestantes > 0){
+            this.nbreUtilisationsRestantes--;
             return this.nombrePV;
+        } else{
+            return 0;
         }
-        return 0;
     }
 
 

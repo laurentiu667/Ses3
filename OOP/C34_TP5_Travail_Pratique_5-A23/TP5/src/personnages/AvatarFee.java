@@ -2,7 +2,15 @@ package personnages;
 
 import items.*;     // Pour Capacite
 
-public class AvatarFee {
+public class AvatarFee extends PeronnageAvatar {
+    public AvatarFee(String nom, int sante) {
+        super(nom, sante);
+    }
+
+    @Override
+    public int attaquer(Personnage Personnage) {
+        return 0;
+    }
 
     // Constructeur
 

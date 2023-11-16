@@ -1,6 +1,21 @@
 package personnages;
 
-public class PeronnageAvatar {
+public class PeronnageAvatar extends Personnage implements Attaquant {
+
+    public PeronnageAvatar(String nom, int sante) {
+        super(nom, sante);
+    }
+
+
+    @Override
+    public int attaquer(Personnage Personnage) {
+        return Personnage.getArme().getDommages() - Personnage.getArmure().getDefense();
+    }
+
+    @Override
+    public void recevoirDommages(int dommages) {
+
+    }
 
     // Constructeur
     // L'Arme, Armure et Capacite sont laisées par défaut ici et définies ailleurs dans la classe de famille d'avatar

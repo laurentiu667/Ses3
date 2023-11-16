@@ -2,9 +2,17 @@ package personnages;
 
 import items.*;     // Pour Arme et Armure
 
-public class AvatarChevalier {
+public class AvatarChevalier extends PeronnageAvatar{
 
-    // Constructeur
+    public AvatarChevalier(String nom) {
+        super(nom, 500);
+    }
 
+   
+
+    @Override
+    public int attaquer(Personnage Personnage) {
+        return 0;
+    }
 
 }

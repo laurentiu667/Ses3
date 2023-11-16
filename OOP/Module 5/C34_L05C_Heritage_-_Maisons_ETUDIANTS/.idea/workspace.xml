@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae621561-d3b8-4193-9006-2fc270b1a33a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Chalet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/MaisonMobile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/test/testprogram.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C34_L05E_Interfaces_ETUDIANTS/ProjetInterface/src/projetinterface/Automobile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../C34_L05E_Interfaces_ETUDIANTS/ProjetInterface/src/projetinterface/Motoneige.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Maison.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetHeritageMaison/src/projetheritagemaison/Maison.java" afterDir="false" />
-    </list>
+    <list default="true" id="ae621561-d3b8-4193-9006-2fc270b1a33a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,9 +33,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ouaiouaihashish/Desktop/Ses3/OOP/Module 5/C34_L05C_Heritage_-_Maisons_ETUDIANTS"
+    "last_opened_file_path": "C:/Users/ouaiouaihashish/Desktop/Ses3/OOP/C34_TP5_Travail_Pratique_5-A23"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="C34_L05C_Heritage_-_Maisons_ETUDIANTS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="C34_L05C_Heritage_-_Maisons_ETUDIANTS" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

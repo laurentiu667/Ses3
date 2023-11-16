@@ -1,7 +1,7 @@
 package personnages;
 import items.*;         // Pour Arme, Armure et Capacite
 
-public class Personnage{
+public abstract class Personnage{
 
     // Champs
     private String nom;         // Nom du personnage
@@ -14,13 +14,13 @@ public class Personnage{
     public Personnage(String nom, int sante){
         this.nom = nom;
         this.sante = sante;
-        // ******** Décommenter ci-dessous après que les items soient complétés ********
-        //Arme sansArme = new Arme("Sans arme", 0, 0);
-        //this.arme = sansArme;
-        //Armure sansArmure = new Armure("Sans armure", 0, 0);
-        //this.armure = sansArmure;
-        //Capacite sansCapacite = new Capacite("Sans capacite", 0, 0);
-        //this.capacite = sansCapacite;
+
+        Arme sansArme = new Arme("Sans arme", 0, 0);
+        this.arme = sansArme;
+        Armure sansArmure = new Armure("Sans armure", 0, 0);
+        this.armure = sansArmure;
+        Capacite sansCapacite = new Capacite("Sans capacite", 0, 0);
+        this.capacite = sansCapacite;
     }
 
     // Méthodes d'accès (getters)
@@ -40,4 +40,6 @@ public class Personnage{
     public boolean estVivant(){
         return sante > 0;
     }
+
+    public abstract int attaquer(Personnage Personnage);
 }

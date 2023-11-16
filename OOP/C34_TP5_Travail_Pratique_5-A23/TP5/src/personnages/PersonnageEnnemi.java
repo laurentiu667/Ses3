@@ -1,6 +1,23 @@
 package personnages;
 
-public class PersonnageEnnemi {
+public class PersonnageEnnemi extends Personnage implements Attaquant {
+    public PersonnageEnnemi(String nom, int sante) {
+        super(nom, sante);
+    }
+
+
+    @Override
+    public int attaquer(Personnage Personnage) {
+        return 0;
+    }
+
+    @Override
+    public void recevoirDommages(int dommages) {
+        this.sante -= dommages;
+        if (this.sante < 0){
+            this.sante = 0;
+        }
+    }
 
     // Constructeur
     // L'Arme, Armure et Capacite sont laisées par défaut ici et définies ailleurs dans la classe de famille d'ennemi
