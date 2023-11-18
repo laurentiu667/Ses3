@@ -8,14 +8,14 @@ public class PersonnageEnnemi extends Personnage implements Attaquant {
 
     @Override
     public int attaquer(Personnage Personnage) {
-        return 0;
+        return Personnage.getArme().getDommages() - Personnage.getArmure().getDefense();
     }
 
     @Override
     public void recevoirDommages(int dommages) {
-        this.sante -= dommages;
-        if (this.sante < 0){
-            this.sante = 0;
+        int sante = getSante() = getSante() - dommages;
+        if (sante < 0){
+            sante = 0;
         }
     }
 

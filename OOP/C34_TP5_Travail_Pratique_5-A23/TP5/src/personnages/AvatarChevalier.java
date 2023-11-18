@@ -10,9 +10,15 @@ public class AvatarChevalier extends PeronnageAvatar{
 
    
 
+    // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
     @Override
     public int attaquer(Personnage Personnage) {
         return 0;
+    }
+
+    @Override
+    public void recevoirDommages(int dommages){
+
     }
 
 }

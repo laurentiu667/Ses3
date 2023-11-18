@@ -7,12 +7,15 @@ public class EnnemiGolem extends PersonnageEnnemi{
         super(nom, sante);
     }
 
+    // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
     @Override
     public int attaquer(Personnage Personnage) {
         return 0;
     }
 
-    // Constructeur
+    @Override
+    public void recevoirDommages(int dommages){
 
+    }
 
 }
