@@ -9,14 +9,14 @@ public class AvatarChevalier extends PeronnageAvatar{
 
         Arme epee = new Arme("Épée ", 1, 100);
         Armure armure = new Armure("Plastron", 1, 15);
+        setArme(epee);
+        setArmure(armure);
     }
-
-   
 
     // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
     @Override
-    public int attaquer(Personnage Personnage) {
-        return 0;
+    public int attaquer(Personnage personnage) {
+        return getArme().getDommages() - personnage.getArmure().getDefense();
     }
 
     @Override

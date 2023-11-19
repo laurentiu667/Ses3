@@ -1,7 +1,7 @@
 package personnages;
 
 public class Fermier extends PersonnageObservateur{
-    public Fermier(String nom, int sante) {
+    public Fermier(String nom) {
         super(nom, 0);
     }
 

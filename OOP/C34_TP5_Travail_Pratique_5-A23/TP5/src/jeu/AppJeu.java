@@ -1,45 +1,54 @@
 package jeu;
 
-import items.Arme;
-import items.Armure;
-import items.Capacite;
 import items.TrousseSante;
+import jeu.Joueur;
 import personnages.*;
 
 public class AppJeu {
     public static void main(String[] args) {
 
-        // Création des objets
-        Arme arme1 = new Arme("Kalash", 10, 34);
-        arme1.ameliorer();
+        AvatarChevalier avatar1 = new AvatarChevalier("Chevalier1");
 
-        Armure armure1 = new Armure("Gants du combatant", 5, 30);
-        armure1.ameliorer();
+        AvatarFee avatar2 = new AvatarFee("Fee1");
 
-        Capacite inventaire = new Capacite("Coffre", 2, 30);
-        inventaire.ameliorer();
+        Joueur joueur1 = new Joueur("Joueur1", avatar1);
 
-        TrousseSante trousse1 = new TrousseSante("trousse", 30, 5);
-        trousse1.utiliser();
+        EnnemiGolem ennemi1 = new EnnemiGolem("Golem1");
 
-        System.out.println("Nouvelle arme niveau " + arme1.getNiveau());
-        System.out.println("Nouvelle arme dommage " + arme1.getDommages());
-        System.out.println("Nouvelle arme nom " + arme1.getNom());
+        EnnemiSorciere ennemi2 = new EnnemiSorciere("Sorciere1");
 
-        System.out.println("Nouvelle armure niveau  " + armure1.getNiveau());
-        System.out.println("Nouvelle arme defense " + armure1.getDefense());
-        System.out.println("Nouvelle arme nom " + armure1.getNom());
+        Fermier figurant1 = new Fermier("Fermier1");
 
-        System.out.println("Nouvelle inventaire niveau " + inventaire.getNiveau());
-        System.out.println("Nouvelle inventaire dommage " + inventaire.getDommages());
-        System.out.println("Nouvelle inventaire nom " + inventaire.getNom());
+        TrousseSante ts1 = new TrousseSante("TrousseSante1", 400, 3);
 
-        System.out.println("Nouvelle trousse1 PV " + trousse1.getNombrePV());
-        System.out.println("Nouvelle trousse1 nombre d utilisation " + trousse1.getNbreUtilisationsRestantes());
-        System.out.println("Nouvelle trousse1 nom " + trousse1.getNom());
-        // Simulation d'un combat
+        System.out.println("Commencement du combat entre le joueur : " + joueur1.getAlias() + " et l'ennemi : " + ennemi1.getNom());
+
+        while (joueur1.getAvatar().estVivant() && ennemi1.estVivant()){
+            // Avatar du joueur attaque ennemi (retourne des dommages)
+            int dommageRetour = joueur1.getAvatar().attaquer(ennemi1);
+            // Ennemi reçoit les dommages de l’attaque
+            ennemi1.recevoirDommages(dommageRetour);
+            // Affiche points de vie de avatar et ennemi
+            System.out.println("Le nombre de points de vie de " + avatar1.getNom() +  " est de : " + avatar1.getSante() +
+                               "\n Le nombre de points de vie de " + ennemi1.getNom() + " est de : " + ennemi1.getSante());
+            // Si ennemi est vaincu (n’est plus vivant) - Affiche un message du genre Vous êtes vaincu! fin de la partie.
+            if (!ennemi1.estVivant()){
+                System.out.println("Vous avez vaincu " + ennemi1.getNom() + " ! fin de la partie");
+            } else {
+                // Ennemi attaque avatar (retourne des dommages)
+                int dommageRetourEnnemi = ennemi1.attaquer(avatar1);
+                // Avatar reçoit des dommages
+                avatar1.recevoirDommages(dommageRetourEnnemi);
+                // Affiche points de vie de avatar et de ennemi
+                System.out.println("Le nombre de points de vie de " + ennemi1.getNom()  +  " est de : " + ennemi1.getSante() +
+                        "\n Le nombre de points de vie de " + avatar1.getNom() + " est de : " + avatar1.getSante() );
+                // Si avatar est vaincu (n’est plus vivant) - Affiche un message du genre Vous êtes vaincu! fin de la partie.
+                if (!avatar1.estVivant()){
+                    System.out.println("Vous avez vaincu " + avatar1.getNom() + " ! fin de la partie");
+                }
+            }
 
 
-
+        }
     }
 }
