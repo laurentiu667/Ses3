@@ -17,11 +17,6 @@ public class Capacite extends Item implements ItemAmeliorable {
     public int getNiveau() { return niveau; }
     public int getDommages() { return dommages; }
 
-
-
-
-    // Les dommages d'une capacité sont égaux à 0.5 * (niveau)^2 -- arrondi à la valeur entière la plus proche
-
     @Override
     public void ameliorer() {
         this.niveau++;

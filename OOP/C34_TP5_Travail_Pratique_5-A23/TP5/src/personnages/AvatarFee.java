@@ -9,14 +9,6 @@ public class AvatarFee extends PeronnageAvatar {
         setCapacite(echantement);
     }
 
-    @Override
-    public int attaquer(Personnage personnage) {
-        return getArme().getDommages() - personnage.getArmure().getDefense();
-    }
-    @Override
-    public void recevoirDommages(int dommages){
-
-    }
 
 
 }

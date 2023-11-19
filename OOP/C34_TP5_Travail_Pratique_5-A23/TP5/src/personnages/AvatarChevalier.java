@@ -13,15 +13,5 @@ public class AvatarChevalier extends PeronnageAvatar{
         setArmure(armure);
     }
 
-    // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
-    @Override
-    public int attaquer(Personnage personnage) {
-        return getArme().getDommages() - personnage.getArmure().getDefense();
-    }
-
-    @Override
-    public void recevoirDommages(int dommages){
-
-    }
 
 }

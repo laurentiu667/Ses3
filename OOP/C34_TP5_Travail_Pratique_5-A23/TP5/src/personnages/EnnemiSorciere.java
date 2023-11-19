@@ -10,16 +10,6 @@ public class EnnemiSorciere extends PersonnageEnnemi{
 
     }
 
-
-    // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
-    @Override
-    public int attaquer(Personnage personnage) {
-        return getArme().getDommages() - personnage.getArmure().getDefense();
-    }
-
-    @Override
-    public void recevoirDommages(int dommages){
-
-    }
+    
 
 }

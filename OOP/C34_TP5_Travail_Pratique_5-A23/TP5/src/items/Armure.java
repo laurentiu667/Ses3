@@ -11,16 +11,9 @@ public class Armure extends Item implements ItemAmeliorable {
         this.defense = defense;
     }
 
-    // Constructeur
-
-
     // Méthodes d'accès (getters)
     public int getNiveau() { return niveau; }
     public int getDefense() { return defense; }
-
-
-    // Méthode améliorer
-    // Une armure améliore sa défense de 15 par niveau
 
     @Override
     public void ameliorer() {
