@@ -1,16 +1,6 @@
 import tkinter as tk
 import random
 
-#suit la souris
-CurrentPosition = []
-def mousePosition(event):
-    if(len(CurrentPosition)>0):
-        CurrentPosition.pop(1)
-        CurrentPosition.pop(0)
-    CurrentPosition.append(event.x)
-    CurrentPosition.append(event.y)(''
-                                    ''
-                                    '')
 class Tour:
     def __init__(self):
         self.hauteur = 40
