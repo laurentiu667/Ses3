@@ -5,6 +5,11 @@ public class PersonnageObservateur extends Personnage {
         super(nom, sante);
     }
 
+    @Override
+    public int attaquer(Personnage Personnage) {
+        return 0;
+    }
+
 
     public void saluer(){
         System.out.println("Bonjour!");

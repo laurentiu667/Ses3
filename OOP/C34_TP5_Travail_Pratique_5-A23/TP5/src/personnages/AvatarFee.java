@@ -4,11 +4,10 @@ import items.*;     // Pour Capacite
 
 public class AvatarFee extends PeronnageAvatar {
     public AvatarFee(String nom, int sante) {
-        super(nom, sante);
+        super(nom, 200);
+        Capacite echantement = new Capacite("Enchantement", 1, 40);
     }
 
-
-    // C’est dans cette méthode qu’on programmera la mécanique d’une attaque.
     @Override
     public int attaquer(Personnage Personnage) {
         return 0;

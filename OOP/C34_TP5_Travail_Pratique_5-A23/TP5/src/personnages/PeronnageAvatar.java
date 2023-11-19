@@ -14,7 +14,12 @@ public class PeronnageAvatar extends Personnage implements Attaquant {
 
     @Override
     public void recevoirDommages(int dommages) {
-
+        int sante = getSante() - dommages;
+        if (sante < 0) {
+            setSante(0);
+        } else {
+            setSante(sante);
+        }
     }
 
     // Constructeur

@@ -13,9 +13,11 @@ public class PersonnageEnnemi extends Personnage implements Attaquant {
 
     @Override
     public void recevoirDommages(int dommages) {
-        int sante = getSante() = getSante() - dommages;
-        if (sante < 0){
-            sante = 0;
+        int sante = getSante() - dommages;
+        if (sante < 0) {
+            setSante(0);
+        } else {
+            setSante(sante);
         }
     }
 
