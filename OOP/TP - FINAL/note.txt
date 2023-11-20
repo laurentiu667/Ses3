@@ -1,0 +1,10 @@
+ C est les intersections qui ont les pieces et non les pieces qui on des positions
+
+creer un constructeur sans parametre intersections
+deuxieme constructeur qui prends en parametre une piece pour faire une intersections avec une piece
+
+
+piece -> methode d acces methode de mutation
+si un objet d est pas initialiser alors c est nul alors il n y a pas de piece dessu
+
+interface on ne creer pas d objet, toutes les methodes sont vides de code, forcer les sous classes pour implementer ses methodes la

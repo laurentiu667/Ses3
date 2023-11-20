@@ -6,7 +6,7 @@ package xiangqi;
  * @version 3
  */
 
-public abstract class Piece {
+public abstract class  Piece {
 
     /**
      * nom de la pièce selon les conventions
