@@ -3,7 +3,7 @@ import xiangqi.Pion;
 import xiangqi.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class test {
+public class Pion_Test {
     @BeforeAll
     public static void setup(){
         System.out.println("===================");
