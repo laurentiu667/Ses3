@@ -56,7 +56,7 @@ public abstract class  Piece {
      */
     public double norme (Position depart, Position arrivee)
     {
-        return Math.pow((depart.getLigne()-arrivee.getLigne()), 2)+ Math.pow((depart.getColonne() - arrivee.getColonne()),2);
+        return Math.pow((depart.getLigne()-arrivee.getLigne()), 2) + Math.pow((depart.getColonne() - arrivee.getColonne()),2);
     }
 
     /* méthode abstraite à implémenter dans chacune des sous - classes */
