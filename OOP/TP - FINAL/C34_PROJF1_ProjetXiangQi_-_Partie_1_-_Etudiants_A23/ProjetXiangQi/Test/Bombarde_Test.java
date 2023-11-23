@@ -23,69 +23,70 @@ public class Bombarde_Test {
         System.out.println("= Test complété =");
     }
 
+    // Les tests marcheront aussi pour les noirs autant que les rouges
     @Test
     public void deplacementSurPlace(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(9, 0);
         Position arrivee = new Position(9, 0);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementEnAvantUneCase(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(9, 0);
         Position arrivee = new Position(9, 1);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementEnAvantPlusieursCase(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(9, 0);
         Position arrivee = new Position(9, 5);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementEnAvantApresRiviere(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(9, 0);
         Position arrivee = new Position(9, 3);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementEnArriere(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(7, 4);
         Position arrivee = new Position(9, 4);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementGauche(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(7, 4);
         Position arrivee = new Position(7, 1);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementDroite(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(7, 4);
         Position arrivee = new Position(7, 8);
-        assertTrue(pion.estValide(depart, arrivee));
+        assertTrue(bombarde.estValide(depart, arrivee));
     }
     // MOUVEMENT INTERDIT
     @Test
     public void deplacementDiagonal(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(7, 4);
         Position arrivee = new Position(6, 5);
-        assertFalse(pion.estValide(depart, arrivee));
+        assertFalse(bombarde.estValide(depart, arrivee));
     }
     @Test
     public void deplacementDiagonalAutre(){
-        Bombarde pion = new Bombarde("c1", "rouge");
+        Bombarde bombarde = new Bombarde("c1", "rouge");
         Position depart = new Position(7, 4);
         Position arrivee = new Position(8, 3);
-        assertFalse(pion.estValide(depart, arrivee));
+        assertFalse(bombarde.estValide(depart, arrivee));
     }
 
 

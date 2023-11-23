@@ -13,14 +13,13 @@ public class Cavalier extends Piece{
         // COLONNE |||||||||||
         int soustractionColonne = Math.abs(depart.getColonne() - arrivee.getColonne());
 
-        if(norme(depart, arrivee) == 0){
-            return true;
-        }
+        // Si la pièce fait un bas dans l axe de x ou y en s'aidant de Math.abs
         if (getCouleur().equals("rouge") || getCouleur().equals("noir")){
             if ((soustractionColonne == 2 && soustractionLigne == 1) || soustractionColonne == 1 && soustractionLigne == 2){
                 return true;
             }
         }
-        return false;
+        // Si la pièce n'a pas bouger alors false;
+        return norme(depart, arrivee) == 0;
     }
 }

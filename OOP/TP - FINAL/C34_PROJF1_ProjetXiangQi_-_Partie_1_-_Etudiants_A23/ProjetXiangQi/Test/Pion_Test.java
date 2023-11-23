@@ -27,6 +27,13 @@ public class Pion_Test {
 
     // MOUVEMENT PERMIT
     @Test
+    public void deplacementSurPlace(){
+        Pion pion = new Pion("p1", "rouge");
+        Position depart = new Position(9, 4);
+        Position arrivee = new Position(9, 4);
+        assertTrue(pion.estValide(depart, arrivee));
+    }
+    @Test
     public void deplacementLigneEnAvant(){
         Pion pion = new Pion("p1", "rouge");
         Position depart = new Position(9, 4);

@@ -13,8 +13,7 @@ public class Pion extends Piece {
         int soustractionLigne = depart.getLigne() - arrivee.getLigne();
         // COLONNE |||||||||||
         int soustractionColonne = depart.getColonne() - arrivee.getColonne();
-        if (norme(depart, arrivee) == 0)
-            return true;
+
         if (getCouleur().equals("rouge")) {
             // Avant la rivière
             if (depart.getLigne() >= 5) {
@@ -45,7 +44,7 @@ public class Pion extends Piece {
             }
         }
 
-        return false;
+        return norme(depart, arrivee) == 0;
     }
 }
 
