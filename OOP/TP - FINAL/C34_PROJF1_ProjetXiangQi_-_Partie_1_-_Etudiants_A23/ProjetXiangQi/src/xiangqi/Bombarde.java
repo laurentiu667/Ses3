@@ -8,6 +8,17 @@ public class Bombarde extends Piece{
 
     @Override
     public boolean estValide(Position depart, Position arrivee) {
+        // LIGNE -----------
+        int soustractionLigne = depart.getLigne() - arrivee.getLigne();
+        // COLONNE |||||||||||
+        int soustractionColonne = depart.getColonne() - arrivee.getColonne();
+
+        if(norme(depart, arrivee) == 0){
+            return true;
+        }
+        else if ((soustractionColonne == 0 && soustractionLigne != 0) || (soustractionColonne != 0 && soustractionLigne == 0)){
+            return true;
+        }
         return false;
     }
 }
