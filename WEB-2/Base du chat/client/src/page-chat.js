@@ -1,6 +1,7 @@
 import { registerCallbacks, sendMessage, signout, chatMessageLoop } from './chat-api';
 import Wizard from './sprite/Wizard.js';
 import SecondWizard from './sprite/SecondWizard.js';
+import Pepega from './sprite/Pepega.js';
 
 export let leftArrowOn = false;
 export let rightArrowOn = false;
@@ -24,6 +25,7 @@ let howToplay_Button2 = document.querySelector(".howToplay-Button2");
 let startGame_display = document.querySelector(".star-the-game");
 let show_help = document.querySelector(".container-key");
 let show_help2 = document.querySelector(".container-key2");
+let commencer_surprire = document.querySelector(".commencer-surprise")
 
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
@@ -38,15 +40,20 @@ window.addEventListener("load", () => {
     function startGameHandler() {
         spriteList.push(new Wizard());
         spriteList.push(new SecondWizard());
+       
 
         startGame_display.removeEventListener("click", startGameHandler);
     }
+    commencer_surprire.addEventListener("click", () =>{
+        for (let i = 0; i < 30; i++) {
+            spriteList.push(new Pepega())
+        }
+    })
 
     tick();
 
     howToplay_Button.addEventListener("click", () => {
         clicked = !clicked;
-        console.log(3423);
         if (clicked) {
             show_help.style.opacity = "1";
             show_help.style.height = "100%";
@@ -57,7 +64,6 @@ window.addEventListener("load", () => {
     });
     howToplay_Button2.addEventListener("click", () => {
         clicked = !clicked;
-        console.log(3423);
         if (clicked) {
             show_help2.style.opacity = "1";
             show_help2.style.height = "100%";
@@ -132,6 +138,19 @@ document.addEventListener("keyup", (e) => {
         sKeyon = false;
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const newMessage = (fromUser, message, isPrivate) => {
     let node = document.createElement("div");

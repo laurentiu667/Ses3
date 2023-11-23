@@ -275,10 +275,19 @@ svg {
     overflow-x: hidden;
 }
 
-.ouvrir-chat{
+.Pluie-button{
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 999999999999999;
+}
+.pepega{
+    background-image: url(../../frog/pepega.png);
+    background-size: 100% 100%;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 999999;
 }
 
 

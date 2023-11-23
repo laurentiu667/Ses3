@@ -99,7 +99,7 @@ export default class Wizard {
      
 
         this.x = window.innerWidth - window.innerWidth + 150;
-        this.y = 785;
+        this.y = window.innerHeight - 200;
     }   
 
     tick() {
