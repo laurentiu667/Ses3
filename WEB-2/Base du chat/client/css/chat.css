@@ -41,7 +41,6 @@ body {
 }
 
 .container {    
-    z-index: 9999;
     width: 800px;
     height: 500px;
     gap: 5px;
@@ -51,6 +50,7 @@ body {
     background-color: var(--background-container);
     border-radius: 2px;
     padding: 10px;
+    z-index: 1000;
 }
 
 
@@ -67,8 +67,7 @@ textarea {
     border: 1px solid black;
     height: 55px;
 }
-#chat-container,
-.members,
+
 
 
 #message-input{
@@ -76,11 +75,16 @@ textarea {
 }
 
 #chat-container {
-    overflow-y: hidden;
+ 
     width: 100%;
     padding: 5px;
     display: flex;
     flex-direction: column;
+}
+.afficher-message{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
 }
 .chat-titre{
     display: flex;
@@ -88,9 +92,8 @@ textarea {
     align-items: center;
     font-size: 20px;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     border-radius: 2px;
-    color: var(--background-color);
     background-color: var(--text-color2);
 }
 .chat-titre h1{
@@ -106,7 +109,8 @@ textarea {
     background-color: white;
 }
 .msg {
-    color: black;
+    color: white;
+    font-weight: 500;
 }
 
 .message-submit {
@@ -198,6 +202,17 @@ textarea {
     background-color: white;
     color: black;
 }
+.container-help.grand,
+.container-help2.grand {
+   z-index: 100;
+   width: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: var(--background-container)
+}
 .container-key2,
 .container-key {
     opacity: 0;
@@ -279,7 +294,7 @@ svg {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 999999999999999;
+    z-index: 101;
 }
 .pepega{
     background-image: url(../../frog/pepega.png);
@@ -287,7 +302,7 @@ svg {
     width: 70px;
     height: 70px;
     position: absolute;
-    z-index: 999999;
+    z-index: 1;
 }
 
 
@@ -309,6 +324,9 @@ svg {
 
 @media screen and (max-width: 1100px) {
     .container-help {
+        display: none;
+    }
+    .container-help2 {
         display: none;
     }
     .container{

@@ -14,7 +14,6 @@ export let dKeyOn = false;
 export let downArrowOn = false;
 export let upArrowOn = false;
 export let sKeyon = false;
-
 let clicked = false;
 let spriteList = [];
 let membre_totaux = [];
@@ -23,6 +22,8 @@ let membresConnectes = [];  // Ajout de la liste des membres connectés
 let howToplay_Button = document.querySelector(".howToplay-Button");
 let howToplay_Button2 = document.querySelector(".howToplay-Button2");
 let startGame_display = document.querySelector(".star-the-game");
+let container = document.querySelector(".container-help");
+let container2 = document.querySelector(".container-help2");
 let show_help = document.querySelector(".container-key");
 let show_help2 = document.querySelector(".container-key2");
 let commencer_surprire = document.querySelector(".commencer-surprise")
@@ -53,6 +54,8 @@ window.addEventListener("load", () => {
     tick();
 
     howToplay_Button.addEventListener("click", () => {
+
+        container.classList.toggle("grand");
         clicked = !clicked;
         if (clicked) {
             show_help.style.opacity = "1";
@@ -63,6 +66,7 @@ window.addEventListener("load", () => {
         }
     });
     howToplay_Button2.addEventListener("click", () => {
+        container2.classList.toggle("grand");
         clicked = !clicked;
         if (clicked) {
             show_help2.style.opacity = "1";
@@ -162,7 +166,7 @@ const newMessage = (fromUser, message, isPrivate) => {
         node.innerHTML = "<strong>" + fromUser + ":</strong> " + message;
     }
 
-    let parentNode = document.querySelector("#chat-container");
+    let parentNode = document.querySelector(".afficher-message");
     parentNode.append(node);
 
     parentNode.scrollTop = parentNode.scrollHeight;
