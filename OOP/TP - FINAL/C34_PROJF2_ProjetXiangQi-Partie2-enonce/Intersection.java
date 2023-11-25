@@ -1,10 +1,9 @@
 package xiangqi;
 public class Intersection {
-
+    private Piece piece;
     public Intersection(){
         this.piece = null;
     }
-    private Piece piece;
 
     public Piece getPiece() {
         return piece;
