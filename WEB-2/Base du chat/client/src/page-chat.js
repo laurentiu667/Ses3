@@ -26,8 +26,9 @@ let container = document.querySelector(".container-help");
 let container2 = document.querySelector(".container-help2");
 let show_help = document.querySelector(".container-key");
 let show_help2 = document.querySelector(".container-key2");
-let commencer_surprire = document.querySelector(".commencer-surprise")
-
+let commencer_surprise = document.querySelector(".commencer-surprise");
+let afficher_touche = document.querySelector(".button-afficher-touche");
+let container_touche = document.querySelector(".container-touches");
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
@@ -45,37 +46,27 @@ window.addEventListener("load", () => {
 
         startGame_display.removeEventListener("click", startGameHandler);
     }
-    commencer_surprire.addEventListener("click", () =>{
+    commencer_surprise.addEventListener("click", () =>{
         for (let i = 0; i < 30; i++) {
             spriteList.push(new Pepega())
         }
     })
 
+   
+
+    afficher_touche.addEventListener("click", () =>{
+        clicked = !clicked;
+        if(clicked){
+            container_touche.style.display = "flex";
+        }
+        else{
+            container_touche.style.display = "none";
+        }
+        
+    })
+
+    
     tick();
-
-    howToplay_Button.addEventListener("click", () => {
-
-        container.classList.toggle("grand");
-        clicked = !clicked;
-        if (clicked) {
-            show_help.style.opacity = "1";
-            show_help.style.height = "100%";
-        } else {
-            show_help.style.opacity = "0";
-            show_help.style.height = "0";
-        }
-    });
-    howToplay_Button2.addEventListener("click", () => {
-        container2.classList.toggle("grand");
-        clicked = !clicked;
-        if (clicked) {
-            show_help2.style.opacity = "1";
-            show_help2.style.height = "100%";
-        } else {
-            show_help2.style.opacity = "0";
-            show_help2.style.height = "0";
-        }
-    });
 });
 
 const tick = () => {

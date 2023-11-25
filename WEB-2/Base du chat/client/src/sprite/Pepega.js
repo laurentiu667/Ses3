@@ -15,6 +15,7 @@ export default class Pepega {
     }
 
     tick() {
+        console.log(3434);
         this.Y += this.speedY;
         console.log("Y Position:", this.Y); // Add this line
         this.nouvelleDiv.style.top = this.Y + "px";
