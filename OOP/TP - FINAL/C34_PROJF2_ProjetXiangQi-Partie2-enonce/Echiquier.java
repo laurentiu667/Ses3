@@ -81,6 +81,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
     @Override
     public boolean cheminPossible(Position depart, Position arrivee) {
+
         return false;
     }
 
