@@ -14,21 +14,16 @@ export let dKeyOn = false;
 export let downArrowOn = false;
 export let upArrowOn = false;
 export let sKeyon = false;
+
 let clicked = false;
 let spriteList = [];
 let membre_totaux = [];
 let membresConnectes = [];  // Ajout de la liste des membres connectés
-
-let howToplay_Button = document.querySelector(".howToplay-Button");
-let howToplay_Button2 = document.querySelector(".howToplay-Button2");
 let startGame_display = document.querySelector(".star-the-game");
-let container = document.querySelector(".container-help");
-let container2 = document.querySelector(".container-help2");
-let show_help = document.querySelector(".container-key");
-let show_help2 = document.querySelector(".container-key2");
 let commencer_surprise = document.querySelector(".commencer-surprise");
 let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
+
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
@@ -36,23 +31,21 @@ window.addEventListener("load", () => {
     document.querySelector("#sign-out-btn").onclick = signout;
     registerCallbacks(newMessage, memberListUpdate);
     chatMessageLoop();
-   
-    startGame_display.addEventListener("click", startGameHandler);
+    
+    startGame_display.addEventListener("click", start_game);
 
-    function startGameHandler() {
+    function start_game() {
         spriteList.push(new Wizard());
         spriteList.push(new SecondWizard());
        
 
-        startGame_display.removeEventListener("click", startGameHandler);
+        startGame_display.removeEventListener("click", start_game);
     }
     commencer_surprise.addEventListener("click", () =>{
         setInterval(() => {
             spriteList.push(new Pepega())
         }, 300);
     })
-
-   
 
     afficher_touche.addEventListener("click", () =>{
         clicked = !clicked;
@@ -73,12 +66,6 @@ const tick = () => {
     for (let i = 0; i < spriteList.length; i++) {
         const frame = spriteList[i];
         frame.tick();
-        // let alive = spriteList[i].tick();
-
-        // if (!alive) {
-        //     spriteList.splice(i, 1);
-        //     i--;
-        // }
     }
 
     window.requestAnimationFrame(tick);
@@ -136,19 +123,6 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const newMessage = (fromUser, message, isPrivate) => {
     let node = document.createElement("div");
     node.classList.add("msg");
@@ -179,11 +153,13 @@ const saveMembresTotaux = () => {
 };
 
 const memberListUpdate = (members) => {
-    console.log("Membre en ligne " + members);
+    console.log("Membres en ligne: " + members);
 
     loadMembresTotaux();
 
-    membresConnectes = members; 
+    membresConnectes = members;
+
+    console.log("Membres connectés après mise à jour:", membresConnectes);
 
     for (let i = 0; i < members.length; i++) {
         if (!membre_totaux.includes(members[i])) {
@@ -193,11 +169,11 @@ const memberListUpdate = (members) => {
 
     saveMembresTotaux();
 
-    console.log("Membre identifier:", membre_totaux);
+    console.log("Membres identifiés:", membre_totaux);
 
-    
     checkLocalUsers();
 };
+
 
 const checkLocalUsers = () => {
    
@@ -236,6 +212,5 @@ const updateMembresTotauxHTML = () => {
 
  
 };
-
 
 checkLocalUsers();
