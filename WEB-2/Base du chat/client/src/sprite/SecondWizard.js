@@ -19,6 +19,7 @@ export default class SecondWizard {
 		this.sideOfCharacterLeft = false;
 
         this.node = document.createElement("div");
+       
         document.body.append(this.node);
 		this.currentImage = this.idleImage;
    

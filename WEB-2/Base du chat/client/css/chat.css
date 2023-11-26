@@ -1,17 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --background-color: rgb(0, 0, 0);
-    --chat-background-color: rgb(255, 255, 255);
-    --textarea-background-color:  rgb(172, 172, 172);
-    --button-background-color: rgb(0, 255, 136);
-    --button-hover-color: rgb(146, 255, 204);
-    --sign-out-button-color: red;
+    
     --sign-out-button-hover-color: rgb(245, 65, 65);
-    --help-background-color: rgba(0, 0, 0, 0.548);
-    --star-the-game-color: rgb(197, 174, 40);
-    --membre-connecte-color: rgb(122, 255, 122);
-
+    --membre-connecte-color: #7289da;
 
     --button-color: #7289da;
     --input-area-color: #202225;
@@ -30,7 +22,7 @@
 body {
     width: 100vw;
     min-width: 350px;
-    height: 100vh;
+    height: 100dvh; 
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -42,7 +34,7 @@ body {
 
 .container {    
     width: 800px;
-    height: 500px;
+    height: 490px;
     gap: 5px;
     display: flex;
     margin-top: 60px;
@@ -52,7 +44,6 @@ body {
     padding: 10px;
     z-index: 1000;
 }
-
 
 .container > *,
 div,
@@ -75,10 +66,9 @@ textarea {
 }
 
 #chat-container {
- 
-    width: 100%;
     padding: 5px;
     display: flex;
+    width: 75%;
     flex-direction: column;
 }
 .afficher-message{
@@ -109,7 +99,8 @@ textarea {
     background-color: white;
 }
 .msg {
-    color: white;
+    word-wrap: break-word;
+    color: rgb(255, 255, 255);
     font-weight: 500;
 }
 
@@ -162,18 +153,39 @@ textarea {
 }
 
 .button-afficher-touche{
-    top: 0px;
-    left: 500x;
-    position: absolute;
     border: none;
-    top: 10px;
     height: 40px;
     width: 200px;
     color: black;
     background-color: white;
+    
     border-radius: 2px;
     z-index: 3001;
     font-size: 20px;
+}
+.div-other-pts-vie{
+    background-color: red;
+    width: 800px;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    position: absolute;
+    left: 500;
+    top: 10px;
+}
+.div-other-pts-vie > div{
+    border-radius: 0;
+}
+.name-wizzard{
+    background-color: blue;
+}
+.health{
+    background-color: orange;
+}
+.name-wizzard2{
+    background-color: grey;
+}
+.health2{
+    background-color: cyan;
 }
 .container-touches{
     width: 100%;
@@ -266,6 +278,7 @@ svg {
     height: 300px;
 }
 
+
 .membre_get_connect {
     color: white;
     text-align: start;
@@ -310,8 +323,18 @@ svg {
     position: absolute;
     z-index: 1;
 }
+.wizzard{
+    background-color: red;
+}
 
-
+#membres_totaux::-webkit-scrollbar,
+.afficher-message::-webkit-scrollbar{
+     width: 5px;
+}
+#membres_totaux::-webkit-scrollbar-thumb,
+.afficher-message::-webkit-scrollbar-thumb{
+     background-color: var(--input-area-color);
+}
 @media screen and (max-width: 769px) {
     #membres_totaux {
         font-size: 11px;
@@ -329,7 +352,7 @@ svg {
 }
 
 @media screen and (max-width: 1100px) {
-    .button-afficher-touche{
+    .div-other-pts-vie{
         display: none;
     }
     .container{

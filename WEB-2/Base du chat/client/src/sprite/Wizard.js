@@ -23,6 +23,7 @@ export default class Wizard {
 		this.sideOfCharacterLeft = false;
 
         this.node = document.createElement("div");
+        this.node.classList.add("wizzard")
         document.body.append(this.node);
 		this.currentImage = this.idleImage;
    
