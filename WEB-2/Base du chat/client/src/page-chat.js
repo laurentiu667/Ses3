@@ -47,9 +47,9 @@ window.addEventListener("load", () => {
         startGame_display.removeEventListener("click", startGameHandler);
     }
     commencer_surprise.addEventListener("click", () =>{
-        for (let i = 0; i < 30; i++) {
+        setInterval(() => {
             spriteList.push(new Pepega())
-        }
+        }, 300);
     })
 
    
@@ -71,12 +71,14 @@ window.addEventListener("load", () => {
 
 const tick = () => {
     for (let i = 0; i < spriteList.length; i++) {
-        let alive = spriteList[i].tick();
+        const frame = spriteList[i];
+        frame.tick();
+        // let alive = spriteList[i].tick();
 
-        if (!alive) {
-            spriteList.splice(i, 1);
-            i--;
-        }
+        // if (!alive) {
+        //     spriteList.splice(i, 1);
+        //     i--;
+        // }
     }
 
     window.requestAnimationFrame(tick);
