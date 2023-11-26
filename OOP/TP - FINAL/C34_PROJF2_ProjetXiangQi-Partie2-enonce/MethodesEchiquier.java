@@ -1,6 +1,5 @@
 package xiangqi;
 
-import javax.swing.text.Position;
 
 public interface MethodesEchiquier
 {

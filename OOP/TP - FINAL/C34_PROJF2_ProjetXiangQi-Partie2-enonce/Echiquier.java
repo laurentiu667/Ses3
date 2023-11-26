@@ -1,13 +1,12 @@
 package xiangqi;
 
-import javax.swing.text.Position;
 
 public class Echiquier extends Intersection implements MethodesEchiquier {
 
     // 	Un échiquier sera donc un tableau 10x9 ( 10 lignes, 9 colonnes ) d’objets Intersection
     private final int LIGNE = 10;
     private final int COLONNE = 9;
-    private Intersection[][] jeu ;
+    private final Intersection[][] jeu ;
 
     // Créer le tableau
     public Echiquier(){
@@ -85,8 +84,15 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         return false;
     }
 
+
     @Override
-    public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
+    public boolean roisNePouvantPasEtreFaceAFace(Position posPremierRoi, Position posDeuxiemeRoi) {
+
+        if (posPremierRoi.getColonne() == posDeuxiemeRoi.getColonne()){
+            
+        }
+
+
         return false;
     }
 }
