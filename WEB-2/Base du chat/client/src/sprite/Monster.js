@@ -12,9 +12,10 @@ export default class Monster {
         this.speedX = 2.6;
         this.speedY = 1;
         this.health = 100;
-        this.gravity = 0.5;
+        this.gravity = 0.3;
         this.jumpForce = -10;
         this.velocityY = 0;
+        this.canJump = 1000
         this.node = document.createElement("div");
         document.body.append(this.node);
         this.node.style.zIndex = 100;
@@ -120,12 +121,12 @@ export default class Monster {
             this.x -= this.speedX;
             
         } else if(wKeyon) {
-            let canJump = 1000
-            if (canJump == 1000) {
+            
+            if (this.canJump == 1000) {
                 this.jump();
-                canJump--;
+                this.canJump--;
             }
-            canJump == 1000;
+            this.canJump == 1000;
         }else if (eKeyon) {
             this.currentImage = this.AttackImage;
         }else {
