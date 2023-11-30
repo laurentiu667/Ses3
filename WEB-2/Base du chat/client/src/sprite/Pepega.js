@@ -9,22 +9,29 @@ export default class Pepega {
         this.largeurEcran = window.innerWidth;
         this.X = Math.random() * this.largeurEcran;
         this.Y = Math.random() * -50;
-        this.speedY = 6;
+        this.speedY = 1;
         this.nouvelleDiv.style.top = this.Y + "px";
         this.nouvelleDiv.style.left = this.X + "px";
         this.nouvelleDiv.style.transform = `scale(${-1.5})`;
         this.nouvelleDiv.style.opacity = 1;
-        this.opacityRemove = 0.008;
+        this.opacityRemove = 0.001;
+     
     }
 
     tick() {
+     
+        this.X += 2 * Math.cos(this.Y / 50);
+            
         this.Y += this.speedY;
-        this.nouvelleDiv.style.opacity -= this.opacityRemove; // Gradually reduce the opacity
+       
+        this.nouvelleDiv.style.opacity -= this.opacityRemove;
 
-        if (this.nouvelleDiv.style.opacity === "0") {
-            this.nouvelleDiv.remove();  // Remove the entire node from the DOM
+        if (parseFloat(this.nouvelleDiv.style.opacity) <= 0) {
+            this.nouvelleDiv.remove();  
         }
 
         this.nouvelleDiv.style.top = this.Y + "px";
+        this.nouvelleDiv.style.left = this.X + "px";
     }
+   
 }

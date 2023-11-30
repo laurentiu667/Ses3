@@ -44,7 +44,7 @@ window.addEventListener("load", () => {
     commencer_surprise.addEventListener("click", () =>{
         setInterval(() => {
             spriteList.push(new Pepega())
-        }, 300);
+        },3000);
     })
 
     afficher_touche.addEventListener("click", () =>{

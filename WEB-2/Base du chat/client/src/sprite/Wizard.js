@@ -15,9 +15,9 @@ export default class Wizard {
         let refreshDelay = 50;
         let refreshDelayDeath = 120;
         let loopColumns = true;
-        let scale = 3.0;
+        let scale = 1.5;
         this.death = false;
-		this.speedX = 8;
+		this.speedX = 3;
         this.speedY = 5;
         this.health = 100;
 		this.sideOfCharacterLeft = false;
@@ -97,7 +97,6 @@ export default class Wizard {
 
         this.currentImage = this.idleImage; 
       
-     
 
         this.x = window.innerWidth - window.innerWidth + 150;
         this.y = window.innerHeight - 200;
@@ -109,36 +108,28 @@ export default class Wizard {
         }
     
         if (this.death) {
-            // If the death animation is playing, don't switch back to idle
             this.currentImage = this.deathImage;
-        } 
-        else if (aKeyOn) {
+        } else if (qKeyon) {
+            this.currentImage = this.attackPrincipalImage;
+            this.currentImage.setLooped(false);
+        } else if (aKeyOn) {
             this.currentImage = this.runImage;
             this.node.style.transform = 'scaleX(-1)';
             this.x -= this.speedX;
             this.sideOfCharacterLeft = false;
-        } 
-        else if (dKeyOn) {
+        } else if (dKeyOn) {
             this.currentImage = this.runImage;
             this.node.style.transform = 'scaleX(1)';
             this.x += this.speedX;
             this.sideOfCharacterLeft = true;
-        } 
-        else if (qKeyon) {
-            this.currentImage = this.attackPrincipalImage;
-        } 
-        else if (eKeyon) {
+        } else if (eKeyon) {
             this.currentImage = this.attackSecondaireImage;
-        } 
-        else if (false) {
-          
+        } else if (false) {
             this.currentImage = this.deathImage;
-    
-        } 
-        else if (sKeyon) {
+            this.currentImage.setLooped(false);
+        } else if (false) {
             this.currentImage = this.hitImage;
-        } 
-        else {
+        } else {
             this.currentImage = this.idleImage;
         }
     
@@ -146,6 +137,7 @@ export default class Wizard {
     
         return true;
     }
+    
     
       
 	
