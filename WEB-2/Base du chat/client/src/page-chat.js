@@ -1,19 +1,17 @@
 import { registerCallbacks, sendMessage, signout, chatMessageLoop } from './chat-api';
-import Wizard from './sprite/Wizard.js';
-import SecondWizard from './sprite/SecondWizard.js';
 import Pepega from './sprite/Pepega.js';
+import Maison from './sprite/Maison.js';
+import Monster from './sprite/Monster.js';
+import Decoration from './sprite/Decoration.js';
+import Blob from './sprite/Blob.js';
 
-export let leftArrowOn = false;
-export let rightArrowOn = false;
-export let mKeyOn = false;
-export let nKeyon = false;
+
 export let qKeyon = false;
 export let eKeyon = false;
 export let aKeyOn = false;
 export let dKeyOn = false;
-export let downArrowOn = false;
-export let upArrowOn = false;
 export let sKeyon = false;
+export let wKeyon = false;
 
 let clicked = false;
 let spriteList = [];
@@ -35,9 +33,10 @@ window.addEventListener("load", () => {
     startGame_display.addEventListener("click", start_game);
 
     function start_game() {
-        spriteList.push(new Wizard());
-        spriteList.push(new SecondWizard());
-       
+        spriteList.push(new Monster())
+        spriteList.push(new Maison());
+        spriteList.push(new Decoration());
+        spriteList.push(new Blob());
 
         startGame_display.removeEventListener("click", start_game);
     }
@@ -72,18 +71,8 @@ const tick = () => {
 };
 
 document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-        leftArrowOn = true;
-    } else if (e.key === "ArrowRight") {
-        rightArrowOn = true;
-    } else if (e.key === "ArrowDown") {
-        downArrowOn = true;
-    } else if (e.key === "ArrowUp") {
-        upArrowOn = true;
-    } else if (e.key === "n" || e.key === "N") {
-        nKeyon = true;
-    } else if (e.key === "m" || e.key === "M") {
-        mKeyOn = true;
+    if (e.key === "w" || e.key === "W") {
+        wKeyon = true;
     } else if (e.key === "a" || e.key === "A") {
         aKeyOn = true;
     } else if (e.key === "d" || e.key === "D") {
@@ -98,18 +87,8 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
-    if (e.key === "ArrowLeft") {
-        leftArrowOn = false;
-    } else if (e.key === "ArrowRight") {
-        rightArrowOn = false;
-    } else if (e.key === "ArrowDown") {
-        downArrowOn = false;
-    } else if (e.key === "ArrowUp") {
-        upArrowOn = false;
-    } else if (e.key === "n" || e.key === "N") {
-        nKeyon = false;
-    } else if (e.key === "m" || e.key === "M") {
-        mKeyOn = false;
+    if (e.key === "w" || e.key === "W") {
+        wKeyon = false;
     } else if (e.key === "a" || e.key === "A") {
         aKeyOn = false;
     } else if (e.key === "d" || e.key === "D") {

@@ -23,17 +23,18 @@ body {
     width: 100vw;
     min-width: 350px;
     height: 100dvh; 
-    overflow: hidden;
     display: flex;
+    overflow: hidden;
     justify-content: center;
     background-repeat: repeat-x;
-    background-size: cover;
-    background-position: bottom; 
+    background-size: contain;
     background-image: url(../../background/Background.png);
 }
+
 /*Container*/
 
 .container {    
+    position: fixed;
     width: 800px;
     height: 490px;
     gap: 5px;
@@ -43,7 +44,7 @@ body {
     background-color: var(--background-container);
     border-radius: 2px;
     padding: 10px;
-    z-index: 1000;
+    z-index: 99;
 }
 
 .container > *,
@@ -188,10 +189,10 @@ textarea {
 /* Points de vie joueur et touches */
 
 .div-other-pts-vie{
-    background-color: red;
+
     width: 800px;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    place-items: center;
     position: absolute;
     left: 500;
     top: 10px;
@@ -304,6 +305,18 @@ svg {
     z-index: 1;
 }
 
+.decorations{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    z-index: 243;
+}
+
+
 
 @media screen and (max-width: 769px) {
     #chat-container{
@@ -320,6 +333,10 @@ svg {
 }
 
 @media screen and (max-width: 1100px) {
+    body{
+        background-position: center;
+        background-size: cover;
+    }
     .container{
         height: 430px;
     }
