@@ -1,6 +1,6 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import Blob from './Blob';
-import { wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat';
+import Blob from './Blob.js';
+import { wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
 
 export default class Monster {
     constructor() {
@@ -10,14 +10,14 @@ export default class Monster {
         let loopColumns = true;
         let scale = 2.5;
 
-        this.speedX = 2.6;
+        this.speedX = 3;
         this.speedY = 1;
         this.health = 100;
-        this.gravity = 0.3;
-        this.jumpForce = -10;
+        this.gravity = 1;
+        this.jumpForce = -15;
         this.velocityY = 0;
         this.canJump = 1000
-        this.vie = 3;
+        this.vie = 0;
         this.backgroundVie = ["url('../monster/vie4.png')", "url('../monster/vie3.png')", "url('../monster/vie2.png')", "url('../monster/vie1.png')", "url('../monster/vie0.png')"]
         
         this.node = document.createElement("div");
@@ -29,7 +29,7 @@ export default class Monster {
         document.body.appendChild(this.vieDiv);
         
         this.node.style.zIndex = 100;
-        this.blob = new Blob();
+        this.blob = new Blob()
         this.idleImage = new TiledImage(
             "../monster/Owlet_Monster_Idle_4.png",
             colCount[0],
@@ -128,11 +128,14 @@ export default class Monster {
             return false;
         }
     }
+    
+    
 
     tick() {
+        this.collision();
         if ((wKeyon && aKeyOn) || (wKeyon && dKeyOn)) {
             this.jump();
-            const speedX = 3
+            const speedX = 4
             if(aKeyOn){
                 this.x -= speedX;
                 this.node.style.transform = 'scaleX(-1)';
@@ -166,10 +169,10 @@ export default class Monster {
             this.currentImage = this.idleImage;
         }
 
-        if (eKeyon && this.collision()) {
-            this.blob.remove();
-            console.log("32432423423");
-        } 
+        if (eKeyon) {
+            console.log();
+        }
+        
 
         if (this.isJumping) {
             this.velocityY += this.gravity;
@@ -189,7 +192,7 @@ export default class Monster {
         this.vieDiv.style.top = this.y - 170 + 'px';
 
         this.currentImage.tick(this.x, this.y);
-
+     
         this.updateVie();
         return true;
     }

@@ -38,17 +38,12 @@ export default class Blob {
 
         this.largeur = window.innerWidth;
     }
-    remove() {
-        console.log(3248293489023);
+    remove2() {
         this.node.remove();
     }
-    posxy() {
-        // Mettez à jour les dimensions du nœud
-        const rect = this.node.getBoundingClientRect();
-        this.node.width = rect.width;
-        this.node.height = rect.height;
-
-        return rect;
+    posxy() {        
+        const position = this.node.getBoundingClientRect();
+        return position;
     }
     tick() {
         if (this.x >= this.largeur) {
@@ -64,7 +59,7 @@ export default class Blob {
         this.idleImage.tick(this.x, this.y);
         this.posxy();
         // setTimeout(() => {
-        //     this.remove();  
+        //     this.remove2();  
         // }, 1000);
         return true;
     }
