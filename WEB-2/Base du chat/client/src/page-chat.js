@@ -37,6 +37,7 @@ window.addEventListener("load", () => {
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
         spriteList.push(new Blob());
+        
 
         startGame_display.removeEventListener("click", start_game);
     }

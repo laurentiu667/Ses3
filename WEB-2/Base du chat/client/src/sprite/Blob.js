@@ -8,7 +8,11 @@ export default class Blob {
         let loopColumns = true;
         let scale = 2;
 
+        this.speedX = 2;
+        this.scale = -1;
+
         this.node = document.createElement("div");
+        this.node.classList.add("blob")
         document.body.append(this.node);
         this.node.style.zIndex = 100;
 
@@ -29,12 +33,40 @@ export default class Blob {
         this.x = Math.floor(Math.random() * window.innerWidth)
         this.y = window.innerHeight - 100;
         this.node.style.bottom = this.y + "px";
-  
-    }
+        this.node.style.transform = `scaleX(${this.scale})`;
 
+
+        this.largeur = window.innerWidth;
+    }
+    remove() {
+        console.log(3248293489023);
+        this.node.remove();
+    }
+    posxy() {
+        // Mettez à jour les dimensions du nœud
+        const rect = this.node.getBoundingClientRect();
+        this.node.width = rect.width;
+        this.node.height = rect.height;
+
+        return rect;
+    }
     tick() {
-        this.x -= 0.3;
+        if (this.x >= this.largeur) {
+            this.speedX = -Math.abs(this.speedX);
+            this.scale = 1;
+        } else if (this.x <= 0) {
+            this.speedX = Math.abs(this.speedX);
+            this.scale = -1;
+        }
+
+        this.x += this.speedX;
+        this.node.style.transform = `scaleX(${this.scale})`;
         this.idleImage.tick(this.x, this.y);
+        this.posxy();
+        // setTimeout(() => {
+        //     this.remove();  
+        // }, 1000);
         return true;
     }
+    
 }
