@@ -3,13 +3,15 @@ import Blob from './Blob.js';
 import { wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
 
 export default class Monster {
-    constructor() {
+    constructor(existingBlobInstance) {
+        this.blob = existingBlobInstance;
         let colCount = [4, 6, 8];
         let rowCount = 1;
         let refreshDelay = 100;
         let loopColumns = true;
         let scale = 2.5;
 
+        this.hit = false;
         this.speedX = 3;
         this.speedY = 1;
         this.health = 100;
@@ -21,7 +23,7 @@ export default class Monster {
         this.backgroundVie = ["url('../monster/vie4.png')", "url('../monster/vie3.png')", "url('../monster/vie2.png')", "url('../monster/vie1.png')", "url('../monster/vie0.png')"]
         
         this.node = document.createElement("div");
-
+        this.node.classList.add("monster")
         this.vieDiv = document.createElement("div")
         this.vieDiv.classList.add("vie")
 
@@ -29,7 +31,6 @@ export default class Monster {
         document.body.appendChild(this.vieDiv);
         
         this.node.style.zIndex = 100;
-        this.blob = new Blob()
         this.idleImage = new TiledImage(
             "../monster/Owlet_Monster_Idle_4.png",
             colCount[0],
@@ -113,26 +114,17 @@ export default class Monster {
     collision() {
         let rect1 = this.node.getBoundingClientRect();
         let rect2 = this.blob.posxy();
-        console.log("monstre", rect1);
-        console.log("blob", rect2);
     
-        if (
-            rect1.top <= rect2.bottom &&
-            rect1.bottom >= rect2.top &&
-            rect1.left <= rect2.right &&
-            rect1.right >= rect2.left
-        ) {
-            console.log("324978321571384");
-            return true;
+        if (rect1.right >= rect2.left && rect1.left <= rect2.left + rect2.width) {
+            
+           return true;
         } else {
+            
             return false;
         }
     }
     
-    
-
-    tick() {
-        this.collision();
+    deplacement(){
         if ((wKeyon && aKeyOn) || (wKeyon && dKeyOn)) {
             this.jump();
             const speedX = 4
@@ -169,8 +161,13 @@ export default class Monster {
             this.currentImage = this.idleImage;
         }
 
-        if (eKeyon) {
-            console.log();
+        if (this.collision() && eKeyon) {
+            this.hit = true;
+
+            setTimeout(() => {
+                this.blob.remove2();
+            }, 2000);
+
         }
         
 
@@ -186,7 +183,25 @@ export default class Monster {
         } else if (!wKeyon && this.y < this.minY) {
             this.y += this.gravity;
         }
-       
+    }
+
+    sortie(){
+        
+        if(this.node.style.left > window.innerWidth){
+            this.node.left = window.innerWidth - window.innerWidth;
+        } else if (this.node.right < 0){
+            this.node.left = window.innerWidth;
+        }
+    }
+
+    
+
+    tick() {
+        this.collision();
+        
+        this.deplacement();
+
+        this.sortie();
         const vieDivOffsetY = -65; 
         this.vieDiv.style.left = this.x + vieDivOffsetY + 'px';
         this.vieDiv.style.top = this.y - 170 + 'px';
