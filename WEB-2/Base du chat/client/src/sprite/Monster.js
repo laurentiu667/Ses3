@@ -1,5 +1,5 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import Blob from './Blob.js';
+
 import { wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
 
 export default class Monster {
@@ -12,6 +12,7 @@ export default class Monster {
         let scale = 2.5;
 
         this.hit = false;
+        this.collisionperso = false;
         this.speedX = 3;
         this.speedY = 1;
         this.health = 100;
@@ -141,7 +142,14 @@ export default class Monster {
             this.node.style.transform = 'scaleX(1)';
             this.x += this.speedX;
         } else if (aKeyOn) {
-          
+            if (this.collision()) {
+                this.hit = true;
+    
+                setTimeout(() => {
+                    this.blob.remove2();
+                }, 2000);
+    
+            }
             this.currentImage = this.RunImage;
             
             this.node.style.transform = 'scaleX(-1)';
@@ -157,18 +165,15 @@ export default class Monster {
             }
         }else if (eKeyon) {
             this.currentImage = this.AttackImage;
-        }else {
+        } else if (this.collision()){
+            this.collisionperso = true;
+            console.log("sad");
+        }
+        else {
             this.currentImage = this.idleImage;
         }
 
-        if (this.collision() && eKeyon) {
-            this.hit = true;
-
-            setTimeout(() => {
-                this.blob.remove2();
-            }, 2000);
-
-        }
+    
         
 
         if (this.isJumping) {
@@ -198,7 +203,6 @@ export default class Monster {
 
     tick() {
         this.collision();
-        
         this.deplacement();
 
         this.sortie();

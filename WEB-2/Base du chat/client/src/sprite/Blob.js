@@ -1,5 +1,5 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import Monster from './Monster';
+
 export default class Blob {
     constructor(monster) {
         this.monster = monster
@@ -12,7 +12,7 @@ export default class Blob {
         
         this.speedX = 1;
         this.scale = -1;
-        this.idle = true;
+
         this.node = document.createElement("div");
         document.body.append(this.node);
         this.node.classList.add("blob")
@@ -75,8 +75,7 @@ export default class Blob {
         this.node.remove();
     }
     tick() {
-        console.log(this.monster.hit);
-
+        
         if (this.monster.hit){
 
             this.currentImage = this.HitImage;
