@@ -22,7 +22,7 @@
 body {
     width: 100vw;
     min-width: 350px;
-    height: 100dvh; 
+    height: 100vh; 
     display: flex;
     overflow: hidden;
     justify-content: center;
@@ -35,7 +35,7 @@ body {
 
 .container {    
     position: fixed;
-    width: 800px;
+    min-width: 40%;
     height: 490px;
     gap: 5px;
     display: flex;
@@ -342,9 +342,12 @@ svg {
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
+    z-index: 104;
 
 }
-
+.blob{
+    opacity: 1;
+}
 
 
 @media screen and (max-width: 769px) {
@@ -363,8 +366,8 @@ svg {
 
 @media screen and (max-width: 1100px) {
     body{
-        background-position: center;
-        background-size: cover;
+        background-position:bottom;
+        background-size: contain;
     }
     .container{
         height: 430px;
@@ -375,5 +378,20 @@ svg {
     .div-other-pts-vie{
         display: none;
     }
+    .Pluie-button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 101;
+    }
+    .pepega,
+    .container-perso,
+    .decorations,
+    .vie,
+    .blob{
+        display: none;
+    }
+    
+
 
 }

@@ -12,11 +12,12 @@ export let aKeyOn = false;
 export let dKeyOn = false;
 export let sKeyon = false;
 export let wKeyon = false;
+
 const blob = new Blob();
 const monster = new Monster(blob);
 
-blob.monster = monster;
-
+blob.monster = monster
+let lobbyAudioPlayed = false;
 
 let clicked = false;
 let spriteList = [];
@@ -36,22 +37,29 @@ window.addEventListener("load", () => {
     chatMessageLoop();
     
     startGame_display.addEventListener("click", start_game);
-
+    
+    
     function start_game() {
         spriteList.push(monster); 
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
-        spriteList.push(blob); 
+        spriteList.push(blob)
+          
+        
+       
     
         startGame_display.removeEventListener("click", start_game);
     }
     
+
     commencer_surprise.addEventListener("click", () =>{
         setInterval(() => {
             spriteList.push(new Pepega())
         },3000);
     })
-
+    
+    
+  
     afficher_touche.addEventListener("click", () =>{
         clicked = !clicked;
         if(clicked){
@@ -62,7 +70,12 @@ window.addEventListener("load", () => {
         }
         
     })
+    let lobbyAudioPlayed = false;
 
+    function handleAudioEnded() {
+        lobbyAudioPlayed = false;
+        console.log('Audio has ended');
+    }
     
     tick();
 });

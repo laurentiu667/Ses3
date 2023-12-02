@@ -1,10 +1,11 @@
 import TiledImage from '@ftheriault/animatedsprite';
-
-import { wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
+import Blob from './Blob.js';
+import {spriteList, wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
 
 export default class Monster {
     constructor(existingBlobInstance) {
         this.blob = existingBlobInstance;
+        
         let colCount = [4, 6, 8];
         let rowCount = 1;
         let refreshDelay = 100;
@@ -22,7 +23,7 @@ export default class Monster {
         this.canJump = 1000
         this.vie = 0;
         this.backgroundVie = ["url('../monster/vie4.png')", "url('../monster/vie3.png')", "url('../monster/vie2.png')", "url('../monster/vie1.png')", "url('../monster/vie0.png')"]
-        
+        this.isJumping = false;
         this.node = document.createElement("div");
         this.node.classList.add("monster")
         this.vieDiv = document.createElement("div")
@@ -101,9 +102,11 @@ export default class Monster {
 
         this.minY = window.innerHeight - 110;
     }
+
     updateVie() {
         this.vieDiv.style.backgroundImage = this.backgroundVie[this.vie];
     }
+
     jump() {
         if (!this.isJumping) {
             this.isJumping = true;
@@ -115,8 +118,7 @@ export default class Monster {
     collision() {
         let rect1 = this.node.getBoundingClientRect();
         let rect2 = this.blob.posxy();
-    
-        if (rect1.right >= rect2.left && rect1.left <= rect2.left + rect2.width) {
+        if (rect1.right >= rect2.left && rect1.left <= rect2.left + rect2.width ) {
             
            return true;
         } else {
@@ -142,14 +144,6 @@ export default class Monster {
             this.node.style.transform = 'scaleX(1)';
             this.x += this.speedX;
         } else if (aKeyOn) {
-            if (this.collision()) {
-                this.hit = true;
-    
-                setTimeout(() => {
-                    this.blob.remove2();
-                }, 2000);
-    
-            }
             this.currentImage = this.RunImage;
             
             this.node.style.transform = 'scaleX(-1)';
@@ -163,13 +157,16 @@ export default class Monster {
                     this.canJump = 1000;
                 }, 700);
             }
-        }else if (eKeyon) {
+        } else if (eKeyon) {
+            if (this.collision()) {
+                this.hit = true;
+                
+                setTimeout(() => {
+                    this.blob.remove2()
+                }, 2000);
+            }
             this.currentImage = this.AttackImage;
-        } else if (this.collision()){
-            this.collisionperso = true;
-            console.log("sad");
-        }
-        else {
+        } else {
             this.currentImage = this.idleImage;
         }
 
@@ -190,15 +187,26 @@ export default class Monster {
         }
     }
 
-    sortie(){
+    sortie() {
+     
+        if (this.x >= window.innerWidth) {
         
-        if(this.node.style.left > window.innerWidth){
-            this.node.left = window.innerWidth - window.innerWidth;
-        } else if (this.node.right < 0){
-            this.node.left = window.innerWidth;
+           this.x = 30
+        } else if (this.x < 0) {
+            this.x = 1920
         }
     }
+    
 
+    ptsPerdue(){
+       
+        setTimeout(() => {
+            if (this.collision()){
+           
+                this.vie = 1
+            }
+        }, 50);
+    }
     
 
     tick() {
@@ -206,6 +214,7 @@ export default class Monster {
         this.deplacement();
 
         this.sortie();
+        
         const vieDivOffsetY = -65; 
         this.vieDiv.style.left = this.x + vieDivOffsetY + 'px';
         this.vieDiv.style.top = this.y - 170 + 'px';
@@ -213,6 +222,7 @@ export default class Monster {
         this.currentImage.tick(this.x, this.y);
      
         this.updateVie();
+        
         return true;
     }
 }
