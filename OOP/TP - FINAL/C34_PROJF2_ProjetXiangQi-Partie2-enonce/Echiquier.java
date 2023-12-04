@@ -4,9 +4,9 @@ package xiangqi;
 public class Echiquier extends Intersection implements MethodesEchiquier {
 
     // 	Un échiquier sera donc un tableau 10x9 ( 10 lignes, 9 colonnes ) d’objets Intersection
-    private final int LIGNE = 10;
-    private final int COLONNE = 9;
-    private final Intersection[][] jeu ;
+    private final int LIGNE = 9;
+    private final int COLONNE = 8;
+    private final Intersection[][] jeu;
 
     // Créer le tableau
     public Echiquier(){
@@ -19,12 +19,11 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         }
     }
 
-    @Override
     public Intersection getIntersection(int ligne, int colonne) {
         return jeu[ligne][colonne];
     }
 
-    @Override
+
     public void debuter() {
         // Placement des pièces noires
         // Roi
@@ -78,18 +77,37 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
     }
 
-    @Override
+
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection interesectiondDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection interesectiondArriver = getIntersection(arrivee.getLigne(), arrivee.getColonne());
 
-        if(interesectiondDepart.getPiece().getCouleur() == interesectiondArriver.getPiece().getCouleur()){
+        // Vérification si la pièce de départ est de la même couleur
+        if(interesectiondDepart.getPiece().getCouleur().equals(interesectiondArriver.getPiece().getCouleur())){
             return false;
+        }
+
+        if (interesectiondDepart.getPiece().getNom().matches("p")){
+            return verifPion(depart, arrivee, interesectiondDepart, interesectiondArriver);
+        }
+        // Vérification si le déplacement est nul
+        return arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne();
+    }
+
+    private boolean verifPion(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+
+        // Vérifier si le mouvement est valide
+        if (interDepart.getPiece().estValide(depart,arrivee)){
+            // Vérifier si l arrivé n est pas de la même couleur
+            if(interDepart.getPiece().getCouleur().equals(interArrivee.getPiece().getCouleur())){
+                return false;
+            } else if (depart.getColonne() == arrivee.getColonne() && arrivee.getLigne() == depart.getLigne() + 1) {
+                return true;
+            }
         }
 
         return false;
     }
-
 
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position posPremierRoi, Position posDeuxiemeRoi) {
