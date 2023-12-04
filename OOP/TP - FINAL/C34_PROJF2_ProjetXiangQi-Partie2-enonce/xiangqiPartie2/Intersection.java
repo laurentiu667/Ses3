@@ -1,4 +1,6 @@
-package xiangqi;
+package xiangqiPartie2;
+
+import xiangqi.*;
 public class Intersection {
     private Piece piece;
     public Intersection(){

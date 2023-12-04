@@ -1,3 +1,5 @@
+package partie1;
+
 import org.junit.jupiter.api.*;
 import xiangqi.Mandarin;
 import xiangqi.Position;

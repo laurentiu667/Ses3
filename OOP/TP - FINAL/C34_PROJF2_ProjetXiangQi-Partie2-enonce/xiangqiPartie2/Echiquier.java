@@ -1,11 +1,13 @@
-package xiangqi;
+package xiangqiPartie2;
+
+import xiangqi.*;
 
 
 public class Echiquier extends Intersection implements MethodesEchiquier {
 
-    // 	Un échiquier sera donc un tableau 10x9 ( 10 lignes, 9 colonnes ) d’objets Intersection
-    private final int LIGNE = 9;
-    private final int COLONNE = 8;
+    // 	Un échiquier sera donc un tableau 10x9 ( 10 lignes, 9 colonnes ) d’objets jesais.Intersection
+    private final int LIGNE = 10;
+    private final int COLONNE = 9;
     private final Intersection[][] jeu;
 
     // Créer le tableau
@@ -49,7 +51,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         jeu[3][4].setPiece(new Pion("p3", "noir"));
         jeu[3][6].setPiece(new Pion("p4", "noir"));
         jeu[3][8].setPiece(new Pion("p5", "noir"));
-        
+
         // Placement des pièces rouges
         // Roi
         jeu[9][4].setPiece(new Roi("r", "rouge"));
@@ -79,21 +81,19 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
 
     public boolean cheminPossible(Position depart, Position arrivee) {
-        Intersection interesectiondDepart = getIntersection(depart.getLigne(), depart.getColonne());
-        Intersection interesectiondArriver = getIntersection(arrivee.getLigne(), arrivee.getColonne());
+        Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
+        Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
 
-        // Vérification si la pièce de départ est de la même couleur
-        if(interesectiondDepart.getPiece().getCouleur().equals(interesectiondArriver.getPiece().getCouleur())){
+        if (intersectionDepart.getPiece().getCouleur().equals(intersectionArrivee.getPiece().getCouleur())) {
             return false;
         }
 
-        if (interesectiondDepart.getPiece().getNom().matches("p")){
-            return verifPion(depart, arrivee, interesectiondDepart, interesectiondArriver);
+        if (intersectionDepart.getPiece().getNom().matches("p")) {
+            return verifPion(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
-        // Vérification si le déplacement est nul
+
         return arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne();
     }
-
     private boolean verifPion(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
 
         // Vérifier si le mouvement est valide
