@@ -24,7 +24,6 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     }
 
 
-
     public Intersection getIntersection(int ligne, int colonne) {
         return jeu[ligne][colonne];
     }
@@ -98,7 +97,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         // Pion
         if (intersectionDepart.getPiece().getNom().contains("p")) {
             return verifPion(depart, arrivee, intersectionDepart, intersectionArrivee);
-        } else if (intersectionDepart.getPiece().getNom().contains("r")){
+        } else if (intersectionDepart.getPiece().getNom().contains("r")) {
             return verifRoi(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
         return false;
@@ -109,32 +108,47 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
 
     }
-    private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+
+    private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
         return false;
     }
 
     @Override
-    public boolean roisNePouvantPasEtreFaceAFace(Position posPremierRoi, Position posDeuxiemeRoi) {
-//        Intersection intersectionDepart = getIntersection(posPremierRoi.getLigne(), posPremierRoi.getColonne());
-//        Intersection intersectionArrivee = getIntersection(posDeuxiemeRoi.getLigne(), posDeuxiemeRoi.getColonne());
-//
-//        // Roi est dans la meme colonne
-//        if (posPremierRoi.getColonne() == posDeuxiemeRoi.getColonne()) {
-//            // Detection d'une piece entre les deux rois
-//            // Commencer la detection une case apres la position du roi
-//            for (int i = posPremierRoi.getLigne() + 1; i <= posDeuxiemeRoi.getLigne(); i++) {
-//                // Vérifier si la pièce à l'intersection n'est pas null avant d'appeler getNom()
-//                if (jeu[i][posPremierRoi.getColonne()].getPiece() != null && jeu[i][posPremierRoi.getColonne()].getPiece().getNom().equals("p")) {
-//                    return false;
-//                }
-//            }
-//            // Pas de piece détectée
-//            return true;
-//        } else {
-//            // Roi ne sont pas face a face
-//            return true;
-//        }
-//    }
+    public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
+        Position roi1 = null;
+        Position roi2 = null;
+
+        // Recherche des positions des deux rois
+        for (int ligne = 0; ligne < LIGNE; ligne++) {
+            for (int colonne = 3; colonne < COLONNE - 3; colonne++) {
+                Intersection intersection = jeu[ligne][colonne];
+                if (intersection.getPiece() instanceof Roi) {
+                    if (roi1 == null) {
+                        roi1 = intersection.getPositionDebut();
+                    } else {
+                        roi2 = intersection.getPositionDebut();
+                    }
+                }
+            }
+        }
 
 
+        if (roi1.getColonne() != roi2.getColonne()) {
+            return true;
+        }
+
+        int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
+        int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
+
+        int piecesEntreDeuxRois = 0;
+        for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
+            if (jeu[ligne][roi1.getColonne()].getPiece() != null) {
+                piecesEntreDeuxRois++;
+            }
+        }
+
+        return (piecesEntreDeuxRois > 0) && (jeu[arrivee.getLigne()][arrivee.getColonne()].getPiece() == null ||
+                jeu[arrivee.getLigne()][arrivee.getColonne()].getPositionDebut().getColonne() != roi1.getColonne());
+    }
 }
+
