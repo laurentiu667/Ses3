@@ -137,18 +137,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             return true;
         }
 
-        int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
-        int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
 
-        int piecesEntreDeuxRois = 0;
-        for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
-            if (jeu[ligne][roi1.getColonne()].getPiece() != null) {
-                piecesEntreDeuxRois++;
-            }
-        }
-
-        return (piecesEntreDeuxRois > 0) && (jeu[arrivee.getLigne()][arrivee.getColonne()].getPiece() == null ||
-                jeu[arrivee.getLigne()][arrivee.getColonne()].getPositionDebut().getColonne() != roi1.getColonne());
     }
 }
 

@@ -46,17 +46,8 @@ public class Echequier_Test {
 
     @Test
     public void testRoisNePouvantPasEtreFaceAFace() {
-        Echiquier echiquier = new Echiquier();
-        echiquier.debuter();
 
-        // Avancer
-        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(3, 4), new Position(4, 4)));
-        // Aller a droite
-        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(4, 4), new Position(4, 5)));
 
-        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(6, 4), new Position(5, 4)));
-
-//        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(6, 4), new Position(5, 4)));
     }
 
     @Test

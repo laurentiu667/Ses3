@@ -13,7 +13,7 @@ export let dKeyOn = false;
 export let sKeyon = false;
 export let wKeyon = false;
 
-const blob = new Blob();
+const blob = new Blob();  
 const monster = new Monster(blob);
 
 blob.monster = monster
@@ -43,8 +43,10 @@ window.addEventListener("load", () => {
         spriteList.push(monster); 
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
-        spriteList.push(blob)
-          
+       for (let i = 0; i < 10; i++){
+            spriteList.push(blob);
+       }
+
         
        
     
@@ -121,7 +123,7 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-const newMessage = (fromUser, message, isPrivate) => {
+const newMessage= () =>(fromUser, message, isPrivate) => {
     let node = document.createElement("div");
     node.classList.add("msg");
 
