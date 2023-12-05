@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 0.5px;
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: #999 url("https://i.ibb.co/rb2TWXL/bgbtn.png") center / contain;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7;
+}
+button:hover{
+    font-size: 15.5px;
+    border: 2px solid rgb(121, 121, 121);
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}

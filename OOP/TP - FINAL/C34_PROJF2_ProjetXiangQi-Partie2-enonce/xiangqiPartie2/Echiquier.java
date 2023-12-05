@@ -10,16 +10,20 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     private final int COLONNE = 9;
     private final Intersection[][] jeu;
 
-    // Créer le tableau
-    public Echiquier(){
-        // Initialisation dans le constructeur
+
+    public Echiquier() {
+
         this.jeu = new Intersection[LIGNE][COLONNE];
-        for (int i = 0; i < LIGNE; i++){
+        for (int i = 0; i < LIGNE; i++) {
             for (int j = 0; j < COLONNE; j++) {
-                this.jeu[i][j] = new Intersection();
+
+                Position position = new Position(i, j);
+                this.jeu[i][j] = new Intersection(position);
             }
         }
     }
+
+
 
     public Intersection getIntersection(int ligne, int colonne) {
         return jeu[ligne][colonne];
@@ -79,55 +83,58 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
     }
 
-
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
-
-        if (intersectionDepart.getPiece().getCouleur().equals(intersectionArrivee.getPiece().getCouleur())) {
+        // Si le joueur ne bouge la piece
+        if (arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne()) {
+            return true;
+        }
+        // S il y a une piece alors on prends sa couleur et on la compare avec l arrive de la case en prennant en compte s il y a une piece
+        if (intersectionArrivee.getPiece() != null && intersectionDepart.getPiece().getCouleur().equals(intersectionArrivee.getPiece().getCouleur())) {
             return false;
         }
-
-        if (intersectionDepart.getPiece().getNom().matches("p")) {
+        // Si la piece en trouver contient la lettre en question entre le premier et le cinquieme alors on verifie le mouvement dans sa fonction
+        // Pion
+        if (intersectionDepart.getPiece().getNom().contains("p")) {
             return verifPion(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece().getNom().contains("r")){
+            return verifRoi(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
-
-        return arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne();
+        return false;
     }
-    private boolean verifPion(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
 
-        // Vérifier si le mouvement est valide
-        if (interDepart.getPiece().estValide(depart,arrivee)){
-            // Vérifier si l arrivé n est pas de la même couleur
-            if(interDepart.getPiece().getCouleur().equals(interArrivee.getPiece().getCouleur())){
-                return false;
-            } else if (depart.getColonne() == arrivee.getColonne() && arrivee.getLigne() == depart.getLigne() + 1) {
-                return true;
-            }
-        }
+    private boolean verifPion(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
 
+        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+
+    }
+    private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
         return false;
     }
 
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position posPremierRoi, Position posDeuxiemeRoi) {
-        // Roi est dans la meme colonne
-        if (posPremierRoi.getColonne() == posDeuxiemeRoi.getColonne()){
+//        Intersection intersectionDepart = getIntersection(posPremierRoi.getLigne(), posPremierRoi.getColonne());
+//        Intersection intersectionArrivee = getIntersection(posDeuxiemeRoi.getLigne(), posDeuxiemeRoi.getColonne());
+//
+//        // Roi est dans la meme colonne
+//        if (posPremierRoi.getColonne() == posDeuxiemeRoi.getColonne()) {
+//            // Detection d'une piece entre les deux rois
+//            // Commencer la detection une case apres la position du roi
+//            for (int i = posPremierRoi.getLigne() + 1; i <= posDeuxiemeRoi.getLigne(); i++) {
+//                // Vérifier si la pièce à l'intersection n'est pas null avant d'appeler getNom()
+//                if (jeu[i][posPremierRoi.getColonne()].getPiece() != null && jeu[i][posPremierRoi.getColonne()].getPiece().getNom().equals("p")) {
+//                    return false;
+//                }
+//            }
+//            // Pas de piece détectée
+//            return true;
+//        } else {
+//            // Roi ne sont pas face a face
+//            return true;
+//        }
+//    }
 
-            // Detection d une piece entre les deux rois
-            // Commencer la detection une case apres la position du roi
-            for (int i = posPremierRoi.getLigne() + 1; i <= posDeuxiemeRoi.getLigne(); i++){
-                if (jeu[i][posPremierRoi.getColonne()].getPiece() != null){
-                    return false;
-                }
-            }
-            // Pas de piece detecter
-            return true;
-        }
-        else {
-            // Roi ne sont pas face a face
-            return true;
 
-        }
-    }
 }
