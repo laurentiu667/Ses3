@@ -21,7 +21,7 @@
 
 body {
     width: 100vw;
-    min-width: 350px;
+    min-width: 100px;
     height: 100vh; 
     display: flex;
     overflow: hidden;
@@ -35,7 +35,7 @@ body {
 
 .container {    
     position: fixed;
-    width: 40%;
+    min-width: 50vw;
     height: 490px;
     gap: 5px;
     display: flex;
@@ -124,6 +124,7 @@ textarea {
    transform: scaleX(1);
 }
 .msg {
+    background-color: red;
     word-wrap: break-word;
     color: rgb(255, 255, 255);
     font-weight: 500;
@@ -350,6 +351,26 @@ svg {
 }
 
 
+@media screen and (max-width: 400px) {
+   
+    .chat-members{
+        display: block;
+        width: 100%;
+    }
+   .members{
+        padding: 10px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 435px;
+        background-color: var(--background-container);
+   }
+   #chat-container{
+    width: 100%;
+   }
+   
+   
+}
 @media screen and (max-width: 769px) {
     #chat-container{
         font-size: 18px;
@@ -367,9 +388,10 @@ svg {
 @media screen and (max-width: 1100px) {
     body{
         background-position:bottom;
-        background-size: contain;
+        background-size: cover;
     }
     .container{
+        min-width: 80vw;
         height: 430px;
     }
     .star-the-game {

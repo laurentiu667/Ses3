@@ -7,7 +7,7 @@ import xiangqi.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import xiangqiPartie2.*;
-public class Echequier_Test {
+public class Echequier_Pion_RoiFaceAFace_Test {
     @BeforeAll
     public static void setup(){
         System.out.println("===================");
@@ -33,7 +33,7 @@ public class Echequier_Test {
 
     String couleur2 = "rouge";
 
-    // M'assurer que toutes les pièces sont présentes à leur positions initiales avants de commencer une partie
+
     @Test
     public void verification_PieceEchiquier(){
 
@@ -46,7 +46,26 @@ public class Echequier_Test {
 
     @Test
     public void testRoisNePouvantPasEtreFaceAFace() {
+        echiquier.getIntersection(0,4).setPiece(new Roi("r1", "noir"));
+        echiquier.getIntersection(9,4).setPiece(new Roi("r2", "rouge"));
+        echiquier.getIntersection(3,4).setPiece(new Pion("p1", "noir"));
+        echiquier.getIntersection(5,4).setPiece(new Pion("p1", "noir"));
 
+
+
+        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(5,4 ), new Position(5, 5)));
+        echiquier.getIntersection(5,4).setPiece(null);
+        assertFalse(echiquier.roisNePouvantPasEtreFaceAFace(new Position(3,4 ), new Position(3, 5)));
+
+        // Si
+        echiquier.getIntersection(0,4).setPiece(null);
+
+        echiquier.getIntersection(5,4).setPiece(null);
+
+        echiquier.getIntersection(0,3).setPiece(new Roi("r1", "noir"));
+
+
+        assertTrue(echiquier.roisNePouvantPasEtreFaceAFace(new Position(3,4 ), new Position(3, 5)));
 
     }
 
@@ -74,9 +93,6 @@ public class Echequier_Test {
         // Aller vers cases Ennemi a gauche en etant allier
         echiquier.getIntersection(6, 3).setPiece(new Pion("p3",couleur2));
         assertFalse(echiquier.cheminPossible(new Position(6,3), new Position(6,4)));
-
-
-
     }
 
 

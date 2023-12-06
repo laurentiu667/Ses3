@@ -17,7 +17,8 @@ const blob = new Blob();
 const monster = new Monster(blob);
 
 blob.monster = monster
-let lobbyAudioPlayed = false;
+let audio;
+
 
 let clicked = false;
 let spriteList = [];
@@ -29,6 +30,13 @@ let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
 
 window.addEventListener("load", () => {
+    const audio_bg = () =>{
+        let audio = new Audio('../music/lobby.mp3');
+        audio.play();
+        audio.volume = 0.2;
+        audio.loop = true;
+    }
+    audio_bg()
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
     };
@@ -43,9 +51,8 @@ window.addEventListener("load", () => {
         spriteList.push(monster); 
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
-       for (let i = 0; i < 10; i++){
-            spriteList.push(blob);
-       }
+        spriteList.push(blob);
+       
 
         
        
@@ -72,13 +79,7 @@ window.addEventListener("load", () => {
         }
         
     })
-    let lobbyAudioPlayed = false;
-
-    function handleAudioEnded() {
-        lobbyAudioPlayed = false;
-        console.log('Audio has ended');
-    }
-    
+  
     tick();
 });
 
@@ -123,9 +124,11 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-const newMessage= () =>(fromUser, message, isPrivate) => {
+// Afficher les messages des usagers 
+const newMessage = () => (fromUser, message, isPrivate) => {
     let node = document.createElement("div");
     node.classList.add("msg");
+    console.log("seiofjasifhjqew[ifh[qwef");
 
     if (!message) {
         node.innerHTML = "<strong>" + fromUser + "</strong> a rejoint le chat";
@@ -141,24 +144,20 @@ const newMessage= () =>(fromUser, message, isPrivate) => {
     document.querySelector("#message-input").value = "";
 };
 
-const loadMembresTotaux = () => {
+const loadMembresTotaux = (membres_totaux) => {
     const storedMembres = localStorage.getItem('membres_totaux');
     if (storedMembres) {
         membre_totaux = JSON.parse(storedMembres);
     }
 };
-
 const saveMembresTotaux = () => {
     localStorage.setItem('membres_totaux', JSON.stringify(membre_totaux));
 };
-
 const memberListUpdate = (members) => {
-    console.log("Membres en ligne: " + members);
-
-    loadMembresTotaux();
-
+    
     membresConnectes = members;
-
+    loadMembresTotaux();
+   
     console.log("Membres connectés après mise à jour:", membresConnectes);
 
     for (let i = 0; i < members.length; i++) {
@@ -167,20 +166,14 @@ const memberListUpdate = (members) => {
         }
     }
 
+
     saveMembresTotaux();
 
-    console.log("Membres identifiés:", membre_totaux);
-
-    checkLocalUsers();
-};
-
-
-const checkLocalUsers = () => {
-   
     loadMembresTotaux();
-
     updateMembresTotauxHTML();
 };
+
+
 
 const updateMembresTotauxHTML = () => {
     
@@ -209,8 +202,6 @@ const updateMembresTotauxHTML = () => {
 
         parentNode.appendChild(memberElement);
     }
-
- 
 };
-
-checkLocalUsers();
+loadMembresTotaux();
+updateMembresTotauxHTML();

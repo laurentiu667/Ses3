@@ -85,7 +85,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
-        // Si le joueur ne bouge la piece
+        // Si le joueur ne bouge pas la piece
         if (arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne()) {
             return true;
         }
@@ -95,9 +95,9 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         }
         // Si la piece en trouver contient la lettre en question entre le premier et le cinquieme alors on verifie le mouvement dans sa fonction
         // Pion
-        if (intersectionDepart.getPiece().getNom().contains("p")) {
+        if (intersectionDepart.getPiece() instanceof Pion) {
             return verifPion(depart, arrivee, intersectionDepart, intersectionArrivee);
-        } else if (intersectionDepart.getPiece().getNom().contains("r")) {
+        } else if (intersectionDepart.getPiece() instanceof Roi) {
             return verifRoi(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
         return false;
@@ -110,17 +110,17 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     }
 
     private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
-        return false;
+        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
 
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
         Position roi1 = null;
         Position roi2 = null;
-
+        int nmbrPieceEntreRoi = 0;
         // Recherche des positions des deux rois
         for (int ligne = 0; ligne < LIGNE; ligne++) {
-            for (int colonne = 3; colonne < COLONNE - 3; colonne++) {
+            for (int colonne = 0; colonne < COLONNE; colonne++) {
                 Intersection intersection = jeu[ligne][colonne];
                 if (intersection.getPiece() instanceof Roi) {
                     if (roi1 == null) {
@@ -131,13 +131,29 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
                 }
             }
         }
+        int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
+        int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
 
-
+        int piecesEntreDeuxRois = 0;
+        for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
+            if (jeu[ligne][roi1.getColonne()].getPiece() != null) {
+                piecesEntreDeuxRois++;
+            }
+        }
+        // S il ne sont pas dans la meme colonne alors mouvement possible
         if (roi1.getColonne() != roi2.getColonne()) {
             return true;
+        } else if ((roi1.getColonne() == roi2.getColonne())) {
+
+            if (piecesEntreDeuxRois > 1) {
+                return true;
+            } else if (piecesEntreDeuxRois == 1 && arrivee.getColonne() == roi1.getColonne()){
+                return true;
+            }
         }
 
-
+        return false;
     }
+
 }
 
