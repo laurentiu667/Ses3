@@ -85,6 +85,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
+
         // Si le joueur ne bouge pas la piece
         if (arrivee.getColonne() == depart.getColonne() && arrivee.getLigne() == depart.getLigne()) {
             return true;
@@ -94,11 +95,12 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             return false;
         }
         // Si la piece en trouver contient la lettre en question entre le premier et le cinquieme alors on verifie le mouvement dans sa fonction
-        // Pion
         if (intersectionDepart.getPiece() instanceof Pion) {
             return verifPion(depart, arrivee, intersectionDepart, intersectionArrivee);
         } else if (intersectionDepart.getPiece() instanceof Roi) {
             return verifRoi(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece() instanceof  Elephant){
+            return verifElephant(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
         return false;
     }
@@ -112,7 +114,20 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
         return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
+    private boolean verifElephant(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
 
+        // Doit faire en sorte de parcourir entre le depart et l arrivee
+
+        for (int ligne = depart.getLigne() + 1; ligne < arrivee.getLigne(); ligne++) {
+            for (int colonne = depart.getColonne() + 1 ; colonne < arrivee.getColonne(); colonne++){
+                Intersection intersection = jeu[ligne][colonne];
+                if (intersection.getPiece() != null){
+                    return true;
+                }
+            }
+        }
+        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+    }
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
         Position roi1 = null;

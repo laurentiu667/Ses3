@@ -43,3 +43,21 @@ tag un tuples indeterminer chaine de texte relier de l info a l objet qu on dess
 pillow 
 
 Dans la machine faut pas codder faut faire en sorte de donner les details algorythmes
+
+
+
+1 - Quelles sont les problèmes découvert lorsqu'on avait travailler en équipe.
+2 - La partie qu'on a livrer, dont le travail réalisé qui est fonctionnelle.
+3 - Planifier les tâches à réaliser et entre autre planifier pour le prochain meeting les tâches à réaliser.
+
+1 -  La planification globale du sprint
+2 - Découper les tâches en sous-tâches, pour donner par la suite des responsabilité.
+3 -  Attribuer les responsabilités au membre de l'équipe et programmer par la suite
+
+
+Le travail en équipe je l'ai trouvé excellent, car on nous apprends non seulement à comprendre notre code, mais de pouvoir faire une expérience plus globale et de réunir plusieurs façon de penser pour le codage. Parfois, cela peut-être dur d'implémenter une partie du code de ses coéquipier, car cela demande un peu de temps pour comprendre le code et comment l'intégrer pour que tout ne foire pas.  
+
+
+J'aimerais mettre l'accent sur la gestion du temps, je trouve qu'on ne gère pas assez bien le temps qu'il nous est fourni, je ne parle pas que de moi, mais je pense que de nous tous. Surtout en équipe on doit se fixer des temps limites pour s'assurer d'accorder le bon nombre de temps au tâches et de ne pas les prolonger, car oublions pas le client doit recevoir son projet à temps.
+
+La rencontre de nouvelle personne entre autre, car cela nous permet d'apprendre des façons plus ingénieuse à coder. Multiplier ces connaissances grâces aux autres membres de pouvoir lire du code fait par autre que toi, te fait réaliser qu'il y a beaucoup de façon à arriver à un résultat. Finalement, le dernier point que j'ai trouvé intéressant, c'est l'entraide entre notre équipe, quand on arrive pas à faire quelque chose, il y a généralement toujours quelqu'un pour t'expliquer, où même si personne ne comprends on peut tous se mettre ensemble pour trouver une solution.
