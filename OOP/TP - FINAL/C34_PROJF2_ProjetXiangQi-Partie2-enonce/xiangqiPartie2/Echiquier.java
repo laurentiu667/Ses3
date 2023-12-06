@@ -118,14 +118,15 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
         // Doit faire en sorte de parcourir entre le depart et l arrivee
 
-        for (int ligne = depart.getLigne() + 1; ligne < arrivee.getLigne(); ligne++) {
-            for (int colonne = depart.getColonne() + 1 ; colonne < arrivee.getColonne(); colonne++){
+        for (int ligne = interDepart.getPositionDebut().getLigne() + 1; ligne < interArrivee.getPositionArrivee().getLigne(); ligne++) {
+            for (int colonne = interDepart.getPositionDebut().getColonne() + 1 ; colonne < interArrivee.getPositionArrivee().getColonne(); colonne++){
                 Intersection intersection = jeu[ligne][colonne];
                 if (intersection.getPiece() != null){
-                    return true;
+                    return false;
                 }
             }
         }
+        // s il n y a pas de piece entre le depart et l arrive alors true
         return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
     @Override

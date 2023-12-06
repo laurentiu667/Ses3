@@ -38,8 +38,8 @@ public class Elephant_Test2 {
         echiquier.getIntersection(0,2).setPiece(new Elephant("e1", couleur1)); //  Mandarin
         echiquier.getIntersection(2,4).setPiece(new Pion("p1", couleur2)); // Pion rouge
 
-//        // Essayer de le manger si (possible)
-//        assertTrue(echiquier.cheminPossible(new Position(0,2 ), new Position(2,4)));
+        // Essayer de le manger si (possible)
+        assertTrue(echiquier.cheminPossible(new Position(0,2 ), new Position(2,4)));
 
         echiquier.getIntersection(1,3).setPiece(new Pion("p2", couleur2)); // Pion rouge
         assertFalse(echiquier.cheminPossible(new Position(0,2 ), new Position(2,4)));
