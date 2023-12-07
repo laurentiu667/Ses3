@@ -1,4 +1,4 @@
-import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
+import { registerCallbacks, sendMessage, signout, chatMessageLoop } from './chat-api';
 import Pepega from './sprite/Pepega.js';
 import Maison from './sprite/Maison.js';
 import Monster from './sprite/Monster.js';
@@ -13,12 +13,11 @@ export let dKeyOn = false;
 export let sKeyon = false;
 export let wKeyon = false;
 
-const blob = new Blob();  
+const blob = new Blob();
 const monster = new Monster(blob);
 
 blob.monster = monster
-let audio;
-
+let lobbyAudioPlayed = false;
 
 let clicked = false;
 let spriteList = [];
@@ -30,9 +29,8 @@ let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
 
 window.addEventListener("load", () => {
-    
     document.querySelector("textarea").onkeyup = function (evt) {
-        sendMessage(evt, this)
+        sendMessage(evt, this);
     };
     document.querySelector("#sign-out-btn").onclick = signout;
     registerCallbacks(newMessage, memberListUpdate);
@@ -45,9 +43,8 @@ window.addEventListener("load", () => {
         spriteList.push(monster); 
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
-        spriteList.push(blob);
-       
-
+        spriteList.push(blob)
+          
         
        
     
@@ -73,7 +70,13 @@ window.addEventListener("load", () => {
         }
         
     })
-  
+    let lobbyAudioPlayed = false;
+
+    function handleAudioEnded() {
+        lobbyAudioPlayed = false;
+        console.log('Audio has ended');
+    }
+    
     tick();
 });
 
@@ -118,15 +121,30 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-// Afficher les messages des usagers 
-const newMessage = () => (fromUser, message, isPrivate) => {
-    console.log(fromUser, message, isPrivate);
+const newMessage = (fromUser, message, isPrivate) => {
+    let node = document.createElement("div");
+    node.classList.add("msg");
+
+    if (!message) {
+        node.innerHTML = "<strong>" + fromUser + "</strong> a rejoint le chat";
+    } else {
+        node.innerHTML = "<strong>" + fromUser + ":</strong> " + message;
+    }
+
+    let parentNode = document.querySelector(".afficher-message");
+    parentNode.append(node);
+
+    parentNode.scrollTop = parentNode.scrollHeight;
+
+    document.querySelector("#message-input").value = "";
 };
 const memberListUpdate = (members) => {
-    
-    membresConnectes = members;
+    console.log("Membres en ligne: " + members);
+
     loadMembresTotaux();
-   
+
+    membresConnectes = members;
+
     console.log("Membres connectés après mise à jour:", membresConnectes);
 
     for (let i = 0; i < members.length; i++) {
@@ -135,13 +153,13 @@ const memberListUpdate = (members) => {
         }
     }
 
-
     saveMembresTotaux();
 
-    loadMembresTotaux();
-    updateMembresTotauxHTML();
+    console.log("Membres identifiés:", membre_totaux);
+
+    checkLocalUsers();
 };
-const loadMembresTotaux = (membres_totaux) => {
+const loadMembresTotaux = () => {
     const storedMembres = localStorage.getItem('membres_totaux');
     if (storedMembres) {
         membre_totaux = JSON.parse(storedMembres);
@@ -153,7 +171,12 @@ const saveMembresTotaux = () => {
 };
 
 
+const checkLocalUsers = () => {
+   
+    loadMembresTotaux();
 
+    updateMembresTotauxHTML();
+};
 
 const updateMembresTotauxHTML = () => {
     
@@ -182,6 +205,8 @@ const updateMembresTotauxHTML = () => {
 
         parentNode.appendChild(memberElement);
     }
+
+ 
 };
-loadMembresTotaux();
-updateMembresTotauxHTML();
+
+checkLocalUsers();
