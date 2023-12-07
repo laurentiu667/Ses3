@@ -101,34 +101,143 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             return verifRoi(depart, arrivee, intersectionDepart, intersectionArrivee);
         } else if (intersectionDepart.getPiece() instanceof  Elephant){
             return verifElephant(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece() instanceof  Mandarin){
+            return verifMandarin(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece() instanceof  Char){
+            return verifChar(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece() instanceof  Bombarde){
+            return verifBombarde(depart, arrivee, intersectionDepart, intersectionArrivee);
+        } else if (intersectionDepart.getPiece() instanceof  Bombarde){
+            return verifCavalier(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
         return false;
     }
 
     private boolean verifPion(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
 
-        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
 
     }
 
     private boolean verifRoi(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
-        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
-    private boolean verifElephant(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+    private boolean verifElephant(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
 
-        // Doit faire en sorte de parcourir entre le depart et l arrivee
-
-        for (int ligne = interDepart.getPositionDebut().getLigne() + 1; ligne < interArrivee.getPositionArrivee().getLigne(); ligne++) {
-            for (int colonne = interDepart.getPositionDebut().getColonne() + 1 ; colonne < interArrivee.getPositionArrivee().getColonne(); colonne++){
+        for (int ligne = interDepart.getPositionDebut().getLigne() + ligneStep; ligne != interArrivee.getPositionArrivee().getLigne(); ligne += ligneStep) {
+            for (int colonne = interDepart.getPositionDebut().getColonne() + colonneStep; colonne != interArrivee.getPositionArrivee().getColonne(); colonne += colonneStep) {
                 Intersection intersection = jeu[ligne][colonne];
-                if (intersection.getPiece() != null){
+                if (intersection.getPiece() != null) {
                     return false;
                 }
             }
         }
-        // s il n y a pas de piece entre le depart et l arrive alors true
-        return interArrivee.getPiece() != null && interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+
+        return interArrivee.getPiece() == null ||  interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
+
+    private boolean verifMandarin(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+    }
+
+    private boolean verifChar(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
+
+        // Si le deplacement est en ligne
+        if (interDepart.getPositionDebut().getColonne() == interArrivee.getPositionArrivee().getColonne()) {
+            for (int ligne = interDepart.getPositionDebut().getLigne() + ligneStep; ligne != interArrivee.getPositionArrivee().getLigne(); ligne += ligneStep) {
+                Intersection intersection = jeu[ligne][interArrivee.getPositionArrivee().getColonne()];
+                if (intersection.getPiece() != null) {
+                    return false;
+                }
+            }
+        }
+        // Si le deplacement est en colonne
+        else if (interDepart.getPositionDebut().getLigne() == interArrivee.getPositionArrivee().getLigne()){
+            for (int colonne = interDepart.getPositionDebut().getColonne() + colonneStep; colonne != interArrivee.getPositionArrivee().getColonne(); colonne += colonneStep) {
+                Intersection intersection = jeu[interArrivee.getPositionArrivee().getLigne()][colonne];
+                if (intersection.getPiece() != null) {
+                    return false;
+                }
+            }
+        }
+
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+    }
+
+    private boolean verifBombarde(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee){
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
+        int nmbrPiece = 0;
+        // Si le deplacement est en ligne
+        if (interDepart.getPositionDebut().getColonne() == interArrivee.getPositionArrivee().getColonne()) {
+            for (int ligne = interDepart.getPositionDebut().getLigne() + ligneStep; ligne != interArrivee.getPositionArrivee().getLigne(); ligne += ligneStep) {
+                Intersection intersection = jeu[ligne][interArrivee.getPositionArrivee().getColonne()];
+                if (intersection.getPiece() != null) {
+                    nmbrPiece++;
+                }
+            }
+            if (nmbrPiece == 1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        // Si le deplacement est en colonne
+        else if (interDepart.getPositionDebut().getLigne() == interArrivee.getPositionArrivee().getLigne()){
+            for (int colonne = interDepart.getPositionDebut().getColonne() + colonneStep; colonne != interArrivee.getPositionArrivee().getColonne(); colonne += colonneStep) {
+                Intersection intersection = jeu[interArrivee.getPositionArrivee().getLigne()][colonne];
+                if (intersection.getPiece() != null) {
+                    nmbrPiece++;
+
+                }
+
+            }
+            if (nmbrPiece == 1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+    }
+
+    private boolean verifCavalier(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
+        int nmbrPiece = 0;
+
+        // Si le déplacement est en ligne
+        if (interDepart.getPositionDebut().getColonne() == interArrivee.getPositionArrivee().getColonne()) {
+            for (int ligne = interDepart.getPositionDebut().getLigne() + ligneStep; ligne != interArrivee.getPositionArrivee().getLigne(); ligne += ligneStep) {
+                Intersection intersection = jeu[ligne][interArrivee.getPositionArrivee().getColonne()];
+                if (intersection.getPiece() != null) {
+                    nmbrPiece++;
+                }
+            }
+            return nmbrPiece == 0;
+        }
+        // Si le déplacement est en colonne
+        else if (interDepart.getPositionDebut().getLigne() == interArrivee.getPositionArrivee().getLigne()) {
+            for (int colonne = interDepart.getPositionDebut().getColonne() + colonneStep; colonne != interArrivee.getPositionArrivee().getColonne(); colonne += colonneStep) {
+                Intersection intersection = jeu[interArrivee.getPositionArrivee().getLigne()][colonne];
+                if (intersection.getPiece() != null) {
+                    nmbrPiece++;
+                }
+            }
+            return nmbrPiece == 0;
+        }
+
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+    }
+
+
+
+
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
         Position roi1 = null;

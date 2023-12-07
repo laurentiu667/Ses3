@@ -93,6 +93,9 @@ public class Echequier_Pion_RoiFaceAFace_Test {
         // Aller vers cases Ennemi a gauche en etant allier
         echiquier.getIntersection(6, 3).setPiece(new Pion("p3",couleur2));
         assertFalse(echiquier.cheminPossible(new Position(6,3), new Position(6,4)));
+
+
+        assertTrue(echiquier.cheminPossible(new Position(5,4), new Position(4,4)));
     }
 
 
