@@ -1,4 +1,4 @@
-import { registerCallbacks, sendMessage, signout, chatMessageLoop } from './chat-api';
+import {registerCallbacks, sendMessage, signout, chatMessageLoop} from './chat-api';
 import Pepega from './sprite/Pepega.js';
 import Maison from './sprite/Maison.js';
 import Monster from './sprite/Monster.js';
@@ -30,15 +30,9 @@ let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
 
 window.addEventListener("load", () => {
-    const audio_bg = () =>{
-        let audio = new Audio('../music/lobby.mp3');
-        audio.play();
-        audio.volume = 0.2;
-        audio.loop = true;
-    }
-    audio_bg()
+    
     document.querySelector("textarea").onkeyup = function (evt) {
-        sendMessage(evt, this);
+        sendMessage(evt, this)
     };
     document.querySelector("#sign-out-btn").onclick = signout;
     registerCallbacks(newMessage, memberListUpdate);
@@ -126,32 +120,7 @@ document.addEventListener("keyup", (e) => {
 
 // Afficher les messages des usagers 
 const newMessage = () => (fromUser, message, isPrivate) => {
-    let node = document.createElement("div");
-    node.classList.add("msg");
-    console.log("seiofjasifhjqew[ifh[qwef");
-
-    if (!message) {
-        node.innerHTML = "<strong>" + fromUser + "</strong> a rejoint le chat";
-    } else {
-        node.innerHTML = "<strong>" + fromUser + ":</strong> " + message;
-    }
-
-    let parentNode = document.querySelector(".afficher-message");
-    parentNode.append(node);
-
-    parentNode.scrollTop = parentNode.scrollHeight;
-
-    document.querySelector("#message-input").value = "";
-};
-
-const loadMembresTotaux = (membres_totaux) => {
-    const storedMembres = localStorage.getItem('membres_totaux');
-    if (storedMembres) {
-        membre_totaux = JSON.parse(storedMembres);
-    }
-};
-const saveMembresTotaux = () => {
-    localStorage.setItem('membres_totaux', JSON.stringify(membre_totaux));
+    console.log(fromUser, message, isPrivate);
 };
 const memberListUpdate = (members) => {
     
@@ -172,6 +141,17 @@ const memberListUpdate = (members) => {
     loadMembresTotaux();
     updateMembresTotauxHTML();
 };
+const loadMembresTotaux = (membres_totaux) => {
+    const storedMembres = localStorage.getItem('membres_totaux');
+    if (storedMembres) {
+        membre_totaux = JSON.parse(storedMembres);
+    }
+};
+
+const saveMembresTotaux = () => {
+    localStorage.setItem('membres_totaux', JSON.stringify(membre_totaux));
+};
+
 
 
 

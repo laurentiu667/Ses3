@@ -7,14 +7,12 @@ public class Intersection {
     private Position positionDebut;
     private Position positionArrivee;
 
-    // Constructeur par défaut
     public Intersection() {
         this.piece = null;
         this.positionDebut = null;
         this.positionArrivee = null;
     }
 
-    // Constructeur avec Position
     public Intersection(Position position) {
         this.positionDebut = position;
         this.positionArrivee = position;

@@ -5,7 +5,6 @@ import xiangqi.*;
 
 public class Echiquier extends Intersection implements MethodesEchiquier {
 
-    // 	Un échiquier sera donc un tableau 10x9 ( 10 lignes, 9 colonnes ) d’objets jesais.Intersection
     private final int LIGNE = 10;
     private final int COLONNE = 9;
     private final Intersection[][] jeu;
@@ -107,7 +106,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             return verifChar(depart, arrivee, intersectionDepart, intersectionArrivee);
         } else if (intersectionDepart.getPiece() instanceof  Bombarde){
             return verifBombarde(depart, arrivee, intersectionDepart, intersectionArrivee);
-        } else if (intersectionDepart.getPiece() instanceof  Bombarde){
+        } else if (intersectionDepart.getPiece() instanceof  Cavalier){
             return verifCavalier(depart, arrivee, intersectionDepart, intersectionArrivee);
         }
         return false;
@@ -209,27 +208,21 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     private boolean verifCavalier(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
         int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
         int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
-        int nmbrPiece = 0;
 
-        // Si le déplacement est en ligne
-        if (interDepart.getPositionDebut().getColonne() == interArrivee.getPositionArrivee().getColonne()) {
-            for (int ligne = interDepart.getPositionDebut().getLigne() + ligneStep; ligne != interArrivee.getPositionArrivee().getLigne(); ligne += ligneStep) {
-                Intersection intersection = jeu[ligne][interArrivee.getPositionArrivee().getColonne()];
-                if (intersection.getPiece() != null) {
-                    nmbrPiece++;
-                }
-            }
-            return nmbrPiece == 0;
+        // Vérif en colonne
+        int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
+        int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
+
+        if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
+            return false; // false s il y a une piece
         }
-        // Si le déplacement est en colonne
-        else if (interDepart.getPositionDebut().getLigne() == interArrivee.getPositionArrivee().getLigne()) {
-            for (int colonne = interDepart.getPositionDebut().getColonne() + colonneStep; colonne != interArrivee.getPositionArrivee().getColonne(); colonne += colonneStep) {
-                Intersection intersection = jeu[interArrivee.getPositionArrivee().getLigne()][colonne];
-                if (intersection.getPiece() != null) {
-                    nmbrPiece++;
-                }
-            }
-            return nmbrPiece == 0;
+
+        // Vérif en ligne
+        int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
+        int colonneAvantLigne = interDepart.getPositionDebut().getColonne();
+
+        if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
+            return false; // false s il y a une piece
         }
 
         return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
