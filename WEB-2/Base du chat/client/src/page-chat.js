@@ -71,13 +71,7 @@ window.addEventListener("load", () => {
         }
         
     })
-    let lobbyAudioPlayed = false;
-
-    function handleAudioEnded() {
-        lobbyAudioPlayed = false;
-        console.log('Audio has ended');
-    }
-    
+   
     tick();
 });
 

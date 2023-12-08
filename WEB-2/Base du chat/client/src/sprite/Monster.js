@@ -17,6 +17,8 @@ export default class Monster {
 
         this.hit = false;
         this.collisionperso = false;
+        this.divAcheterCreated = false;
+        this.divAcheter;
         this.speedX = 3;
         this.speedY = 1;
         this.health = 100;
@@ -32,6 +34,8 @@ export default class Monster {
         this.vieDiv = document.createElement("div")
         this.vieDiv.classList.add("vie")
 
+
+        this.divBoutique = document.querySelector(".container-acheter")
         document.body.appendChild(this.node);
         document.body.appendChild(this.vieDiv);
         
@@ -226,16 +230,16 @@ export default class Monster {
 
 
     acheterShop(message) {
+
         if (this.collisionShop) {
-            if (message === "/acheter") {
-                let divAcheter = document.createElement("div");
-                divAcheter.classList.add("container-acheter")
-
-                document.body.append(divAcheter);
-                
-
+            
+            if (message === "/boutique") {
+                this.divBoutique.style.display = "grid";
+             
+            } else if(message === "/fermer"){
+                this.divBoutique.style.display = "none";
             }
-        }
+        } 
     }
     
   

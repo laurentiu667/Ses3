@@ -8,6 +8,7 @@
     --button-color: #7289da;
     --input-area-color: #202225;
     --background-container: #2f3136;
+    --background-container-hover: rgba(68, 71, 78, 0.384)
     --text-color: #36393f;
     --text-color2: #72767d;
 }
@@ -241,7 +242,6 @@ textarea {
     background-color: cyan;
 }
 
-/* Container des touches pour les deux joueurs */
 
 .container-touches{
     width: 100%;
@@ -386,17 +386,77 @@ svg {
 }
 
 .container-acheter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none;
+    grid-template-rows: 1fr 6fr;
     position: fixed;
-    top: 50%;
+    top: 73%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: red;
+    background-color: var(--background-container);
+    border: 1px solid black;
     width: 700px;
-    height: 400px;
+    height: 350px;
     z-index: 20000;
+    gap: 10px;
+    padding: 0.5em;
+
+}
+.container-objet{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.objet {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 10fr 3fr 2fr;
+  
+    gap: 3px;
+}
+.objet > *{
+    display: grid;
+    place-items: center;
+}
+.image-objet:hover{
+    background-color: var(--background-container-hover);
+}
+
+.titre-boutique {
+    text-align: center;
+}
+
+.speed {
+    
+}
+
+.gravity {
+   
+}
+
+.image-objet {
+   
+
+}
+.image-objet > svg{
+    width: 100px;
+    height: 100px;
+}
+
+.cout-objet {
+    background-color: var(--input-area-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.acheter-objet {
+    cursor: pointer;
+    background-color: var(--membre-connecte-color);
+}
+.acheter-objet:hover{
+    background-color: var(--sign-out-button-hover-color);
 }
 
 @media screen and (max-width: 769px) {
