@@ -1,10 +1,13 @@
 import TiledImage from '@ftheriault/animatedsprite';
 import Blob from './Blob.js';
-import {spriteList, wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon } from '../page-chat.js';
+import Maison from './Maison.js';
+
+import {spriteList, wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon, messageUser } from '../page-chat.js';
 
 export default class Monster {
-    constructor(existingBlobInstance) {
+    constructor(existingBlobInstance, maisonInstance) {
         this.blob = existingBlobInstance;
+        this.maison = maisonInstance;
         
         let colCount = [4, 6, 8];
         let rowCount = 1;
@@ -118,7 +121,20 @@ export default class Monster {
     collision() {
         let rect1 = this.node.getBoundingClientRect();
         let rect2 = this.blob.posxy();
+        let maisonrect2 = this.maison.posxy()
         if (rect1.right >= rect2.left && rect1.left <= rect2.left + rect2.width ) {
+            
+           return true;
+        } else {
+            
+            return false;
+        }
+    }
+    collisionShop() {
+        let rect1 = this.node.getBoundingClientRect();
+
+        let maisonrect2 = this.maison.posxy()
+        if (rect1.right >= maisonrect2.left && rect1.left <= maisonrect2.left + maisonrect2.width ) {
             
            return true;
         } else {
@@ -207,12 +223,29 @@ export default class Monster {
             }
         }, 50);
     }
+
+
+    acheterShop(message) {
+        if (this.collisionShop) {
+            if (message === "/acheter") {
+                let divAcheter = document.createElement("div");
+                divAcheter.classList.add("container-acheter")
+
+                document.body.append(divAcheter);
+                
+
+            }
+        }
+    }
     
+  
 
     tick() {
-        this.collision();
+        
         this.deplacement();
-
+        this.acheterShop(messageUser);
+        this.collisionShop();
+        this.collision();
         this.sortie();
         
         const vieDivOffsetY = -65; 

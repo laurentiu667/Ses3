@@ -34,7 +34,10 @@ export default class Maison {
         this.node.style.left = (window.innerWidth - 400) + "px";
        
     }
-
+    posxy() {        
+        const position = this.node.getBoundingClientRect();
+        return position;
+    }
     tick() {
         
 

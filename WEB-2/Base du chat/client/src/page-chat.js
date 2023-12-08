@@ -14,11 +14,12 @@ export let sKeyon = false;
 export let wKeyon = false;
 
 const blob = new Blob();
-const monster = new Monster(blob);
+const maison = new Maison()
+const monster = new Monster(blob, maison);
 
 blob.monster = monster
 let lobbyAudioPlayed = false;
-
+export let messageUser = "";
 let clicked = false;
 let spriteList = [];
 let membre_totaux = [];
@@ -121,7 +122,11 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
+
+
 const newMessage = (fromUser, message, isPrivate) => {
+    
+    messageUser = message;
     let node = document.createElement("div");
     node.classList.add("msg");
 
@@ -137,7 +142,9 @@ const newMessage = (fromUser, message, isPrivate) => {
     parentNode.scrollTop = parentNode.scrollHeight;
 
     document.querySelector("#message-input").value = "";
+    
 };
+
 const memberListUpdate = (members) => {
     console.log("Membres en ligne: " + members);
 

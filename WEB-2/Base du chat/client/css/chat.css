@@ -384,6 +384,21 @@ svg {
    
    
 }
+
+.container-acheter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    width: 700px;
+    height: 400px;
+    z-index: 20000;
+}
+
 @media screen and (max-width: 769px) {
     #chat-container{
         font-size: 18px;
