@@ -3,8 +3,8 @@ import Pepega from './sprite/Pepega.js';
 import Maison from './sprite/Maison.js';
 import Monster from './sprite/Monster.js';
 import Decoration from './sprite/Decoration.js';
-import Blob from './sprite/Blob.js';
-
+import Blob from './sprite/Chicken.js';
+import Chicken from './sprite/Chicken.js';
 
 export let qKeyon = false;
 export let eKeyon = false;
@@ -13,13 +13,11 @@ export let dKeyOn = false;
 export let sKeyon = false;
 export let wKeyon = false;
 
-const blob = new Blob();
+const chicken = new Chicken();
 const maison = new Maison()
-const monster = new Monster(blob, maison);
+const monster = new Monster(chicken, maison);
+chicken.monster = monster
 
-
-blob.monster = monster
-let lobbyAudioPlayed = false;
 export let messageUser = "";
 let interval
 let clicked = false;
@@ -31,6 +29,7 @@ let commencer_surprise = document.querySelector(".commencer-surprise");
 let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
 let removeAll = document.querySelector(".stopper-surprise");
+
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
@@ -46,7 +45,7 @@ window.addEventListener("load", () => {
         spriteList.push(monster); 
         spriteList.push(new Maison());
         spriteList.push(new Decoration());
-        spriteList.push(blob)
+        spriteList.push(chicken)
           
         startGame_display.removeEventListener("click", start_game);
     }
@@ -73,7 +72,6 @@ window.addEventListener("load", () => {
         else{
             container_touche.style.display = "none";
         }
-        
     })
    
     tick();
@@ -87,6 +85,8 @@ const tick = () => {
 
     window.requestAnimationFrame(tick);
 };
+
+// TOUCHE JOUEUR
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "w" || e.key === "W") {
@@ -120,7 +120,7 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
-
+// MESSAGE  
 
 const newMessage = (fromUser, message, isPrivate) => {
     
@@ -128,11 +128,7 @@ const newMessage = (fromUser, message, isPrivate) => {
     let node = document.createElement("div");
     node.classList.add("msg");
 
-    if (!message) {
-        node.innerHTML = "<strong>" + fromUser + "</strong> a rejoint le chat";
-    } else {
-        node.innerHTML = "<strong>" + fromUser + ":</strong> " + message;
-    }
+    node.innerText = fromUser + ": " + message;
 
     let parentNode = document.querySelector(".afficher-message");
     parentNode.append(node);
@@ -175,7 +171,6 @@ const saveMembresTotaux = () => {
     localStorage.setItem('membres_totaux', JSON.stringify(membre_totaux));
 };
 
-
 const checkLocalUsers = () => {
    
     loadMembresTotaux();
@@ -186,10 +181,8 @@ const checkLocalUsers = () => {
 const updateMembresTotauxHTML = () => {
     
     let parentNode = document.querySelector("#membres_totaux");
-
     
     parentNode.innerHTML = "";
-
    
     for (let i = 0; i < membre_totaux.length; i++) {
         

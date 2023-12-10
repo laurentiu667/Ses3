@@ -454,18 +454,6 @@ svg {
     text-align: center;
 }
 
-.speed {
-    
-}
-
-.gravity {
-   
-}
-
-.image-objet {
-   
-
-}
 .image-objet > svg{
     width: 100px;
     height: 100px;

@@ -1,5 +1,5 @@
 import TiledImage from '@ftheriault/animatedsprite';
-import Blob from './Blob.js';
+import Blob from './Chicken.js';
 import Maison from './Maison.js';
 
 import {spriteList, wKeyon, sKeyon, aKeyOn, dKeyOn, qKeyon, eKeyon, messageUser } from '../page-chat.js';
@@ -156,6 +156,7 @@ export default class Monster {
             return false;
         }
     }
+
     collisionShop() {
         let rect1 = this.node.getBoundingClientRect();
 
@@ -206,14 +207,12 @@ export default class Monster {
                 setTimeout(() => {
                     this.blob.remove2()
                 }, 2000);
+                
             }
             this.currentImage = this.AttackImage;
         } else {
             this.currentImage = this.idleImage;
         }
-
-    
-        
 
         if (this.isJumping) {
             this.velocityY += this.gravity;
@@ -230,7 +229,6 @@ export default class Monster {
     }
 
     sortie() {
-     
         if (this.x >= window.innerWidth) {
         
            this.x = 30
@@ -238,18 +236,6 @@ export default class Monster {
             this.x = 1920
         }
     }
-    
-
-    ptsPerdue(){
-       
-        setTimeout(() => {
-            if (this.collision()){
-           
-                this.vie = 1
-            }
-        }, 50);
-    }
-
 
     acheterShop(message) {
         let toucher = this.collisionShop();
@@ -259,22 +245,16 @@ export default class Monster {
         } else if(toucher && message === "/fermer"){
             this.divBoutique.style.display = "none";
         }
-
     }
-
 
     afficherForex(){
         let divArgent = document.querySelector(".forex");
         divArgent.innerHTML = this.argent;
-       
     }
     
-  
-
     tick() {
         
         this.deplacement();
-       
         this.collisionShop();
         this.collision();
         this.afficherForex();

@@ -6,8 +6,6 @@ export default class Pepega {
         this.nouvelleDiv.classList.add("pepega");
         document.body.append(this.nouvelleDiv);
 
-       
-
         this.largeurEcran = window.innerWidth;
         this.X = Math.random() * this.largeurEcran;
         this.Y = Math.random() * -50;
@@ -27,15 +25,11 @@ export default class Pepega {
          this.nouvelleDiv.addEventListener("mouseout", () => {
             this.nouvelleDiv.style.transform = "scale(1)";
         });
-
-
-       
        
     }
 
     tick() {
-       
-
+    
         this.X += 2 * Math.cos(this.Y / 50);
             
         this.Y += this.speedY;

@@ -1,42 +1,35 @@
-# Chat client
-
-## Pré-requis
-
-- Avoir nodejs d'installé sur votre machine. Pour savoir si vous l'avez installé, exécutez dans un terminal:
-
-````
-node -v
-````
-Si cela vous retourne une version, alors nodejs est bien installé.
-
-## Installation du projet
-
-Suite à l'installation de nodejs, il faut ouvrir un terminal dans le répertoire du projet, puis exécuter cette commande à partir de la racine du projet :
-
-````
-npm install
-````
-Cela installera les librairies nécessaires au fonctionnement interne du chat.
-
-## Démarrer votre projet
-
-Pour démarrer la reconstruction du front-end, ouvrez un terminal dans la racine du projet (pas le dossier client), puis...
-
-````
-npm run webpack
-````
-
-Si webpack est actif, votre JavaScript se regénèrera automatiquement lorsqu'un fichier est modifié. Par exemple, si vous modifiez le fichier "client/src/page-index.js" (ou n'importe quel fichier utilisé dans celui-ci), webpack mettra à jour le fichier "client/dist/index.js" avec vos modifications.
-
-Vous pouvez ensuite ouvrir les pages `chat.html`, `index.html` et `register.html` via votre navigateur et dans VS Code.
-
-
-## Et ensuite?...
-
-Pour ce projet, ne programmez que dans le dossier `client/`. Vous pouvez modifier tous les fichiers qui s'y trouvent, mais il est fortement déconseillé d'altérer les lignes de code déjà en place, car il est 100% fonctionnel avec le serveur de chat. Ajoutez des lignes, créez des fichiers et images, mais attention de ne pas *briser* l'accès au serveur (connexion, déconnexion, etc.).
-
-Toutes les informations nécessaires à la réalisation du projet se trouvent ici : [https://notes-de-cours.com/webjs/travaux]
-
-## Remise du projet
-
-Les informations concernant la remise du projet se trouvent ici : [https://notes-de-cours.com/webjs/travaux]
+# Projet Final
+## Utilisation du DOM pour la gestion des messages
+Fichier JS : page-chat.js
+Création de la div message avec append pour l'envoyer dans le div de tous les messages des utilisateurs.
+Injection des messages avec innerText pour éviter les attaques XSS.
+Création des divs des noms d'utilisateurs en utilisant innerHTML pour ajouter leur nom aux divs.
+## Ajout/suppression de sprites au cours de l'animation
+Fichiers JS : page-chat.js, Monster.js et Chicken.js
+Création du Chicken dans page-chat.js.
+Détection du toucher dans Monster.js et suppression du Chicken après 2 secondes.
+## Enchaînement d'animations
+Fichier JS : Pepega.js
+Les Pepegas disparaissent lorsqu'ils se déplacent du haut vers le bas et que leur opacité atteint 0.
+Fichier JS : Chicken.js
+L'opacité du poulet diminue jusqu'à 0 lorsqu'il est touché.
+## Modification de l'état des sprites au cours de l'animation
+Fichier JS : Chicken.js
+Lorsque le poulet est touché, son opacité diminue.
+## Mouvement de sprites (x, y)
+Fichiers JS : Monster.js et Chicken.js
+Les deux personnages se déplacent en X, et le Monster se déplace en Y lorsqu'il saute.
+## Programmation par objet pour au moins 2 types de sprite
+Classes : Decoration.js, Monster.js, Chicken.js, Pepega.js, Maison.js
+## Gestion d'événements clavier
+Fichier JS : page-chat.js
+Utilisation de keydown et keyup pour le mouvement du Monster.
+Gestion d'événements souris
+Fichiers JS : Pepega.js et Chicken.js
+Utilisation de mouseover et mouseout pour le Pepega.
+Utilisation d'événements click
+Fichier JS : page-chat.js
+Utilisation de click pour les boutons, par exemple, les touches du joueur, le bouton Surprise, le bouton Stop !
+## Utilisation d'un message reçu dans le chat pour générer un comportement
+Fichiers JS : Monster.js et page-chat.js
+Utilisation de /boutique pour ouvrir la boutique lorsque le Monster est en contact avec le spritesheet de la classe Maison. Petit soucis :  lorsqu'on tappe /boutique ou /fermer on doit bouger le personnage vers les bors du shop pour détecter une collision
