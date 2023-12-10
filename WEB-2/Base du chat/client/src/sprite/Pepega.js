@@ -6,20 +6,36 @@ export default class Pepega {
         this.nouvelleDiv.classList.add("pepega");
         document.body.append(this.nouvelleDiv);
 
+       
+
         this.largeurEcran = window.innerWidth;
         this.X = Math.random() * this.largeurEcran;
         this.Y = Math.random() * -50;
-        this.speedY = 1;
+        this.speedY = 3;
+        this.stop = false;
         this.nouvelleDiv.style.top = this.Y + "px";
         this.nouvelleDiv.style.left = this.X + "px";
         this.nouvelleDiv.style.transform = `scale(${-1.5})`;
         this.nouvelleDiv.style.opacity = 1;
-        this.opacityRemove = 0.001;
-     
+        this.opacityRemove = 0.003;
+
+        this.nouvelleDiv.addEventListener("mouseover", () => {
+      
+            this.nouvelleDiv.style.transform = "scale(1.5)";
+        });
+   
+         this.nouvelleDiv.addEventListener("mouseout", () => {
+            this.nouvelleDiv.style.transform = "scale(1)";
+        });
+
+
+       
+       
     }
 
     tick() {
-     
+       
+
         this.X += 2 * Math.cos(this.Y / 50);
             
         this.Y += this.speedY;

@@ -205,43 +205,32 @@ textarea {
 
 /* Points de vie joueur et touches */
 
-.div-other-pts-vie{
+.container-toucheEtPluie{
 
-    width: 800px;
-    display: grid;
-    place-items: center;
-    position: absolute;
-    left: 500;
-    top: 10px;
+    display: flex;
+    width: 960px;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
 }
-.div-other-pts-vie > div{
-    border-radius: 0;
+.Pluie-button{
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: var(--input-area-color);
+    color: var(--button-color);
 }
-.name-wizzard{
-    background-color: blue;
-}
-.health{
-    background-color: orange;
-}
+
 .button-afficher-touche{
     border: none;
     height: 40px;
     width: 200px;
     color: black;
     background-color: white;
-    
     border-radius: 2px;
-    z-index: 3001;
+    z-index: 4002;
     font-size: 20px;
 }
-
-.name-wizzard2{
-    background-color: grey;
-}
-.health2{
-    background-color: cyan;
-}
-
 
 .container-touches{
     width: 100%;
@@ -252,7 +241,7 @@ textarea {
     padding-top: 200px;
     gap: 50px;
     position: absolute;
-    z-index: 3000;
+    z-index: 4000;
 }
 
 .container-help {
@@ -306,19 +295,14 @@ svg {
 
 /* Pluie de pepega */
 
-.Pluie-button{
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 101;
-}
+
 .pepega{
     background-image: url(../../frog/pepega.png);
     background-size: 100% 100%;
     width: 70px;
     height: 70px;
     position: absolute;
-    z-index: 1;
+    z-index: 100;
 }
 
 .container-perso{
@@ -335,7 +319,7 @@ svg {
     background-repeat: no-repeat;
     background-size: contain;
 
-    z-index: 243;
+    z-index: 1;
 }
 
 .vie{
@@ -388,25 +372,68 @@ svg {
 .container-acheter {
     display: none;
     grid-template-rows: 1fr 6fr;
-    position: fixed;
-    top: 73%;
+    position: absolute;
+    top: 74%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: var(--background-container);
     border: 1px solid black;
     width: 700px;
-    height: 350px;
-    z-index: 20000;
+    
+    z-index: 3000;
     gap: 10px;
     padding: 0.5em;
 
+}
+.titre-argent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .container-objet{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
+.container-argent{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
+
+}
+.argent{
+    font-size: 1.3em;
+    color: var(--button-color);
+    font-weight: 600;
+}
+.forex{
+    color: white;
+    font-weight: bold;
+}
+.argent-frapper{
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--button-color);
+}
+.vitesse-montrer{
+    width: 110px;
+    height: 30px;
+    background-color: var(--input-area-color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .25em;
+}
+.vitesse-titre{
+    color: white;
+}
+.vitesse{
+    color: var(--button-color);
+}
 .objet {
     width: 100%;
     height: 100%;
@@ -452,6 +479,8 @@ svg {
 }
 
 .acheter-objet {
+
+    border: 1px solid black;
     cursor: pointer;
     background-color: var(--membre-connecte-color);
 }
@@ -485,7 +514,7 @@ svg {
     .star-the-game {
         display: none;
     }
-    .div-other-pts-vie{
+    .container-toucheEtPluie{
         display: none;
     }
     .Pluie-button{

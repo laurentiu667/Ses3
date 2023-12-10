@@ -17,9 +17,11 @@ const blob = new Blob();
 const maison = new Maison()
 const monster = new Monster(blob, maison);
 
+
 blob.monster = monster
 let lobbyAudioPlayed = false;
 export let messageUser = "";
+let interval
 let clicked = false;
 let spriteList = [];
 let membre_totaux = [];
@@ -28,7 +30,7 @@ let startGame_display = document.querySelector(".star-the-game");
 let commencer_surprise = document.querySelector(".commencer-surprise");
 let afficher_touche = document.querySelector(".button-afficher-touche");
 let container_touche = document.querySelector(".container-touches");
-
+let removeAll = document.querySelector(".stopper-surprise");
 window.addEventListener("load", () => {
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
@@ -46,19 +48,21 @@ window.addEventListener("load", () => {
         spriteList.push(new Decoration());
         spriteList.push(blob)
           
-        
-       
-    
         startGame_display.removeEventListener("click", start_game);
     }
     
-
-    commencer_surprise.addEventListener("click", () =>{
-        setInterval(() => {
-            spriteList.push(new Pepega())
-        },3000);
-    })
+    commencer_surprise.addEventListener("click", () => {
+        if (!interval) {
+            interval = setInterval(() => {
+                spriteList.push(new Pepega());
+            }, 100);
+        }
+    });
     
+    removeAll.addEventListener("click", () => {
+        clearInterval(interval);
+        interval = null; 
+    });
     
   
     afficher_touche.addEventListener("click", () =>{

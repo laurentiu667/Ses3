@@ -27,6 +27,7 @@ export default class Monster {
         this.velocityY = 0;
         this.canJump = 1000
         this.vie = 0;
+        this.argent = 1000;
         this.backgroundVie = ["url('../monster/vie4.png')", "url('../monster/vie3.png')", "url('../monster/vie2.png')", "url('../monster/vie1.png')", "url('../monster/vie0.png')"]
         this.isJumping = false;
         this.node = document.createElement("div");
@@ -34,8 +35,11 @@ export default class Monster {
         this.vieDiv = document.createElement("div")
         this.vieDiv.classList.add("vie")
 
+        this.clickButton = document.querySelector(".acheter-speed");
+        this.divBoutique = document.querySelector(".container-acheter");
+        this.coutObjet = document.querySelector(".cout-speed");
+        this.vitesse = document.querySelector(".vitesse");
 
-        this.divBoutique = document.querySelector(".container-acheter")
         document.body.appendChild(this.node);
         document.body.appendChild(this.vieDiv);
         
@@ -108,6 +112,24 @@ export default class Monster {
         this.node.style.bottom = this.y + "px";
 
         this.minY = window.innerHeight - 110;
+        
+        this.ajouterVitesse = () => {
+            this.clickButton.addEventListener("click", () =>{
+                if (this.argent >= 300){
+                    this.coutObjet.innerHTML = "300 Forex"
+                    this.speedX++;
+                    this.argent -= 300;
+                } else {
+                    this.coutObjet.innerHTML = "Non Disponible"
+                }
+                
+            })
+        }
+        this.afficherVitesse = () => {
+            this.vitesse.innerHTML = this.speedX
+        }
+        this.ajouterVitesse();
+       
     }
 
     updateVie() {
@@ -230,16 +252,21 @@ export default class Monster {
 
 
     acheterShop(message) {
-
-        if (this.collisionShop) {
+        let toucher = this.collisionShop();
+        if (toucher && message === "/boutique") {
+            this.divBoutique.style.display = "grid";
             
-            if (message === "/boutique") {
-                this.divBoutique.style.display = "grid";
-             
-            } else if(message === "/fermer"){
-                this.divBoutique.style.display = "none";
-            }
-        } 
+        } else if(toucher && message === "/fermer"){
+            this.divBoutique.style.display = "none";
+        }
+
+    }
+
+
+    afficherForex(){
+        let divArgent = document.querySelector(".forex");
+        divArgent.innerHTML = this.argent;
+       
     }
     
   
@@ -247,11 +274,12 @@ export default class Monster {
     tick() {
         
         this.deplacement();
-        this.acheterShop(messageUser);
+       
         this.collisionShop();
         this.collision();
+        this.afficherForex();
         this.sortie();
-        
+        this.afficherVitesse();
         const vieDivOffsetY = -65; 
         this.vieDiv.style.left = this.x + vieDivOffsetY + 'px';
         this.vieDiv.style.top = this.y - 170 + 'px';
@@ -259,7 +287,7 @@ export default class Monster {
         this.currentImage.tick(this.x, this.y);
      
         this.updateVie();
-        
+        this.acheterShop(messageUser);
         return true;
     }
 }
