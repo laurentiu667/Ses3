@@ -4,7 +4,6 @@ import org.junit.jupiter.api.*;
 
 import xiangqi.*;
 
-import xiangqiPartie2.*;
 import static org.junit.jupiter.api.Assertions.*;
 public class Elephant_Test2 {
     @BeforeAll

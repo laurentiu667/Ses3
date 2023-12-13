@@ -1,4 +1,4 @@
-package xiangqiPartie2;
+package xiangqi;
 
 import xiangqi.*;
 

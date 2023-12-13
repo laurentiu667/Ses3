@@ -3,11 +3,8 @@ package partie2;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import xiangqi.Char;
-import xiangqi.Mandarin;
-import xiangqi.Position;
-import xiangqi.Roi;
-import xiangqiPartie2.*;
+import xiangqi.*;
+
 public class Roi_Test2 {
     @BeforeAll
     public static void setup(){

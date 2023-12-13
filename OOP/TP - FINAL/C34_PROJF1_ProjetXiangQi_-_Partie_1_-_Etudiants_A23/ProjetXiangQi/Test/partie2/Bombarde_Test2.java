@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import xiangqi.*;
-import xiangqiPartie2.*;
+
 public class Bombarde_Test2 {
     @BeforeAll
     public static void setup(){

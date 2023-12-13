@@ -1,7 +1,5 @@
-package xiangqiPartie2;
+package xiangqi;
 
-import xiangqi.Piece;
-import xiangqi.Position;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -74,7 +72,7 @@ public class FrameXiangQi extends JFrame {
 		labelImage= new JLabel("");
 		labelImage.setBounds(30, 105, 690, 700);  // Original width=690, height=627
 		contentPane.add(labelImage);
-		labelImage.setIcon(( new ImageIcon("ProjetXiangQi/icones/fond.png")));
+		labelImage.setIcon(( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/fond.png")));
 
 		//  Panneau pour afficher les pièces noires qui ont été mangées
 		panelNoirs = new JPanel();

@@ -6,7 +6,7 @@ import xiangqi.Position;
 import xiangqi.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import xiangqiPartie2.*;
+
 public class Echequier_Pion_RoiFaceAFace_Test {
     @BeforeAll
     public static void setup(){
