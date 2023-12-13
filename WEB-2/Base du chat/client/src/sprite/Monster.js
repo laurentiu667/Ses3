@@ -15,6 +15,8 @@ export default class Monster {
         let loopColumns = true;
         let scale = 2.5;
 
+
+        // Variable du monstre
         this.hit = false;
         this.collisionperso = false;
         this.divAcheterCreated = false;
@@ -28,6 +30,11 @@ export default class Monster {
         this.canJump = 1000
         this.vie = 0;
         this.argent = 1000;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 43cc736 (web234234)
         this.backgroundVie = ["url('../monster/vie4.png')", "url('../monster/vie3.png')", "url('../monster/vie2.png')", "url('../monster/vie1.png')", "url('../monster/vie0.png')"]
         this.isJumping = false;
         this.node = document.createElement("div");
@@ -96,7 +103,6 @@ export default class Monster {
         this.RunImage.changeRow(0);
         this.RunImage.changeMinMaxInterval(0, colCount[1] - 1);
      
-
         this.JumpImage.changeRow(0);
         this.JumpImage.changeMinMaxInterval(0, colCount[2] - 1);
 
@@ -106,7 +112,6 @@ export default class Monster {
         this.AttackImage.changeRow(0);
         this.AttackImage.changeMinMaxInterval(0, colCount[1] - 1);
 
-        
         this.x = (window.innerWidth) / 2;
         this.y = window.innerHeight - 110;
         this.node.style.bottom = this.y + "px";
@@ -229,13 +234,20 @@ export default class Monster {
     }
 
     sortie() {
+<<<<<<< HEAD
         if (this.x >= window.innerWidth) {
         
            this.x = 30
+=======
+     
+        if (this.x >= window.innerWidth) {    
+            this.x = 30
+>>>>>>> 43cc736 (web234234)
         } else if (this.x < 0) {
             this.x = 1920
         }
     }
+<<<<<<< HEAD
 
     acheterShop(message) {
         let toucher = this.collisionShop();
@@ -252,6 +264,32 @@ export default class Monster {
         divArgent.innerHTML = this.argent;
     }
     
+=======
+    
+    ptsPerdue(){
+       
+        setTimeout(() => {
+            if (this.collision()){
+           
+                this.vie = 1
+            }
+        }, 50);
+
+    }
+
+    acheterShop(message) {
+
+        if (this.collisionShop) {  
+            if (message === "/boutique") {
+                this.divBoutique.style.display = "grid";
+            } else if(message === "/fermer"){
+                this.divBoutique.style.display = "none";
+            }
+        } 
+
+    }
+
+>>>>>>> 43cc736 (web234234)
     tick() {
         
         this.deplacement();

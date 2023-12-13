@@ -4,7 +4,12 @@ import Maison from './sprite/Maison.js';
 import Monster from './sprite/Monster.js';
 import Decoration from './sprite/Decoration.js';
 import Blob from './sprite/Chicken.js';
+<<<<<<< HEAD
 import Chicken from './sprite/Chicken.js';
+=======
+
+
+>>>>>>> 43cc736 (web234234)
 
 export let qKeyon = false;
 export let eKeyon = false;
@@ -18,6 +23,11 @@ const maison = new Maison()
 const monster = new Monster(chicken, maison);
 chicken.monster = monster
 
+<<<<<<< HEAD
+=======
+blob.monster = monster
+
+>>>>>>> 43cc736 (web234234)
 export let messageUser = "";
 let interval
 let clicked = false;
@@ -31,6 +41,7 @@ let container_touche = document.querySelector(".container-touches");
 let removeAll = document.querySelector(".stopper-surprise");
 
 window.addEventListener("load", () => {
+
     document.querySelector("textarea").onkeyup = function (evt) {
         sendMessage(evt, this);
     };
@@ -120,15 +131,26 @@ document.addEventListener("keyup", (e) => {
     }
 });
 
+<<<<<<< HEAD
 // MESSAGE  
 
+=======
+>>>>>>> 43cc736 (web234234)
 const newMessage = (fromUser, message, isPrivate) => {
     
     messageUser = message;
     let node = document.createElement("div");
     node.classList.add("msg");
 
+<<<<<<< HEAD
     node.innerText = fromUser + ": " + message;
+=======
+    if (!message) {
+        node.innerText = "<strong>" + fromUser + "</strong> a rejoint le chat";
+    } else {
+        node.innerText = "<strong>" + fromUser + ":</strong> " + message;
+    }
+>>>>>>> 43cc736 (web234234)
 
     let parentNode = document.querySelector(".afficher-message");
     parentNode.append(node);
@@ -182,7 +204,12 @@ const updateMembresTotauxHTML = () => {
     
     let parentNode = document.querySelector("#membres_totaux");
     
+<<<<<<< HEAD
     parentNode.innerHTML = "";
+=======
+    parentNode.innerText = "";
+
+>>>>>>> 43cc736 (web234234)
    
     for (let i = 0; i < membre_totaux.length; i++) {
         
