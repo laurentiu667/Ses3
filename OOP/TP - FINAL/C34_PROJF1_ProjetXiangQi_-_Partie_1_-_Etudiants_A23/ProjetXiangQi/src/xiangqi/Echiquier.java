@@ -80,7 +80,14 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         jeu[6][8].setPiece(new Pion("p5", "rouge"));
 
     }
+    public void deplacer(Position depart, Position arrivee) {
+        Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
+        Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
 
+        // Effectuer le déplacement dans le modèle de données
+        intersectionArrivee.setPiece(intersectionDepart.getPiece());
+        intersectionDepart.setPiece(null);
+    }
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());

@@ -160,7 +160,7 @@ public class FrameXiangQi extends JFrame {
 			couleurControle = "noir";
 		else
 			couleurControle = "rouge";
-		labelCouleur.setText("C'est aux " + couleurControle + "s à jouer ");
+			labelCouleur.setText("C'est aux " + couleurControle + "s à jouer ");
 		}
 
 		// Enlève toutes les pièces de l'affichage graphique, sur l'échiqiuer et dans les panneaux de pièces mangées
@@ -180,39 +180,39 @@ public class FrameXiangQi extends JFrame {
 
 		public void afficherPiecesPourDebut()
 		{
-			grille[0][0].setIcon(new ImageIcon ("ProjetXiangQi/icones/charNoir.png"));
-			grille[0][1].setIcon( new ImageIcon ("ProjetXiangQi/icones/cavalierNoir.png"));
-			grille[0][2].setIcon( new ImageIcon("ProjetXiangQi/icones/elephantNoir.png"));
-			grille[0][3].setIcon( new ImageIcon ("ProjetXiangQi/icones/mandarinNoir.png"));
-			grille[0][4].setIcon( new ImageIcon("ProjetXiangQi/icones/roiNoir.png"));
-			grille[0][5].setIcon(new ImageIcon("ProjetXiangQi/icones/mandarinNoir.png"));
-			grille[0][6].setIcon( new ImageIcon("ProjetXiangQi/icones/elephantNoir.png"));
-			grille[0][7].setIcon( new ImageIcon ("ProjetXiangQi/icones/cavalierNoir.png"));
-			grille[0][8].setIcon(new ImageIcon ("ProjetXiangQi/icones/charNoir.png"));
-			grille[2][1].setIcon( new ImageIcon("ProjetXiangQi/icones/bombardeNoir.png"));
-			grille[2][7].setIcon(new ImageIcon("ProjetXiangQi/icones/bombardeNoir.png"));
-			grille[3][0].setIcon(new ImageIcon("ProjetXiangQi/icones/pionNoir.png"));
-			grille[3][2].setIcon(new ImageIcon("ProjetXiangQi/icones/pionNoir.png"));
-			grille[3][4].setIcon(new ImageIcon("ProjetXiangQi/icones/pionNoir.png"));
-			grille[3][6].setIcon(new ImageIcon("ProjetXiangQi/icones/pionNoir.png"));
-			grille[3][8].setIcon(new ImageIcon("ProjetXiangQi/icones/pionNoir.png"));
+			grille[0][0].setIcon(new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/charNoir.png"));
+			grille[0][1].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/cavalierNoir.png"));
+			grille[0][2].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/elephantNoir.png"));
+			grille[0][3].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/mandarinNoir.png"));
+			grille[0][4].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/roiNoir.png"));
+			grille[0][5].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/mandarinNoir.png"));
+			grille[0][6].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/elephantNoir.png"));
+			grille[0][7].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/cavalierNoir.png"));
+			grille[0][8].setIcon(new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/charNoir.png"));
+			grille[2][1].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/bombardeNoir.png"));
+			grille[2][7].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/bombardeNoir.png"));
+			grille[3][0].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionNoir.png"));
+			grille[3][2].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionNoir.png"));
+			grille[3][4].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionNoir.png"));
+			grille[3][6].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionNoir.png"));
+			grille[3][8].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionNoir.png"));
 
-			grille[9][0].setIcon(new ImageIcon ("ProjetXiangQi/icones/charRouge.png"));
-			grille[9][1].setIcon( new ImageIcon ("ProjetXiangQi/icones/cavalierRouge.png"));
-			grille[9][2].setIcon( new ImageIcon("ProjetXiangQi/icones/elephantRouge.png"));
-			grille[9][3].setIcon( new ImageIcon ("ProjetXiangQi/icones/mandarinRouge.png"));
-			grille[9][4].setIcon( new ImageIcon("ProjetXiangQi/icones/roiRouge.png"));
-			grille[9][5].setIcon(new ImageIcon("ProjetXiangQi/icones/mandarinRouge.png"));
-			grille[9][6].setIcon( new ImageIcon("ProjetXiangQi/icones/elephantRouge.png"));
-			grille[9][7].setIcon( new ImageIcon ("ProjetXiangQi/icones/cavalierRouge.png"));
-			grille[9][8].setIcon(new ImageIcon ("ProjetXiangQi/icones/charRouge.png"));
-			grille[7][1].setIcon( new ImageIcon("ProjetXiangQi/icones/bombardeRouge.png"));
-			grille[7][7].setIcon(new ImageIcon("ProjetXiangQi/icones/bombardeRouge.png"));
-			grille[6][0].setIcon(new ImageIcon("ProjetXiangQi/icones/pionRouge.png"));
-			grille[6][2].setIcon(new ImageIcon("ProjetXiangQi/icones/pionRouge.png"));
-			grille[6][4].setIcon(new ImageIcon("ProjetXiangQi/icones/pionRouge.png"));
-			grille[6][6].setIcon(new ImageIcon("ProjetXiangQi/icones/pionRouge.png"));
-			grille[6][8].setIcon(new ImageIcon("ProjetXiangQi/icones/pionRouge.png"));
+			grille[9][0].setIcon(new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/charRouge.png"));
+			grille[9][1].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/cavalierRouge.png"));
+			grille[9][2].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/elephantRouge.png"));
+			grille[9][3].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/mandarinRouge.png"));
+			grille[9][4].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/roiRouge.png"));
+			grille[9][5].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/mandarinRouge.png"));
+			grille[9][6].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/elephantRouge.png"));
+			grille[9][7].setIcon( new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/cavalierRouge.png"));
+			grille[9][8].setIcon(new ImageIcon ("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/charRouge.png"));
+			grille[7][1].setIcon( new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/bombardeRouge.png"));
+			grille[7][7].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/bombardeRouge.png"));
+			grille[6][0].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionRouge.png"));
+			grille[6][2].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionRouge.png"));
+			grille[6][4].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionRouge.png"));
+			grille[6][6].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionRouge.png"));
+			grille[6][8].setIcon(new ImageIcon("C34_PROJF1_ProjetXiangQi_-_Partie_1_-_Etudiants_A23/ProjetXiangQi/icones/pionRouge.png"));
 		}
 
 		public void recommencer(){
@@ -234,7 +234,7 @@ public class FrameXiangQi extends JFrame {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 			if ( e.getSource() == boutonDebuter)
 			{
 				echiquier.debuter();
@@ -262,12 +262,56 @@ public class FrameXiangQi extends JFrame {
 						}
 					}
 				}
+				Piece piece = echiquier.getIntersection(ligneClic, colonneClic).getPiece();
+				if (piece != null && couleurControle.equals(piece.getCouleur())) {
+					// Initialiser la position de départ
+					depart = new Position(ligneClic, colonneClic);
 
+					// Prendre la pièce et l'assigner à pieceTampon
+					pieceTampon = echiquier.getIntersection(ligneClic, colonneClic).getPiece();
 
-				//  ************************
-				//  CODER ICI
-				//  ************************
+					// Prendre l'icône et l'assigner à iconeTampon
+					iconeTampon = (ImageIcon) grille[ligneClic][colonneClic].getIcon();
 
+					// Enlever le tampon de son JLabel d'origine, ne pas enlever la pièce
+					grille[ligneClic][colonneClic].setIcon(null);
+				}
+
+				// Cas coup d'arrivée (sans capture de pièces)
+				else if (depart != null && arrivee != null) {
+					// Initialiser position d'arrivée
+					Position arrivee = new Position(ligneClic, colonneClic);
+
+					// Vérifier estValide
+					if (echiquier.getIntersection(depart.getLigne(), depart.getColonne()).getPiece().estValide(depart, arrivee)) {
+						// Vérifier cheminPossible
+						if (echiquier.cheminPossible(depart, arrivee)) {
+							// Vérifier si les Rois ne sont pas face-à-face
+							if (!echiquier.roisNePouvantPasEtreFaceAFace(depart, arrivee)) {
+								// Enlever la pièce de la case de départ
+								echiquier.getIntersection(depart.getLigne(), arrivee.getColonne()).setPiece(null);
+
+								// Mettre la piece tampon sur la case d'arrivée et vider le tampon
+								echiquier.getIntersection(ligneClic, colonneClic).setPiece(pieceTampon);
+								pieceTampon = null;
+
+								// Placer l'iconeTampon sur le JLabel d'arrivée et l'enlever du tampon
+								grille[arrivee.getLigne()][arrivee.getColonne()].setIcon(iconeTampon);
+								iconeTampon = null;
+
+								// Donner le contrôle à l'autre Joueur et l'indiquer
+								ec.alterne();
+							}
+						}
+					}
+				}
+
+				// Autre cas d'arrivée (avec capture de pièce)
+//				else if (/* Vérifier si c'est un coup d'arrivée avec capture */) {
+//					// Même logique que le cas précédent, mais également gérer la capture de pièce
+//				}
+
+				// Penser à ne pas permettre l'auto-capture de pièce
 
 
 			}
