@@ -149,7 +149,7 @@ public class FrameXiangQi extends JFrame {
 	{
 		int ligneClic, colonneClic;
 		Piece pieceTampon, pieceEnlevee;
-		ImageIcon iconeTampon;
+		ImageIcon iconeTampon, iconeTamponPieceManger;
 		Position depart, arrivee;
 		String couleurControle; //valeur rouge ou noir ;
 		
@@ -264,42 +264,31 @@ public class FrameXiangQi extends JFrame {
 				}
 				Piece piece = echiquier.getIntersection(ligneClic, colonneClic).getPiece();
 				if (piece != null && couleurControle.equals(piece.getCouleur())) {
-					// Initialiser la position de départ
 					depart = new Position(ligneClic, colonneClic);
-
-					// Prendre la pièce et l'assigner à pieceTampon
 					pieceTampon = echiquier.getIntersection(ligneClic, colonneClic).getPiece();
-
-					// Prendre l'icône et l'assigner à iconeTampon
 					iconeTampon = (ImageIcon) grille[ligneClic][colonneClic].getIcon();
-
-					// Enlever le tampon de son JLabel d'origine, ne pas enlever la pièce
 					grille[ligneClic][colonneClic].setIcon(null);
 				}
 
 				// Cas coup d'arrivée (sans capture de pièces)
-				else if (depart != null && arrivee != null) {
-					// Initialiser position d'arrivée
+				else if (echiquier.getIntersection(ligneClic, colonneClic).getPiece() == null) {
+
 					Position arrivee = new Position(ligneClic, colonneClic);
 
-					// Vérifier estValide
 					if (echiquier.getIntersection(depart.getLigne(), depart.getColonne()).getPiece().estValide(depart, arrivee)) {
-						// Vérifier cheminPossible
+
 						if (echiquier.cheminPossible(depart, arrivee)) {
-							// Vérifier si les Rois ne sont pas face-à-face
-							if (!echiquier.roisNePouvantPasEtreFaceAFace(depart, arrivee)) {
-								// Enlever la pièce de la case de départ
+
+							if (echiquier.roisNePouvantPasEtreFaceAFace(depart, arrivee)) {
+
 								echiquier.getIntersection(depart.getLigne(), arrivee.getColonne()).setPiece(null);
 
-								// Mettre la piece tampon sur la case d'arrivée et vider le tampon
 								echiquier.getIntersection(ligneClic, colonneClic).setPiece(pieceTampon);
 								pieceTampon = null;
 
-								// Placer l'iconeTampon sur le JLabel d'arrivée et l'enlever du tampon
 								grille[arrivee.getLigne()][arrivee.getColonne()].setIcon(iconeTampon);
 								iconeTampon = null;
 
-								// Donner le contrôle à l'autre Joueur et l'indiquer
 								ec.alterne();
 							}
 						}
@@ -307,9 +296,36 @@ public class FrameXiangQi extends JFrame {
 				}
 
 				// Autre cas d'arrivée (avec capture de pièce)
-//				else if (/* Vérifier si c'est un coup d'arrivée avec capture */) {
-//					// Même logique que le cas précédent, mais également gérer la capture de pièce
-//				}
+				else if (echiquier.getIntersection(ligneClic, colonneClic).getPiece() != null) {
+					depart = new Position(ligneClic, colonneClic);
+					iconeTamponPieceManger = (ImageIcon) grille[ligneClic][colonneClic].getIcon();
+
+					if (echiquier.getIntersection(depart.getLigne(), depart.getColonne()).getPiece().estValide(depart, arrivee)) {
+
+						if (echiquier.cheminPossible(depart, arrivee)) {
+
+							if (echiquier.roisNePouvantPasEtreFaceAFace(depart, arrivee)) {
+
+								echiquier.getIntersection(depart.getLigne(), arrivee.getColonne()).setPiece(null);
+
+								echiquier.getIntersection(ligneClic, colonneClic).setPiece(pieceTampon);
+								System.out.println("test");
+								if (pieceTampon.getCouleur() == "rouge"){
+									panelRouges.add(new JLabel (iconeTamponPieceManger));
+								} else if(pieceTampon.getCouleur() == "noir"){
+									panelNoirs.add(new JLabel (iconeTamponPieceManger));
+								}
+								pieceTampon = null;
+
+								grille[arrivee.getLigne()][arrivee.getColonne()].setIcon(iconeTampon);
+								iconeTampon = null;
+
+								ec.alterne();
+
+							}
+						}
+					}
+				}
 
 				// Penser à ne pas permettre l'auto-capture de pièce
 

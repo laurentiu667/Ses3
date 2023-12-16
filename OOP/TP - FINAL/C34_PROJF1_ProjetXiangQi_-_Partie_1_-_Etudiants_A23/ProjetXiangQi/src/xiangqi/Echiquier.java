@@ -80,14 +80,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         jeu[6][8].setPiece(new Pion("p5", "rouge"));
 
     }
-    public void deplacer(Position depart, Position arrivee) {
-        Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
-        Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
 
-        // Effectuer le déplacement dans le modèle de données
-        intersectionArrivee.setPiece(intersectionDepart.getPiece());
-        intersectionDepart.setPiece(null);
-    }
     public boolean cheminPossible(Position depart, Position arrivee) {
         Intersection intersectionDepart = getIntersection(depart.getLigne(), depart.getColonne());
         Intersection intersectionArrivee = getIntersection(arrivee.getLigne(), arrivee.getColonne());
@@ -244,6 +237,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
         Position roi2 = null;
         int nmbrPieceEntreRoi = 0;
         // Recherche des positions des deux rois
+        // Recherche des positions des deux rois
         for (int ligne = 0; ligne < LIGNE; ligne++) {
             for (int colonne = 0; colonne < COLONNE; colonne++) {
                 Intersection intersection = jeu[ligne][colonne];
@@ -256,6 +250,11 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
                 }
             }
         }
+        System.out.println("colonne roi1: " + roi1.getColonne());  // Check if roi1 has a value
+        System.out.println("ligne roi1: " + roi1.getLigne());  // Check if roi2 has a value
+        System.out.println("colonne roi2: " + roi2.getColonne());  // Check if roi1 has a value
+        System.out.println("ligne roi2\n: " + roi2.getLigne());  // Check if roi2 has a value
+
         int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
         int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
 
@@ -264,20 +263,22 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             if (jeu[ligne][roi1.getColonne()].getPiece() != null) {
                 piecesEntreDeuxRois++;
             }
+
         }
         // S il ne sont pas dans la meme colonne alors mouvement possible
         if (roi1.getColonne() != roi2.getColonne()) {
             return true;
-        } else if ((roi1.getColonne() == roi2.getColonne())) {
+        }
+        else if ((roi1.getColonne() == roi2.getColonne() && piecesEntreDeuxRois >= 1)) {
 
-            if (piecesEntreDeuxRois > 1) {
-                return true;
-            } else if (piecesEntreDeuxRois == 1 && arrivee.getColonne() == roi1.getColonne()){
-                return true;
-            }
+
+            return true;
+
+        }
+        else{
+            return false;
         }
 
-        return false;
     }
 
 }
