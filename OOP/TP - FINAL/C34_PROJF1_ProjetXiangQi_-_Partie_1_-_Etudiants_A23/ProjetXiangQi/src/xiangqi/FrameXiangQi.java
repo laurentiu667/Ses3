@@ -273,7 +273,7 @@ public class FrameXiangQi extends JFrame {
 				// Cas coup d'arrivée (sans capture de pièces)
 				else if (echiquier.getIntersection(ligneClic, colonneClic).getPiece() == null) {
 
-					Position arrivee = new Position(ligneClic, colonneClic);
+					arrivee = new Position(ligneClic, colonneClic);
 
 					if (echiquier.getIntersection(depart.getLigne(), depart.getColonne()).getPiece().estValide(depart, arrivee)) {
 
@@ -297,8 +297,9 @@ public class FrameXiangQi extends JFrame {
 
 				// Autre cas d'arrivée (avec capture de pièce)
 				else if (echiquier.getIntersection(ligneClic, colonneClic).getPiece() != null) {
-					depart = new Position(ligneClic, colonneClic);
+					arrivee = new Position(ligneClic, colonneClic);
 					iconeTamponPieceManger = (ImageIcon) grille[ligneClic][colonneClic].getIcon();
+					pieceEnlevee = echiquier.getIntersection(ligneClic, colonneClic).getPiece();
 
 					if (echiquier.getIntersection(depart.getLigne(), depart.getColonne()).getPiece().estValide(depart, arrivee)) {
 
@@ -309,25 +310,39 @@ public class FrameXiangQi extends JFrame {
 								echiquier.getIntersection(depart.getLigne(), arrivee.getColonne()).setPiece(null);
 
 								echiquier.getIntersection(ligneClic, colonneClic).setPiece(pieceTampon);
-								System.out.println("test");
-								if (pieceTampon.getCouleur() == "rouge"){
-									panelRouges.add(new JLabel (iconeTamponPieceManger));
-								} else if(pieceTampon.getCouleur() == "noir"){
-									panelNoirs.add(new JLabel (iconeTamponPieceManger));
+
+								if ("rouge".equals(pieceTampon.getCouleur())) {
+									panelRouges.add(new JLabel(iconeTamponPieceManger));
+
+								} else if ("noir".equals(pieceTampon.getCouleur())) {
+									panelNoirs.add(new JLabel(iconeTamponPieceManger));
+
 								}
+
+								if (pieceEnlevee.getNom().equals("r2")) {
+									labelCouleur.setText("Les noirs ont gagné");
+
+								}
+								if (pieceEnlevee.getNom().equals("r1")) {
+									labelCouleur.setText("Les rouges ont gagné");
+
+								}
+
+
+//								if (pieceEnlevee.getNom().equals("r2")) {
+//									labelCouleur.setText("Les noirs ont gagné");
+//								} else if (pieceEnlevee.getNom().equals("r1")) {
+//									labelCouleur.setText("Les rouges ont gagné");
+//								}
 								pieceTampon = null;
 
 								grille[arrivee.getLigne()][arrivee.getColonne()].setIcon(iconeTampon);
 								iconeTampon = null;
 
-								ec.alterne();
-
 							}
 						}
 					}
 				}
-
-				// Penser à ne pas permettre l'auto-capture de pièce
 
 
 			}

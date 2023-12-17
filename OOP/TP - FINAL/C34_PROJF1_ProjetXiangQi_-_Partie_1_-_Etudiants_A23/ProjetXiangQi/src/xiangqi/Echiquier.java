@@ -31,7 +31,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     public void debuter() {
         // Placement des pièces noires
         // Roi
-        jeu[0][4].setPiece(new Roi("r", "noir"));
+        jeu[0][4].setPiece(new Roi("r1", "noir"));
         // Char (Tour)
         jeu[0][0].setPiece(new Char("t1", "noir"));
         jeu[0][8].setPiece(new Char("t2", "noir"));
@@ -56,7 +56,7 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
 
         // Placement des pièces rouges
         // Roi
-        jeu[9][4].setPiece(new Roi("r", "rouge"));
+        jeu[9][4].setPiece(new Roi("r2", "rouge"));
         // Char (Tour)
         jeu[9][0].setPiece(new Char("t1", "rouge"));
         jeu[9][8].setPiece(new Char("t2", "rouge"));
@@ -206,80 +206,96 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     }
 
     private boolean verifCavalier(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
-        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
-        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : (arrivee.getLigne() < depart.getLigne()) ? -1 : 0;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : (arrivee.getColonne() < depart.getColonne()) ? -1 : 0;
 
-        // Vérif en colonne
-        int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
-        int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
+        int diffLigne = Math.abs(arrivee.getLigne() - depart.getLigne());
+        int diffColonne = Math.abs(arrivee.getColonne() - depart.getColonne());
 
-        if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
-            return false; // false s il y a une piece
+        // Check if the movement is either vertical or horizontal and has a distance of 2
+        if ((diffLigne == 2 && diffColonne == 0) || (diffLigne == 0 && diffColonne == 2)) {
+            // Vérif en colonne
+            int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
+            int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
+
+            if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
+                return false; // false s'il y a une pièce
+            }
+
+            // Vérif en ligne
+            int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
+            int colonneAvantLigne = interDepart.getPositionDebut().getColonne() + colonneStep;
+
+            if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
+                return false; // false s'il y a une pièce
+            }
+
+            return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
         }
 
-        // Vérif en ligne
-        int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
-        int colonneAvantLigne = interDepart.getPositionDebut().getColonne();
-
-        if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
-            return false; // false s il y a une piece
-        }
-
-        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+        // If the distance is not 2, return false
+        return false;
     }
-
-
 
 
     @Override
     public boolean roisNePouvantPasEtreFaceAFace(Position depart, Position arrivee) {
         Position roi1 = null;
         Position roi2 = null;
-        int nmbrPieceEntreRoi = 0;
-        // Recherche des positions des deux rois
+
         // Recherche des positions des deux rois
         for (int ligne = 0; ligne < LIGNE; ligne++) {
             for (int colonne = 0; colonne < COLONNE; colonne++) {
                 Intersection intersection = jeu[ligne][colonne];
-                if (intersection.getPiece() instanceof Roi) {
-                    if (roi1 == null) {
-                        roi1 = intersection.getPositionDebut();
-                    } else {
-                        roi2 = intersection.getPositionDebut();
-                    }
+                Piece piece = intersection.getPiece();
+
+                if (piece != null && piece.getNom().equals("r1")) {
+                    roi1 = intersection.getPositionDebut();
+                }
+                if (piece != null && piece.getNom().equals("r2")) {
+                    roi2 = intersection.getPositionDebut();
                 }
             }
         }
-        System.out.println("colonne roi1: " + roi1.getColonne());  // Check if roi1 has a value
-        System.out.println("ligne roi1: " + roi1.getLigne());  // Check if roi2 has a value
-        System.out.println("colonne roi2: " + roi2.getColonne());  // Check if roi1 has a value
-        System.out.println("ligne roi2\n: " + roi2.getLigne());  // Check if roi2 has a value
 
-        int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
-        int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
+        // Check if roi1 and roi2 are not null
+        if (roi1 != null && roi2 != null) {
+            System.out.println("colonne roi1: " + roi1.getColonne());
+            System.out.println("ligne roi1: " + roi1.getLigne());
+            System.out.println("colonne roi2: " + roi2.getColonne());
+            System.out.println("ligne roi2: " + roi2.getLigne());
 
-        int piecesEntreDeuxRois = 0;
-        for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
-            if (jeu[ligne][roi1.getColonne()].getPiece() != null) {
-                piecesEntreDeuxRois++;
+            int minLigne = Math.min(roi1.getLigne(), roi2.getLigne());
+            int maxLigne = Math.max(roi1.getLigne(), roi2.getLigne());
+
+            int piecesEntreDeuxRois = 0;
+            for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
+                Piece pieceEntreDeuxRois = jeu[ligne][roi1.getColonne()].getPiece();
+
+                // Check if the intersection has a piece
+                if (pieceEntreDeuxRois != null) {
+                    piecesEntreDeuxRois++;
+                }
+            }
+
+            // S'il ne sont pas dans la même colonne alors le mouvement est possible
+            if (roi1.getColonne() != roi2.getColonne()) {
+                return true;
+            } else if (roi1.getColonne() == roi2.getColonne() && piecesEntreDeuxRois > 1) {
+                return true;
+            }else {
+                return false;
             }
 
         }
-        // S il ne sont pas dans la meme colonne alors mouvement possible
-        if (roi1.getColonne() != roi2.getColonne()) {
-            return true;
-        }
-        else if ((roi1.getColonne() == roi2.getColonne() && piecesEntreDeuxRois >= 1)) {
+
+        return false;
 
 
-            return true;
-
-        }
-        else{
-            return false;
-        }
 
     }
+
+
 
 }
 
