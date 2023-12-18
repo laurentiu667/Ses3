@@ -322,18 +322,13 @@ public class FrameXiangQi extends JFrame {
 								if (pieceEnlevee.getNom().equals("r2")) {
 									labelCouleur.setText("Les noirs ont gagné");
 
-								}
-								if (pieceEnlevee.getNom().equals("r1")) {
+								} else if (pieceEnlevee.getNom().equals("r1")) {
 									labelCouleur.setText("Les rouges ont gagné");
 
+								} else {
+									ec.alterne();
 								}
 
-
-//								if (pieceEnlevee.getNom().equals("r2")) {
-//									labelCouleur.setText("Les noirs ont gagné");
-//								} else if (pieceEnlevee.getNom().equals("r1")) {
-//									labelCouleur.setText("Les rouges ont gagné");
-//								}
 								pieceTampon = null;
 
 								grille[arrivee.getLigne()][arrivee.getColonne()].setIcon(iconeTampon);
