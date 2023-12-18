@@ -206,26 +206,33 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     }
 
     private boolean verifCavalier(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
-        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
-        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
 
-        // Vérif en colonne
-        int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
-        int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
-
-        if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
-            return false; // false s il y a une piece
-        }
-
-        // Vérif en ligne
-        int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
-        int colonneAvantLigne = interDepart.getPositionDebut().getColonne();
-
-        if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
-            return false; // false s il y a une piece
+        int ligneOuColonne = 0;
+        if (depart.getLigne() - arrivee.getLigne() == -2){
+            ligneOuColonne = 1;
+            if (jeu[depart.getLigne() + ligneOuColonne][depart.getColonne()].getPiece() != null){
+                return false;
+            }
+        } else if (depart.getLigne() - arrivee.getLigne() == 2){
+            ligneOuColonne = -1;
+            if (jeu[depart.getLigne() + ligneOuColonne][depart.getColonne()].getPiece() != null){
+                return false;
+            }
+        } else if (depart.getColonne() - arrivee.getColonne() == -2){
+            ligneOuColonne = 1;
+            if (jeu[depart.getLigne()][depart.getColonne() + ligneOuColonne].getPiece() != null){
+                return false;
+            }
+        } else if (depart.getColonne() - arrivee.getColonne() == 2){
+            ligneOuColonne = -1;
+            if (jeu[depart.getLigne()][depart.getColonne() + ligneOuColonne].getPiece() != null){
+                return false;
+            }
         }
 
         return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+
+
     }
 
 
