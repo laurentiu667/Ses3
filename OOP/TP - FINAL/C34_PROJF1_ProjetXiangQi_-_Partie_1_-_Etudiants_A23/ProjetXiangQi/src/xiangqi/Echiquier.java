@@ -206,36 +206,28 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
     }
 
     private boolean verifCavalier(Position depart, Position arrivee, Intersection interDepart, Intersection interArrivee) {
-        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : (arrivee.getLigne() < depart.getLigne()) ? -1 : 0;
-        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : (arrivee.getColonne() < depart.getColonne()) ? -1 : 0;
+        int ligneStep = (arrivee.getLigne() > depart.getLigne()) ? 1 : -1;
+        int colonneStep = (arrivee.getColonne() > depart.getColonne()) ? 1 : -1;
 
-        int diffLigne = Math.abs(arrivee.getLigne() - depart.getLigne());
-        int diffColonne = Math.abs(arrivee.getColonne() - depart.getColonne());
+        // Vérif en colonne
+        int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
+        int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
 
-        // Check if the movement is either vertical or horizontal and has a distance of 2
-        if ((diffLigne == 2 && diffColonne == 0) || (diffLigne == 0 && diffColonne == 2)) {
-            // Vérif en colonne
-            int ligneAvantColonne = interDepart.getPositionDebut().getLigne();
-            int colonneAvantColonne = interDepart.getPositionDebut().getColonne() + colonneStep;
-
-            if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
-                return false; // false s'il y a une pièce
-            }
-
-            // Vérif en ligne
-            int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
-            int colonneAvantLigne = interDepart.getPositionDebut().getColonne() + colonneStep;
-
-            if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
-                return false; // false s'il y a une pièce
-            }
-
-            return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
+        if (jeu[ligneAvantColonne][colonneAvantColonne].getPiece() != null) {
+            return false; // false s il y a une piece
         }
 
-        // If the distance is not 2, return false
-        return false;
+        // Vérif en ligne
+        int ligneAvantLigne = interDepart.getPositionDebut().getLigne() + ligneStep;
+        int colonneAvantLigne = interDepart.getPositionDebut().getColonne();
+
+        if (jeu[ligneAvantLigne][colonneAvantLigne].getPiece() != null) {
+            return false; // false s il y a une piece
+        }
+
+        return interArrivee.getPiece() == null || interDepart.getPiece().getCouleur() != interArrivee.getPiece().getCouleur();
     }
+
 
 
     @Override
@@ -272,7 +264,6 @@ public class Echiquier extends Intersection implements MethodesEchiquier {
             for (int ligne = minLigne + 1; ligne < maxLigne; ligne++) {
                 Piece pieceEntreDeuxRois = jeu[ligne][roi1.getColonne()].getPiece();
 
-                // Check if the intersection has a piece
                 if (pieceEntreDeuxRois != null) {
                     piecesEntreDeuxRois++;
                 }
